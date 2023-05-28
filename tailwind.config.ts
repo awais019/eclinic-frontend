@@ -23,6 +23,7 @@ export default <Partial<Config>>{
         tablet: "765px",
         desktop: "1280px",
         mobile: { max: "765px" },
+        "3xl": "1920px",
       },
       colors: {
         primary: {

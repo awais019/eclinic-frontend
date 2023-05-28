@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="container mobile:pt-24 pb-10 tablet:flex tablet:gap-8">
+  <div class="app-container mobile:pt-24 pb-10 tablet:flex tablet:gap-8">
     <div class="content">
       <span class="polygon">
         <icons-polygon />
@@ -11,7 +11,7 @@
         <span class="text-primary-blue-ribbon">medical care is</span> just a
         click away <span class="beat"><icons-ellipse /> <icons-beat /></span>
       </h1>
-      <div class="tag-line">
+      <div class="tag-line text-base-reg">
         Book your appointment today with our experienced doctors. Get the care
         you need and start feeling better.
       </div>
@@ -62,7 +62,7 @@
     @apply desktop:pt-40 tablet:pt-16 flex-1;
   }
   .tag-line {
-    @apply text-base-reg text-neutral-dusty-gray text-center mt-6 tracking-widest;
+    @apply text-neutral-dusty-gray text-center mt-6 tracking-widest;
   }
   .actions {
     @apply flex flex-col gap-6 mt-16 desktop:flex-row;

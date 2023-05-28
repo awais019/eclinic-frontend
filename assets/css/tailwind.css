@@ -128,8 +128,8 @@
       @apply text-xl;
     }
   }
-  .container {
-    @apply mx-auto max-w-[85%];
+  .app-container {
+    @apply mx-auto max-w-[80%];
   }
   .btn {
     @apply text-primary-blue-ribbon text-base-sb rounded-lg cursor-pointer;
