@@ -8,7 +8,7 @@
 <template>
   <header>
     <div
-      class="container py-7 tablet:grid tablet:grid-flow-col tablet:grid-cols-nav tablet:items-center"
+      class="app-container py-7 tablet:grid tablet:grid-flow-col tablet:grid-cols-nav tablet:items-center"
     >
       <div class="mobile:flex inline-block">
         <div>
