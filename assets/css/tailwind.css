@@ -128,6 +128,9 @@
       @apply text-xl;
     }
   }
+  .container {
+    @apply mx-auto max-w-[90%];
+  }
 }
 
 @layer utilities {
