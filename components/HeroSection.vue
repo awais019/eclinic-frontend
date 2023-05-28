@@ -1,9 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div>
-    <HeroSection />
-  </div>
+  <div class="container">Component: HeroSection</div>
 </template>
 
 <style scoped></style>
