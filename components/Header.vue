@@ -36,7 +36,7 @@
         :class="[openNav ? 'block' : 'hidden', 'tablet:inline-block']"
       >
         <nav>
-          <ul class="nav__list">
+          <ul class="nav__list desktop:text-h4-reg mobile:text-base-reg">
             <li class="nav__item">
               <nuxt-link to="/">Home</nuxt-link>
             </li>
@@ -50,7 +50,7 @@
               <nuxt-link to="/about">About Us</nuxt-link>
             </li>
             <ul class="nav__list-sub">
-              <li class="nav__item signup">
+              <li class="nav__item signup btn btn-primary">
                 <nuxt-link to="/signup">Signup</nuxt-link>
               </li>
               <li class="nav__item login">
@@ -73,7 +73,7 @@
     @apply mobile:h-[100dvh] mobile:py-7;
   }
   .nav__list {
-    @apply text-neutral-dusty-gray desktop:text-h4-reg tablet:text-sm mobile:text-base-reg tablet:flex tablet:gap-6;
+    @apply text-neutral-dusty-gray tablet:text-sm tablet:flex tablet:gap-6;
   }
   .nav__item {
     @apply py-3;
@@ -91,7 +91,7 @@
     @apply mobile:mt-8 text-center tablet:ml-auto tablet:flex tablet:flex-row-reverse tablet:gap-6;
   }
   .signup {
-    @apply btn btn-primary mobile:mb-6 tablet:px-6;
+    @apply mobile:mb-6 tablet:px-6;
   }
   .signup a:hover {
     @apply text-neutral-white border-none;
