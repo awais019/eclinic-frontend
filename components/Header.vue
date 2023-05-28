@@ -73,7 +73,7 @@
     @apply mobile:h-[100dvh] mobile:py-7;
   }
   .nav__list {
-    @apply text-neutral-dusty-gray desktop:text-base-reg tablet:text-sm mobile:text-base-reg tablet:flex tablet:gap-6;
+    @apply text-neutral-dusty-gray desktop:text-h4-reg tablet:text-sm mobile:text-base-reg tablet:flex tablet:gap-6;
   }
   .nav__item {
     @apply py-3;

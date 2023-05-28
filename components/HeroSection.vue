@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="container pt-24 pb-10">
+  <div class="container mobile:pt-24 pb-10 tablet:flex tablet:gap-8">
     <div class="content">
       <h1 class="text-display-xb">
         Expert
@@ -35,28 +35,36 @@
     </div>
     <div class="img">
       <img
-        src="~/assets/images/hero-image.svg"
+        src="~/assets/images/hero-image-mobile.svg"
         alt="hero-image"
         class="tablet:hidden"
+      />
+      <img
+        src="~/assets/images/hero-image-desktop.svg"
+        alt="hero-image"
+        class="mobile:hidden"
       />
     </div>
   </div>
 </template>
 
 <style lang="postcss" scoped>
+  .content {
+    @apply desktop:pt-40 tablet:pt-16 flex-1;
+  }
   .tag-line {
     @apply text-base-reg text-neutral-dusty-gray text-center mt-6 tracking-widest;
   }
   .actions {
-    @apply flex flex-col gap-6 mt-16;
+    @apply flex flex-col gap-6 mt-16 desktop:flex-row;
   }
   .action-btn {
-    @apply w-full py-3;
+    @apply w-full py-3 tablet:py-4;
   }
   .users-count {
-    @apply mt-12 flex flex-col items-center gap-6 text-sm text-center;
+    @apply mt-12 flex flex-col items-center gap-6 text-sm text-center tablet:flex-row;
   }
   .img {
-    @apply mt-8;
+    @apply mobile:mt-8;
   }
 </style>

@@ -101,7 +101,7 @@
   @media (min-width: 1280px) {
     .text-display-xb,
     .text-display-b {
-      @apply text-5xl;
+      @apply text-8xl;
     }
     .text-h2-b,
     .text-h2-sb,
@@ -129,7 +129,7 @@
     }
   }
   .container {
-    @apply mx-auto max-w-[90%];
+    @apply mx-auto max-w-[85%];
   }
   .btn {
     @apply text-primary-blue-ribbon text-base-sb rounded-lg cursor-pointer;
