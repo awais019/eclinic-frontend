@@ -2,7 +2,9 @@
 
 <template>
   <div>
-    <h1 class="text-display-xb">Expert medical care is just a click away</h1>
+    <h1 class="text-display-xb bg-clip-text text-transparent bg-gradient">
+      Expert medical care is just a click away
+    </h1>
   </div>
 </template>
 
