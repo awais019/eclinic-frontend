@@ -1,2 +1,146 @@
-@import './main.css';
-@import './fonts.css';
+@import "./main.css";
+@import "./fonts.css";
+
+@layer base {
+  .text-display-xb {
+    @apply text-3xl font-extrabold;
+  }
+  .text-display-b {
+    @apply text-3xl font-bold;
+  }
+  .text-h2-b {
+    @apply text-2xl font-bold;
+  }
+  .text-h2-sb {
+    @apply text-2xl font-semibold;
+  }
+  .text-h2-md {
+    @apply text-2xl font-medium;
+  }
+  .text-h2-reg {
+    @apply text-2xl font-normal;
+  }
+  .text-h3-b {
+    @apply text-xl font-bold;
+  }
+  .text-h3-sb {
+    @apply text-xl font-semibold;
+  }
+  .text-h3-md {
+    @apply text-xl font-medium;
+  }
+  .text-h3-reg {
+    @apply text-xl font-normal;
+  }
+  .text-h4-b {
+    @apply text-lg font-bold;
+  }
+  .text-h4-sb {
+    @apply text-lg font-semibold;
+  }
+  .text-h4-md {
+    @apply text-lg font-medium;
+  }
+  .text-h4-reg {
+    @apply text-lg font-normal;
+  }
+  .text-h5-b {
+    @apply text-base font-bold;
+  }
+  .text-h5-sb {
+    @apply text-base font-semibold;
+  }
+  .text-h5-md {
+    @apply text-base font-medium;
+  }
+  .text-h5-reg {
+    @apply text-base font-normal;
+  }
+  .text-base-b {
+    @apply text-base font-bold;
+  }
+  .text-base-sb {
+    @apply text-base font-semibold;
+  }
+  .text-base-md {
+    @apply text-base font-medium;
+  }
+  .text-base-reg {
+    @apply text-base font-normal;
+  }
+  @media (min-width: 640px) {
+    .text-display-xb,
+    .text-display-b {
+      @apply text-4xl;
+    }
+    .text-h2-b,
+    .text-h2-sb,
+    .text-h2-md,
+    .text-h2-reg {
+      @apply text-3xl;
+    }
+    .text-h3-b,
+    .text-h3-sb,
+    .text-h3-md,
+    .text-h3-reg {
+      @apply text-2xl;
+    }
+    .text-h4-b,
+    .text-h4-sb,
+    .text-h4-md,
+    .text-h4-reg {
+      @apply text-xl;
+    }
+    .text-h5-b,
+    .text-h5-sb,
+    .text-h5-md,
+    .text-h5-reg {
+      @apply text-lg;
+    }
+  }
+  @media (min-width: 1280px) {
+    .text-display-xb,
+    .text-display-b {
+      @apply text-5xl;
+    }
+    .text-h2-b,
+    .text-h2-sb,
+    .text-h2-md,
+    .text-h2-reg {
+      @apply text-4xl;
+    }
+    .text-h3-b,
+    .text-h3-sb,
+    .text-h3-md,
+    .text-h3-reg {
+      @apply text-3xl;
+    }
+    .text-h4-b,
+    .text-h4-sb,
+    .text-h4-md,
+    .text-h4-reg {
+      @apply text-2xl;
+    }
+    .text-h5-b,
+    .text-h5-sb,
+    .text-h5-md,
+    .text-h5-reg {
+      @apply text-xl;
+    }
+  }
+}
+
+@layer utilities {
+  .text-3xl {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  .text-4xl {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  .text-5xl {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+}

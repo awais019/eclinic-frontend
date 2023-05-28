@@ -19,6 +19,10 @@ export default <Partial<Config>>{
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        tablet: "640px",
+        desktop: "1280px",
+      },
     },
   },
 };
