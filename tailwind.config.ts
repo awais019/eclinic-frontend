@@ -20,8 +20,9 @@ export default <Partial<Config>>{
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
       screens: {
-        tablet: "640px",
+        tablet: "765px",
         desktop: "1280px",
+        mobile: { max: "765px" },
       },
       colors: {
         primary: {
@@ -51,6 +52,9 @@ export default <Partial<Config>>{
       },
       backgroundImage: {
         gradient: "linear-gradient(92.51deg, #166FFF 3.15%, #76AFFB 105.73%);",
+      },
+      gridTemplateColumns: {
+        nav: "1fr 2fr",
       },
     },
   },
