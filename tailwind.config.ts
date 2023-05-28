@@ -15,6 +15,10 @@ export default <Partial<Config>>{
     "./content/**/*.md",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
 };
