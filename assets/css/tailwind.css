@@ -131,6 +131,15 @@
   .container {
     @apply mx-auto max-w-[90%];
   }
+  .btn {
+    @apply text-primary-blue-ribbon text-base-sb rounded-lg cursor-pointer;
+  }
+  .btn-primary {
+    @apply bg-primary-blue-ribbon text-neutral-white;
+  }
+  svg {
+    @apply inline-block;
+  }
 }
 
 @layer utilities {

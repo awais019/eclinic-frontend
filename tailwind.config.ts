@@ -56,6 +56,10 @@ export default <Partial<Config>>{
       gridTemplateColumns: {
         nav: "1fr 2fr",
       },
+      boxShadow: {
+        variant1: "8px 16px 32px rgba(22, 111, 255, 0.15);",
+        variant2: "6px 6px 24px rgba(38, 50, 56, 0.15);",
+      },
     },
   },
 };

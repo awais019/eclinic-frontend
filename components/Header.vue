@@ -91,7 +91,7 @@
     @apply mobile:mt-8 text-center tablet:ml-auto tablet:flex tablet:flex-row-reverse tablet:gap-6;
   }
   .signup {
-    @apply text-neutral-white text-base-sb bg-primary-blue-ribbon rounded-lg cursor-pointer mobile:mb-6 tablet:px-6;
+    @apply btn btn-primary mobile:mb-6 tablet:px-6;
   }
   .signup a:hover {
     @apply text-neutral-white border-none;
