@@ -3,10 +3,13 @@
 <template>
   <div class="container mobile:pt-24 pb-10 tablet:flex tablet:gap-8">
     <div class="content">
+      <span class="polygon">
+        <icons-polygon />
+      </span>
       <h1 class="text-display-xb">
         Expert
         <span class="text-primary-blue-ribbon">medical care is</span> just a
-        click away
+        click away <span class="beat"><icons-ellipse /> <icons-beat /></span>
       </h1>
       <div class="tag-line">
         Book your appointment today with our experienced doctors. Get the care
@@ -49,6 +52,12 @@
 </template>
 
 <style lang="postcss" scoped>
+  .polygon {
+    @apply relative left-[85%] mobile:hidden;
+  }
+  .beat {
+    @apply mobile:hidden;
+  }
   .content {
     @apply desktop:pt-40 tablet:pt-16 flex-1;
   }
