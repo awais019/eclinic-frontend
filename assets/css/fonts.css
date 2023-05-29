@@ -1,127 +1,144 @@
 @layer base {
   @font-face {
-    font-family: "Poppins Regular";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
+    font-display: swap;
     src: url("../fonts/Poppins-Regular.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
     src: url("../fonts/Poppins-Italic.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Thin";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 100;
+    font-display: swap;
     src: url("../fonts/Poppins-Thin.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Thin Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 100;
     src: url("../fonts/Poppins-ThinItalic.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins ExtraLight";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 200;
+    font-display: swap;
     src: url("../fonts/Poppins-ExtraLight.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins ExtraLight Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 200;
+    font-display: swap;
     src: url("../fonts/Poppins-ExtraLightItalic.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Light";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 300;
+    font-display: swap;
     src: url("../fonts/Poppins-Light.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Light Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
     src: url("../fonts/Poppins-LightItalic.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Medium";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 500;
+    font-display: swap;
     src: url("../fonts/Poppins-Medium.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Medium Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
     src: url("../fonts/Poppins-MediumItalic.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins SemiBold";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 600;
+    font-display: swap;
     src: url("../fonts/Poppins-SemiBold.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins SemiBold Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
     src: url("../fonts/Poppins-SemiBoldItalic.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Bold";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 700;
+    font-display: swap;
     src: url("../fonts/Poppins-Bold.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Bold Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
     src: url("../fonts/Poppins-BoldItalic.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins ExtraBold";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 800;
+    font-display: swap;
     src: url("../fonts/Poppins-ExtraBold.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins ExtraBold Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 800;
+    font-display: swap;
     src: url("../fonts/Poppins-ExtraBoldItalic.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Black";
+    font-family: "Poppins";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 900;
+    font-display: swap;
     src: url("../fonts/Poppins-Black.woff") format("woff");
   }
 
   @font-face {
-    font-family: "Poppins Black Italic";
-    font-style: normal;
-    font-weight: normal;
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
     src: url("../fonts/Poppins-BlackItalic.woff") format("woff");
   }
 }
