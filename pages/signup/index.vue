@@ -1,9 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  definePageMeta({
+    layout: false,
+  });
+</script>
 
 <template>
-  <div>
-    <SignUpOptions />
-  </div>
+  <SignUpOptions />
 </template>
 
 <style scoped></style>
