@@ -12,6 +12,9 @@
 </script>
 
 <template>
+  <div class="decorative">
+    <img src="~/assets/images/patient.svg" alt="Decorative image" />
+  </div>
   <div class="registeration">
     <h2 class="text-h2-sb">Join as a Patient</h2>
     <p class="text-sm font-medium">
@@ -24,9 +27,8 @@
       type="form"
       submit-label="Register"
       @submit="(values) => submitHandler(values)"
-      #default="{ value }"
     >
-      <div>
+      <div class="tablet:flex tablet:gap-3">
         <FormKit
           type="text"
           name="name"
@@ -66,28 +68,32 @@
         placeholder="03424599274"
         validation="required"
       />
-      <div>
-        <FormKit
-          type="date"
-          name="dob"
-          label="Date of Birth"
-          validation="required"
-          :max="date"
-        />
-        <FormKit
-          type="select"
-          name="gender"
-          placeholder="Select Gender"
-          label="Gender"
-          :options="['Male', 'Female', 'Other']"
-        />
-      </div>
+      <FormKit
+        type="date"
+        name="dob"
+        label="Date of Birth"
+        validation="required"
+        :max="date"
+      />
+      <FormKit
+        type="select"
+        name="gender"
+        placeholder="Select Gender"
+        label="Gender"
+        :options="['Male', 'Female', 'Other']"
+      />
     </FormKit>
   </div>
 </template>
 
 <style lang="postcss" scoped>
+  .decorative {
+    @apply hidden tablet:block self-center;
+  }
+  .decorative > img {
+    @apply mx-auto;
+  }
   .registeration {
-    @apply mobile:mt-12;
+    @apply mt-12 mb-20 desktop:max-w-[35%] tablet:max-w-[60%] mx-auto;
   }
 </style>
