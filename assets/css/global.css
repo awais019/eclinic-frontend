@@ -1,0 +1,38 @@
+.formkit-form {
+  @apply mt-12;
+}
+
+.formkit-inner {
+  @apply my-3 relative;
+}
+
+.formkit-label::after {
+  content: "*";
+  @apply text-torch-red;
+}
+
+.formkit-actions {
+  @apply bg-primary-blue-ribbon text-neutral-white py-4 mt-12 text-center rounded-lg;
+}
+
+.formkit-message {
+  @apply text-xs text-torch-red;
+}
+
+input,
+select {
+  @apply w-full text-neutral-dusty-gray px-6 py-3 border-[1px] rounded-lg bg-transparent;
+}
+
+input:focus,
+select:focus {
+  @apply outline-none;
+}
+
+.formkit-icon > svg {
+  @apply w-6 h-6 text-neutral-dusty-gray absolute right-3 top-3;
+}
+
+option {
+  @apply text-neutral-dusty-gray;
+}
