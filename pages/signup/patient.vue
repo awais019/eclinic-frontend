@@ -1,9 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  definePageMeta({
+    layout: false,
+  });
+</script>
 
 <template>
-  <div class="desktop:flex">
-    <PatientRegistration />
-  </div>
+  <PatientRegistration />
 </template>
 
 <style scoped></style>
