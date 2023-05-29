@@ -7,5 +7,6 @@ export default defineNuxtConfig({
         cssPath: "~/assets/css/tailwind.css",
       },
     ],
+    "@formkit/nuxt",
   ],
 });
