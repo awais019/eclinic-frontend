@@ -16,9 +16,13 @@
         you need and start feeling better.
       </div>
       <div class="actions">
-        <button class="btn btn-primary action-btn shadow-variant1">
-          <nuxt-link to="/doctors"> Book Your Visit <icons-arrow /> </nuxt-link>
-        </button>
+        <nuxt-link
+          to="/doctors"
+          class="btn btn-primary action-btn shadow-variant1"
+        >
+          Book Your Visit <icons-arrow />
+        </nuxt-link>
+
         <button class="btn action-btn shadow-variant2">
           Get Mobile App <icons-download />
         </button>
@@ -68,7 +72,7 @@
     @apply flex flex-col gap-6 mt-16 desktop:flex-row;
   }
   .action-btn {
-    @apply w-full py-3 tablet:py-4;
+    @apply w-full py-3 text-center tablet:py-4;
   }
   .users-count {
     @apply mt-12 flex flex-col items-center gap-6 text-sm text-center tablet:flex-row;

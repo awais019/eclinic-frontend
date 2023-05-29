@@ -87,6 +87,11 @@
   .router-link-exact-active {
     @apply text-primary-blue-ribbon;
   }
+
+  .signup > .router-link-exact-active {
+    @apply text-neutral-white;
+  }
+
   .nav__list-sub {
     @apply mobile:mt-8 text-center tablet:ml-auto tablet:flex tablet:flex-row-reverse tablet:gap-6;
   }

@@ -49,7 +49,9 @@ export default <Partial<Config>>{
           gallery: "#EBEBEB",
         },
         error: "#FF1635",
+        "torch-red": "#FF1635",
         success: "#09CD09",
+        "green-haze": "#09CD09",
       },
       backgroundImage: {
         gradient: "linear-gradient(92.51deg, #166FFF 3.15%, #76AFFB 105.73%);",
