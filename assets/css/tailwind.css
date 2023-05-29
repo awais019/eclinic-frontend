@@ -68,7 +68,7 @@
   .text-base-reg {
     @apply text-base font-normal;
   }
-  @media (min-width: 640px) {
+  @media (min-width: 765px) {
     .text-display-xb,
     .text-display-b {
       @apply text-4xl;
@@ -101,7 +101,7 @@
   @media (min-width: 1280px) {
     .text-display-xb,
     .text-display-b {
-      @apply text-5xl;
+      @apply text-8xl;
     }
     .text-h2-b,
     .text-h2-sb,
@@ -127,6 +127,23 @@
     .text-h5-reg {
       @apply text-xl;
     }
+  }
+  .app-container {
+    @apply mx-auto max-w-[90%];
+  }
+  @media (min-width: 765px) {
+    .app-container {
+      @apply max-w-[80%];
+    }
+  }
+  .btn {
+    @apply text-primary-blue-ribbon text-base-sb rounded-lg cursor-pointer;
+  }
+  .btn-primary {
+    @apply bg-primary-blue-ribbon text-neutral-white;
+  }
+  svg {
+    @apply inline-block;
   }
 }
 

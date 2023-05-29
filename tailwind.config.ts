@@ -20,8 +20,10 @@ export default <Partial<Config>>{
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
       screens: {
-        tablet: "640px",
+        tablet: "765px",
         desktop: "1280px",
+        mobile: { max: "765px" },
+        "3xl": "1920px",
       },
       colors: {
         primary: {
@@ -47,10 +49,19 @@ export default <Partial<Config>>{
           gallery: "#EBEBEB",
         },
         error: "#FF1635",
+        "torch-red": "#FF1635",
         success: "#09CD09",
+        "green-haze": "#09CD09",
       },
       backgroundImage: {
         gradient: "linear-gradient(92.51deg, #166FFF 3.15%, #76AFFB 105.73%);",
+      },
+      gridTemplateColumns: {
+        nav: "1fr 2fr",
+      },
+      boxShadow: {
+        variant1: "8px 16px 32px rgba(22, 111, 255, 0.15);",
+        variant2: "6px 6px 24px rgba(38, 50, 56, 0.15);",
       },
     },
   },
