@@ -5,7 +5,9 @@
 </script>
 
 <template>
-  <div class="app-container"></div>
+  <div>
+    <SignUpOptions />
+  </div>
 </template>
 
 <style scoped></style>
