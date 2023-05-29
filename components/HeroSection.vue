@@ -66,7 +66,7 @@
     @apply desktop:pt-40 tablet:pt-16 flex-1;
   }
   .tag-line {
-    @apply text-neutral-dusty-gray text-center mt-6 tracking-widest;
+    @apply text-neutral-dusty-gray mobile:text-center mt-6 tracking-widest;
   }
   .actions {
     @apply flex flex-col gap-6 mt-16 desktop:flex-row;
