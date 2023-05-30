@@ -3,7 +3,7 @@ interface User {
   first_name: string;
   last_name: string;
   email: string;
-  phone: string;
+  phone_number: string;
   gender: string;
   readonly image: string;
   password: string | null;
@@ -23,7 +23,7 @@ interface Doctor extends User {
 }
 
 interface Patient extends User {
-  dob: string;
+  birth_date: string;
 }
 
 export { Doctor, Patient };

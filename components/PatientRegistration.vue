@@ -1,4 +1,9 @@
 <script lang="ts" setup>
+  import useUserStore from "~/stores/userStore";
+  import { Patient } from "~/types/users";
+
+  const userStore = useUserStore();
+
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
       node.props.suffixIcon === "eye" ? "eyeClosed" : "eye";
@@ -6,8 +11,8 @@
   };
   const date = new Date().toISOString().slice(0, 10);
 
-  const submitHandler = (values: Object) => {
-    console.log(values);
+  const submitHandler = async (values: Patient) => {
+    await userStore.registerPatient(values);
   };
 </script>
 
@@ -43,14 +48,14 @@
         >
           <FormKit
             type="text"
-            name="name"
+            name="first_name"
             label="First Name"
             placeholder="Jane"
             validation="required"
           />
           <FormKit
             type="text"
-            name="name"
+            name="last_name"
             label="Last Name"
             placeholder="Doe"
             validation="required"
@@ -75,7 +80,7 @@
         />
         <FormKit
           type="tel"
-          name="phone"
+          name="phone_number"
           label="Phone"
           placeholder="03424599274"
           validation="required"
@@ -85,7 +90,7 @@
         >
           <FormKit
             type="date"
-            name="dob"
+            name="birth_date"
             label="Date of Birth"
             placeholder="Select Date of Birth"
             validation="required"
