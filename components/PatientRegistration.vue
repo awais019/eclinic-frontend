@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-  import { reset, setErrors } from "@formkit/core";
+  import { reset, setErrors, use } from "@formkit/core";
+  import { useToast } from "vue-toastification";
   import useUserStore from "~/stores/userStore";
   import { Patient } from "~/types/users";
 
   const userStore = useUserStore();
   const loading = ref(false);
+  const toast = useToast();
 
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
@@ -21,8 +23,10 @@
     console.log(data.value, error.value);
 
     if (!error.value) {
+      toast.success("Registration Successful");
       reset(formId);
     } else {
+      toast.error("Registration Unsuccessful");
       const APIErrors = extractAPIErrors(error.value.data);
       setErrors(formId, APIErrors);
     }

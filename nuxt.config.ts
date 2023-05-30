@@ -22,4 +22,5 @@ export default defineNuxtConfig({
       baseURL: process.env.BASE_URL,
     },
   },
+  plugins: ["~/plugins/toaster.client"],
 });

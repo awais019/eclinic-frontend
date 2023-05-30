@@ -1,3 +1,4 @@
+/* formkit styles */
 .formkit-form {
   @apply mt-12;
 }
@@ -35,4 +36,21 @@ select:focus {
 
 option {
   @apply text-neutral-dusty-gray;
+}
+
+/* vue toastification styles */
+.Vue-Toastification__toast {
+  @apply bg-white border-2 min-w-fit text-neutral-dusty-gray px-8 py-4 font-sans rounded-[40px] shadow-variant2 !important;
+}
+
+.Vue-Toastification__toast--success {
+  @apply bg-white border-success !important;
+}
+
+.Vue-Toastification__toast--error {
+  @apply bg-white border-error !important;
+}
+
+.Vue-Toastification__toast-body {
+  @apply inline-block font-semibold text-xl !important;
 }
