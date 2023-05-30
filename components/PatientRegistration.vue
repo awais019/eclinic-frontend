@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { reset } from "@formkit/core";
+  import { reset, setErrors } from "@formkit/core";
   import useUserStore from "~/stores/userStore";
   import { Patient } from "~/types/users";
 
@@ -12,6 +12,7 @@
     node.props.type = node.props.type === "password" ? "text" : "password";
   };
   const date = new Date().toISOString().slice(0, 10);
+  const formId = "patient-registration";
 
   const submitHandler = async (values: Patient) => {
     loading.value = true;
@@ -20,7 +21,10 @@
     console.log(data.value, error.value);
 
     if (!error.value) {
-      reset("patient-registration");
+      reset(formId);
+    } else {
+      const APIErrors = extractAPIErrors(error.value.data);
+      setErrors(formId, APIErrors);
     }
   };
 </script>
@@ -49,7 +53,7 @@
       </p>
       <FormKit
         type="form"
-        id="patient-registration"
+        :id="formId"
         submit-label="Register"
         @submit="(values) => submitHandler(values)"
       >
