@@ -87,6 +87,7 @@
             type="date"
             name="dob"
             label="Date of Birth"
+            placeholder="Select Date of Birth"
             validation="required"
             :max="date"
           />

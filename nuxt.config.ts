@@ -9,5 +9,12 @@ export default defineNuxtConfig({
       },
     ],
     "@formkit/nuxt",
+    [
+      "@pinia/nuxt",
+      {
+        autoImports: ["defineStore"],
+      },
+    ],
+    "@pinia-plugin-persistedstate/nuxt",
   ],
 });
