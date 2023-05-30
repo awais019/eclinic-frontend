@@ -5,7 +5,7 @@ export default defineStore("userStore", () => {
 
   async function registerPatient(newPatient: Patient) {
     const { data, error } = await useRegisterPatient(newPatient);
-    console.log(data.value, error.value);
+    return { data, error };
   }
 
   return { user, registerPatient };

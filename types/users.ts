@@ -24,6 +24,7 @@ interface Doctor extends User {
 
 interface Patient extends User {
   birth_date: string;
+  age: string;
 }
 
 export { Doctor, Patient };

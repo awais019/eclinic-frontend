@@ -1,8 +1,10 @@
 <script lang="ts" setup>
+  import { reset } from "@formkit/core";
   import useUserStore from "~/stores/userStore";
   import { Patient } from "~/types/users";
 
   const userStore = useUserStore();
+  const loading = ref(false);
 
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
@@ -12,7 +14,14 @@
   const date = new Date().toISOString().slice(0, 10);
 
   const submitHandler = async (values: Patient) => {
-    await userStore.registerPatient(values);
+    loading.value = true;
+    const { data, error } = await userStore.registerPatient(values);
+    loading.value = false;
+    console.log(data.value, error.value);
+
+    if (!error.value) {
+      reset("patient-registration");
+    }
   };
 </script>
 
@@ -40,6 +49,7 @@
       </p>
       <FormKit
         type="form"
+        id="patient-registration"
         submit-label="Register"
         @submit="(values) => submitHandler(values)"
       >
@@ -110,6 +120,7 @@
       <img src="~/assets/images/patient.svg" alt="Decorative image" />
     </div>
   </div>
+  <AppLoader v-if="loading" />
 </template>
 
 <style lang="postcss" scoped>
