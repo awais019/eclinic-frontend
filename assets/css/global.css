@@ -20,6 +20,10 @@
   @apply text-xs text-torch-red;
 }
 
+.formkit-file-remove {
+  @apply ml-2 text-base text-torch-red;
+}
+
 input,
 select {
   @apply w-full text-neutral-dusty-gray px-6 py-3 border-[1px] rounded-lg bg-transparent;
