@@ -96,19 +96,12 @@
           @suffix-icon-click="handleIconClick"
           validation="required"
         />
-        <FormKit
-          type="tel"
-          name="phone_number"
-          label="Phone"
-          placeholder="03424599274"
-          validation="required"
-        />
         <div
           class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:gap-3"
         >
           <FormKit
             type="date"
-            name="birth_date"
+            name="birthdate"
             label="Date of Birth"
             placeholder="Select Date of Birth"
             validation="required"

@@ -3,7 +3,7 @@ interface User {
   first_name: string;
   last_name: string;
   email: string;
-  phone_number: string;
+  phone?: string;
   gender: string;
   readonly image: string;
   password: string | null;
