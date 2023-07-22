@@ -8,16 +8,7 @@
   };
   const formId = "doctor-registration";
 
-  const submitHandler = (values: Doctor) => {
-    values.location = {
-      lat: 0,
-      lng: 0,
-      address: "",
-      city: "",
-      state: "",
-    };
-    console.log(values);
-  };
+
 </script>
 
 <template>
@@ -35,7 +26,7 @@
     class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:h-screen desktop:gap-40 tablet:gap-20 mobile:app-container"
   >
     <div class="registeration">
-      <h2 class="text-h2-sb">Join as a Patient</h2>
+      <h2 class="text-h2-sb">Join as a Doctor</h2>
       <p class="text-sm font-medium">
         Already a member?
         <nuxt-link to="/signin" class="text-primary-blue-ribbon"
@@ -46,7 +37,6 @@
         type="form"
         :id="formId"
         submit-label="Register"
-        @submit="(values: any) => submitHandler(values)"
       >
         <div
           class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:gap-3"
@@ -83,13 +73,6 @@
           @suffix-icon-click="handleIconClick"
           validation="required"
         />
-        <FormKit
-          type="tel"
-          name="phone_number"
-          label="Phone"
-          placeholder="03424599274"
-          validation="required"
-        />
         <div
           class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:gap-3"
         >
@@ -108,18 +91,47 @@
             validation="required"
           />
         </div>
-        <FormKit
-          type="number"
-          name="charges"
-          label="Charges"
-          placeholder="Chargers per appointment"
-          validation="required|min:1"
-        />
+        <div
+          class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:gap-3"
+        >
+          <FormKit
+            type="text"
+            name="hospital_clinic_name"
+            label="Hospital/Clinic Name"
+            placeholder="Hospital/clinic name"
+            validation="required"
+          />
+          <FormKit
+            type="text"
+            name="address"
+            placeholder="Hospital/clinic address"
+            label="Address"
+            validation="required"
+          />
+        </div>
+        <div
+          class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:gap-3"
+        >
+          <FormKit
+            type="text"
+            name="city"
+            label="City"
+            placeholder="Hospital/clinic city"
+            validation="required"
+          />
+          <FormKit
+            type="text"
+            name="state"
+            label="State"
+            placeholder="Hospital/clinic state"
+            validation="required"
+          />
+        </div>
         <FormKit
           type="file"
-          name="degree"
+          name="degree_document"
+          prefix-icon="upload"
           label="Degree Document"
-          placeholder="Upload your degree"
           validation="required"
           accept=".pdf,.doc,.docx"
         />
