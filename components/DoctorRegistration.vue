@@ -1,16 +1,22 @@
 <script lang="ts" setup>
+  import { reset, setErrors } from "@formkit/core";
+  import { useToast } from "vue-toastification";
+  import useUserStore from "~/stores/userStore";
+
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
       node.props.suffixIcon === "eye" ? "eyeClosed" : "eye";
     node.props.type = node.props.type === "password" ? "text" : "password";
   };
   const formId = "doctor-registration";
-
-  const { registerDoctor } = useDoctor();
+  const userStore = useUserStore();
+  const toast = useToast();
+  const loading = ref(false);
 
   async function submissionHandler(values: any) {
-    const body = new FormData();
+    loading.value = true;
 
+    const body = new FormData();
     for (const key in values) {
       if (key === "degree_document") {
         body.append(key, values[key][0].file);
@@ -19,7 +25,17 @@
       }
     }
 
-    await registerDoctor(body);
+    const { error } = await userStore.registerDoctor(body);
+    loading.value = false;
+
+    if (!error.value) {
+      toast.success("Registration Successful");
+      reset(formId);
+    } else {
+      toast.error("Registration Unsuccessful");
+      const APIErrors = extractAPIErrors(error.value.data);
+      setErrors(formId, APIErrors);
+    }
   }
 </script>
 
@@ -153,6 +169,7 @@
       <img src="~/assets/images/doctor.svg" alt="Decorative image" />
     </div>
   </div>
+  <AppLoader v-if="loading" />
 </template>
 
 <style lang="postcss" scoped>
