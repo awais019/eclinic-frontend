@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-  import { Doctor } from "~/types/users";
-
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
       node.props.suffixIcon === "eye" ? "eyeClosed" : "eye";
@@ -8,7 +6,21 @@
   };
   const formId = "doctor-registration";
 
+  const { registerDoctor } = useDoctor();
 
+  async function submissionHandler(values: any) {
+    const body = new FormData();
+
+    for (const key in values) {
+      if (key === "degree_document") {
+        body.append(key, values[key][0].file);
+      } else {
+        body.append(key, values[key]);
+      }
+    }
+
+    await registerDoctor(body);
+  }
 </script>
 
 <template>
@@ -37,6 +49,7 @@
         type="form"
         :id="formId"
         submit-label="Register"
+        @submit="submissionHandler"
       >
         <div
           class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:gap-3"
@@ -130,7 +143,6 @@
         <FormKit
           type="file"
           name="degree_document"
-          prefix-icon="upload"
           label="Degree Document"
           validation="required"
           accept=".pdf,.doc,.docx"
