@@ -4,6 +4,10 @@
   import useUserStore from "~/stores/userStore";
   import { Patient } from "~/types/users";
 
+  const emits = defineEmits<{
+    (e: "registraion-successful"): void;
+  }>();
+
   const userStore = useUserStore();
   const loading = ref(false);
   const toast = useToast();
@@ -24,6 +28,7 @@
     if (!error.value) {
       toast.success("Registration Successful");
       reset(formId);
+      emits("registraion-successful");
     } else {
       toast.error("Registration Unsuccessful");
       const APIErrors = extractAPIErrors(error.value.data);
