@@ -26,9 +26,8 @@
     loading.value = false;
 
     if (!error.value) {
-      toast.success("Registration Successful");
-      reset(formId);
       emits("registraion-successful");
+      reset(formId);
     } else {
       toast.error("Registration Unsuccessful");
       const APIErrors = extractAPIErrors(error.value.data);
