@@ -44,9 +44,6 @@
 </template>
 
 <style lang="postcss" scoped>
-  img {
-    @apply mx-auto;
-  }
   .signup-options {
     @apply mobile:mt-36 mobile:mx-auto tablet:self-center tablet:justify-self-end;
   }

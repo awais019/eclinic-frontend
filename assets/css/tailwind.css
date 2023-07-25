@@ -145,13 +145,8 @@
   svg {
     @apply inline-block;
   }
-  .logo {
-    @apply mt-6;
-  }
-  @media (min-width: 765px) {
-    .logo {
-      @apply absolute left-[92%] h-[24px] w-[110px] z-10;
-    }
+  img {
+    @apply mx-auto;
   }
 }
 

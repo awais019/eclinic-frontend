@@ -82,7 +82,4 @@
   .img {
     @apply mobile:mt-8;
   }
-  img {
-    @apply mx-auto;
-  }
 </style>

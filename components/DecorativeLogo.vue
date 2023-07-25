@@ -1,5 +1,16 @@
+<script setup lang="ts">
+  defineProps<{
+    align?: "left" | "right";
+  }>();
+</script>
+
 <template>
-  <div class="logo">
+  <div
+    :class="[
+      align == 'right' ? 'tablet:right-[92%]' : 'tablet:left-[92%]',
+      'mt-6 tablet:absolute tablet:h-[24px] tablet:w-[110px] tablet:z-10',
+    ]"
+  >
     <nuxt-link to="/">
       <img
         src="~/assets/images/logo-white.svg"
@@ -10,9 +21,3 @@
     </nuxt-link>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-  img {
-    @apply mx-auto;
-  }
-</style>
