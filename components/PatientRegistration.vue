@@ -4,10 +4,6 @@
   import useUserStore from "~/stores/userStore";
   import { Patient } from "~/types/users";
 
-  const emits = defineEmits<{
-    (e: "registraion-successful"): void;
-  }>();
-
   const userStore = useUserStore();
   const toast = useToast();
 
@@ -23,8 +19,8 @@
     const { error } = await userStore.registerPatient(values);
 
     if (!error.value) {
-      emits("registraion-successful");
       reset(formId);
+      useRouter().push("/success/patient/registration");
     } else {
       toast.error("Registration Unsuccessful");
       const APIErrors = extractAPIErrors(error.value.data);

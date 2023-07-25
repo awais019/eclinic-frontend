@@ -3,10 +3,6 @@
   import { useToast } from "vue-toastification";
   import useUserStore from "~/stores/userStore";
 
-  const emits = defineEmits<{
-    (e: "registraion-successful"): void;
-  }>();
-
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
       node.props.suffixIcon === "eye" ? "eyeClosed" : "eye";
@@ -29,8 +25,8 @@
     const { error } = await userStore.registerDoctor(body);
 
     if (!error.value) {
-      emits("registraion-successful");
       reset(formId);
+      useRouter().push("/success/doctor/registration");
     } else {
       toast.error("Registration Unsuccessful");
       const APIErrors = extractAPIErrors(error.value.data);
