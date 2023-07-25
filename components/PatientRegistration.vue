@@ -34,7 +34,7 @@
 </script>
 
 <template>
-  <RegistrationLogo />
+  <DecorativeLogo />
   <Registration user-type="patient">
     <FormKit
       type="form"

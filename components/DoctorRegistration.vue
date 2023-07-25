@@ -40,7 +40,7 @@
 </script>
 
 <template>
-  <RegistrationLogo />
+  <DecorativeLogo />
   <Registration user-type="doctor">
     <FormKit
       type="form"
