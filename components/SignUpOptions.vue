@@ -1,16 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="logo">
-    <nuxt-link to="/">
-      <img
-        src="~/assets/images/logo-white.svg"
-        alt="Logo"
-        class="mobile:hidden"
-      />
-      <img src="~/assets/images/logo.svg" alt="Logo" class="tablet:hidden" />
-    </nuxt-link>
-  </div>
+  <DecorativeLogo />
   <div
     class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:gap-40 tablet:h-screen mobile:app-container"
   >
