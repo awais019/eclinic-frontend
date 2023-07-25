@@ -1,14 +1,16 @@
 <script setup lang="ts">
   defineProps<{
     userType: string;
-  }>();
+  }>(); 
 </script>
 
 <template>
   <div
     class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:h-screen desktop:gap-40 tablet:gap-20 mobile:app-container"
   >
-    <div class="registeration">
+    <div
+      class="tablet:mt-24 mobile:mt-12 mb-20 mx-auto desktop:max-w-[60%] tablet:max-w-[80%]"
+    >
       <h2 class="text-h2-sb">
         Join as a <span class="capitalize">{{ userType }}</span>
       </h2>
@@ -20,7 +22,9 @@
       </p>
       <slot />
     </div>
-    <div class="decorative">
+    <div
+      class="hidden bg-primary-blue-ribbon tablet:flex tablet:items-center tablet:justify-center"
+    >
       <img
         src="~/assets/images/doctor.svg"
         alt="Decorative image"
@@ -34,12 +38,3 @@
     </div>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-  .decorative {
-    @apply hidden bg-primary-blue-ribbon tablet:flex tablet:items-center tablet:justify-center;
-  }
-  .registeration {
-    @apply tablet:mt-24 mobile:mt-12 mb-20 mx-auto desktop:max-w-[60%] tablet:max-w-[80%];
-  }
-</style>
