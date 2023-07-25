@@ -12,8 +12,12 @@
   @apply text-torch-red;
 }
 
-.formkit-actions {
+button[type="submit"] {
   @apply bg-primary-blue-ribbon text-neutral-white py-4 mt-12 text-center rounded-lg;
+}
+
+button[type="submit"] {
+  @apply w-full;
 }
 
 .formkit-message {
