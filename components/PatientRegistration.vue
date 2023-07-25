@@ -9,7 +9,6 @@
   }>();
 
   const userStore = useUserStore();
-  const loading = ref(false);
   const toast = useToast();
 
   const handleIconClick = (node: any, e: any) => {
@@ -21,9 +20,7 @@
   const formId = "patient-registration";
 
   const submitHandler = async (values: Patient) => {
-    loading.value = true;
     const { error } = await userStore.registerPatient(values);
-    loading.value = false;
 
     if (!error.value) {
       emits("registraion-successful");
@@ -42,7 +39,7 @@
     <FormKit
       type="form"
       :id="formId"
-      submit-label="Register"
+      :actions="false"
       @submit="(values) => submitHandler(values)"
     >
       <div
@@ -99,7 +96,7 @@
           :options="['Male', 'Female', 'Other']"
         />
       </div>
+      <FormKit type="submit" label="Register" />
     </FormKit>
   </Registration>
-  <AppLoader v-if="loading" />
 </template>

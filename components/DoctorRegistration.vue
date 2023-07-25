@@ -15,11 +15,8 @@
   const formId = "doctor-registration";
   const userStore = useUserStore();
   const toast = useToast();
-  const loading = ref(false);
 
   async function submissionHandler(values: any) {
-    loading.value = true;
-
     const body = new FormData();
     for (const key in values) {
       if (key === "degree_document") {
@@ -30,7 +27,6 @@
     }
 
     const { error } = await userStore.registerDoctor(body);
-    loading.value = false;
 
     if (!error.value) {
       emits("registraion-successful");
@@ -49,7 +45,7 @@
     <FormKit
       type="form"
       :id="formId"
-      submit-label="Register"
+      :actions="false"
       @submit="submissionHandler"
     >
       <div
@@ -148,7 +144,7 @@
         validation="required"
         accept=".pdf,.doc,.docx"
       />
+      <FormKit type="submit" label="Register" />
     </FormKit>
   </Registration>
-  <AppLoader v-if="loading" />
 </template>
