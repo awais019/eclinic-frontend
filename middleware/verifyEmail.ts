@@ -6,7 +6,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       return "/";
     }
     if (error.value) {
-      return "/login";
+      return `/error/verifyemail/?token=${token}`;
     }
   }
 });

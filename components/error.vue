@@ -6,7 +6,7 @@
     <div
       class="hidden bg-primary-blue-ribbon tablet:flex tablet:items-center tablet:justify-center"
     >
-      <img src="~/assets/images/success.svg" alt="Success image" />
+      <img src="~/assets/images/error.svg" alt="Error image" />
     </div>
     <div class="flex items-center justify-center">
       <slot />
