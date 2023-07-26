@@ -23,8 +23,7 @@
       router.push("/success/patient/registration");
     } else {
       toast.error("Registration Unsuccessful");
-      const APIErrors = extractAPIErrors(error.value.data);
-      setErrors(formId, APIErrors);
+      setErrors(formId, error.value.data);
     }
   };
 </script>
