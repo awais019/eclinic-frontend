@@ -10,5 +10,17 @@ export const useAuth = () => {
     });
     return { data, error };
   }
-  return { verifyEmail };
+
+  async function resendVerificationEmail(token: string) {
+    const { data, error } = await useFetch("/auth/resend/verifyEmail", {
+      method: "POST",
+      body: {
+        token,
+      },
+      baseURL,
+    });
+    return { data, error };
+  }
+
+  return { verifyEmail, resendVerificationEmail };
 };
