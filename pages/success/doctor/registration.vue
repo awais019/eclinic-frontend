@@ -1,7 +1,6 @@
 <script lang="ts" setup>
   definePageMeta({
     layout: false,
-    middleware: ["success"],
   });
 </script>
 
@@ -21,7 +20,11 @@
         After verification you'll have to wait until your account is approved by
         our team.
       </p>
-      <NuxtLink to="/"> Back to Home </NuxtLink>
+      <div
+        class="mt-6 bg-primary-blue-ribbon px-6 py-4 rounded-lg text-base-sb text-white"
+      >
+        <NuxtLink to="/"> Return to Home </NuxtLink>
+      </div>
     </div>
   </Success>
 </template>

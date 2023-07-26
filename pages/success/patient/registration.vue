@@ -1,7 +1,6 @@
 <script lang="ts" setup>
   definePageMeta({
     layout: false,
-    middleware: ["success"],
   });
 </script>
 
@@ -19,8 +18,10 @@
         Check your email for
         <span class="text-primary-blue-ribbon">verification.</span>
       </p>
-      <div class="mt-6 text-primary-blue-ribbon underline">
-        <NuxtLink to="/"> Back to Home </NuxtLink>
+      <div
+        class="mt-6 bg-primary-blue-ribbon px-6 py-4 rounded-lg text-base-sb text-white"
+      >
+        <NuxtLink to="/"> Return to Home </NuxtLink>
       </div>
     </div>
   </Success>
