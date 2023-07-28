@@ -6,7 +6,7 @@ export default defineStore("userStore", () => {
 
   const { registerPatient } = usePatient();
   const { registerDoctor } = useDoctor();
-  const { signin } = useAuth();
+  const { signin, forgotpassword } = useAuth();
 
   async function userSignin(email: string, password: string) {
     const { data, error } = await signin(email, password);
@@ -16,5 +16,12 @@ export default defineStore("userStore", () => {
     return { data, error };
   }
 
-  return { user, authToken, registerPatient, registerDoctor, userSignin };
+  return {
+    user,
+    authToken,
+    registerPatient,
+    registerDoctor,
+    userSignin,
+    forgotpassword,
+  };
 });

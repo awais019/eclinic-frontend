@@ -1,4 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import useUserStore from "~/stores/userStore";
+  import { setErrors } from "@formkit/core";
+
+  const userStore = useUserStore();
+  const formId = "forgotpassword-form";
+
+  async function submissionHandler(values: { email: string }) {
+    const { error } = await userStore.forgotpassword(values.email);
+    if (!error.value) {
+    } else {
+      setErrors(formId, error.value.data);
+    }
+  }
+</script>
 
 <template>
   <DecorativeLogo align="right" />
@@ -18,7 +32,12 @@
         >Enter the email you used to create your account so we can send you
         instructions on how to reset your password.</span
       >
-      <FormKit type="form" :actions="false">
+      <FormKit
+        type="form"
+        :id="formId"
+        :actions="false"
+        @submit="submissionHandler"
+      >
         <FormKit
           type="email"
           name="email"

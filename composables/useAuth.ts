@@ -39,5 +39,16 @@ export const useAuth = () => {
     return { data, error };
   }
 
-  return { verifyEmail, resendVerificationEmail, signin };
+  async function forgotpassword(email: string) {
+    const { data, error } = await useFetch("/auth/forgotpassword", {
+      method: "POST",
+      body: {
+        email,
+      },
+      baseURL,
+    });
+    return { data, error };
+  }
+
+  return { verifyEmail, resendVerificationEmail, signin, forgotpassword };
 };
