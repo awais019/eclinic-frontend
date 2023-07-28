@@ -1,5 +1,12 @@
 <script lang="ts" setup>
+  import { setErrors } from "@formkit/core";
+  import { useToast } from "vue-toastification";
+  import useUserStore from "~/stores/userStore";
+
   const formId = "signin-form";
+
+  const userStore = useUserStore();
+  const toast = useToast();
 
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
@@ -7,7 +14,19 @@
     node.props.type = node.props.type === "password" ? "text" : "password";
   };
 
-  function submissionHandler() {}
+  async function submissionHandler(values: {
+    email: string;
+    password: string;
+  }) {
+    const { error } = await userStore.userSignin(values.email, values.password);
+    if (!error.value) {
+      toast.success("Signin Successful");
+      useRouter().push("/dashboard");
+    } else {
+      toast.error("Signin Unsuccessful");
+      setErrors(formId, error.value.data);
+    }
+  }
 </script>
 
 <template>

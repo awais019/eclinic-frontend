@@ -3,7 +3,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (token) {
     const { data, error } = await useAuth().verifyEmail(token);
     if (data.value) {
-      return "/";
+      return "/signin";
     }
     if (error.value) {
       return `/error/verifyemail/?token=${token}`;
