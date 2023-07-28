@@ -7,7 +7,7 @@
 <template>
   <div
     :class="[
-      align == 'right' ? 'tablet:right-[92%]' : 'tablet:left-[92%]',
+      align == 'right' ? 'tablet:left-16' : 'tablet:right-16',
       'mt-6 tablet:absolute tablet:h-[24px] tablet:w-[110px] tablet:z-10',
     ]"
   >
