@@ -6,7 +6,6 @@
 
   const userStore = useUserStore();
   const toast = useToast();
-  const router = useRouter();
 
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
@@ -20,7 +19,7 @@
     const { error } = await userStore.registerPatient(values);
 
     if (!error.value) {
-      router.push("/success/patient/registration");
+      navigateTo("/success/patient/registration");
     } else {
       toast.error("Registration Unsuccessful");
       setErrors(formId, error.value.data);

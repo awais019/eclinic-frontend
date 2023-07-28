@@ -21,7 +21,7 @@
     const { error } = await userStore.userSignin(values.email, values.password);
     if (!error.value) {
       toast.success("Signin Successful");
-      useRouter().push("/dashboard");
+      navigateTo("/dashboard");
     } else {
       toast.error("Signin Unsuccessful");
       setErrors(formId, error.value.data);

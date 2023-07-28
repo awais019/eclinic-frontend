@@ -26,7 +26,7 @@
 
     if (!error.value) {
       reset(formId);
-      useRouter().push("/success/doctor/registration");
+      navigateTo("/success/doctor/registration");
     } else {
       toast.error("Registration Unsuccessful");
       setErrors(formId, error.value.data);
