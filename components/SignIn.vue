@@ -67,7 +67,7 @@
           validation="required"
         />
         <div class="text-primary-blue-ribbon text-sm font-medium">
-          <nuxt-link to="/resetpassword">Forgot Password?</nuxt-link>
+          <nuxt-link to="/forgotpassword">Forgot Password?</nuxt-link>
         </div>
         <FormKit type="submit" label="Signin" />
       </FormKit>
