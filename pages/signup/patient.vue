@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <SignUpOptions />
+  <PatientRegistration />
 </template>
 
 <style scoped></style>

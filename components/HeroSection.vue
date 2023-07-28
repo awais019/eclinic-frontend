@@ -1,7 +1,9 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="app-container mobile:pt-24 pb-10 tablet:flex tablet:gap-8">
+  <div
+    class="app-container mobile:pt-24 pb-10 tablet:flex tablet:gap-8 tablet:items-center tablet:justify-center"
+  >
     <div class="content">
       <span class="polygon">
         <icons-polygon />

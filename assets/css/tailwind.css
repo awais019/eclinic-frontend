@@ -145,6 +145,9 @@
   svg {
     @apply inline-block;
   }
+  img {
+    @apply mx-auto;
+  }
 }
 
 @layer utilities {
