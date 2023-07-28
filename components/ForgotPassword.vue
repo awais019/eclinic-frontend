@@ -2,12 +2,17 @@
   import useUserStore from "~/stores/userStore";
   import { setErrors } from "@formkit/core";
 
+  const emits = defineEmits<{
+    (e: "mailSent", email: string): void;
+  }>();
+
   const userStore = useUserStore();
   const formId = "forgotpassword-form";
 
   async function submissionHandler(values: { email: string }) {
     const { error } = await userStore.forgotpassword(values.email);
     if (!error.value) {
+      emits("mailSent", values.email);
     } else {
       setErrors(formId, error.value.data);
     }
