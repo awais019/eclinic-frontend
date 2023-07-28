@@ -5,7 +5,7 @@ interface User {
   email: string;
   phone?: string;
   gender: string;
-  readonly image: string;
+  readonly imageUrl: string;
   password: string | null;
 }
 
@@ -24,7 +24,6 @@ interface Doctor extends User {
 
 interface Patient extends User {
   birth_date: string;
-  age: string;
 }
 
 export { Doctor, Patient };

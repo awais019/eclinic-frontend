@@ -1,7 +1,10 @@
 import APIResponse from "~/types/APIResponse";
+import useUserStore from "~/stores/userStore";
+import { Patient } from "~/types/users";
 
 export const useAuth = () => {
   const { baseURL } = useRuntimeConfig().public;
+
   async function verifyEmail(token: string) {
     const { data, error } = await useFetch("/auth/verifyEmail", {
       method: "POST",
@@ -62,11 +65,24 @@ export const useAuth = () => {
     return { data, error };
   }
 
+  async function me() {
+    const { authToken } = useUserStore();
+    const { data, error } = await useFetch<APIResponse<Patient>>("/auth/me", {
+      method: "GET",
+      headers: {
+        "X-Auth-Token": authToken as string,
+      },
+      baseURL,
+    });
+    return { data, error };
+  }
+
   return {
     verifyEmail,
     resendVerificationEmail,
     signin,
     forgotpassword,
     resetpassword,
+    me,
   };
 };

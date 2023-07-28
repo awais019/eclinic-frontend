@@ -6,13 +6,24 @@ export default defineStore("userStore", () => {
 
   const { registerPatient } = usePatient();
   const { registerDoctor } = useDoctor();
-  const { signin, forgotpassword, resetpassword } = useAuth();
+  const { signin, forgotpassword, resetpassword, me } = useAuth();
 
   async function userSignin(email: string, password: string) {
     const { data, error } = await signin(email, password);
     if (data.value) {
       authToken.value = data.value.data.token;
     }
+    await userMe();
+    return { data, error };
+  }
+
+  async function userMe() {
+    const { data, error } = await me();
+    if (data.value) {
+      user.value = data.value.data;
+    }
+    console.log(user.value);
+
     return { data, error };
   }
 
@@ -24,5 +35,6 @@ export default defineStore("userStore", () => {
     userSignin,
     forgotpassword,
     resetpassword,
+    userMe,
   };
 });
