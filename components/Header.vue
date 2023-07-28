@@ -65,6 +65,9 @@
 </template>
 
 <style lang="postcss" scoped>
+  img {
+  @apply m-0;
+  }
   .hamburger-menu,
   .close {
     @apply ml-auto;
