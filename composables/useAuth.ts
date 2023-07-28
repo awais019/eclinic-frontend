@@ -50,5 +50,23 @@ export const useAuth = () => {
     return { data, error };
   }
 
-  return { verifyEmail, resendVerificationEmail, signin, forgotpassword };
+  async function resetpassword(token: string, password: string) {
+    const { data, error } = await useFetch("/auth/resetpassword", {
+      method: "POST",
+      body: {
+        token,
+        password,
+      },
+      baseURL,
+    });
+    return { data, error };
+  }
+
+  return {
+    verifyEmail,
+    resendVerificationEmail,
+    signin,
+    forgotpassword,
+    resetpassword,
+  };
 };

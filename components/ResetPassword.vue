@@ -1,4 +1,35 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { setErrors } from "@formkit/core";
+  import { useToast } from "vue-toastification";
+  import useUserStore from "~/stores/userStore";
+
+  const token = useRoute().query.token as string;
+  const userStore = useUserStore();
+
+  const formId = "reset-password-form";
+
+  async function submissionHandler(values: {
+    password: string;
+    confirmPassword: string;
+  }) {
+    if (values.password !== values.confirmPassword) {
+      setErrors(formId, {
+        confirmPassword: "Passwords do not match",
+      });
+      return;
+    }
+    const { error } = await userStore.resetpassword(token, values.password);
+
+    if (error.value) {
+      const toast = useToast();
+      toast.error("Password reset failed");
+    } else {
+      const toast = useToast();
+      toast.success("Password reset successful");
+      navigateTo("/signin");
+    }
+  }
+</script>
 
 <template>
   <DecorativeLogo align="right" />
@@ -15,7 +46,13 @@
     >
       <h1 class="text-h2-sb">Reset Password!</h1>
       <span>Enter a strong new and matching confirm password to continue</span>
-      <FormKit type="form" :actions="false" class="mt-12">
+      <FormKit
+        type="form"
+        :id="formId"
+        :actions="false"
+        class="mt-12"
+        @submit="submissionHandler"
+      >
         <FormKit
           type="password"
           name="password"
