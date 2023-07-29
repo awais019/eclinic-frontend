@@ -1,5 +1,10 @@
 <script lang="ts" setup>
+  import useUserStore from "~/stores/userStore";
+
   const openNav = ref(false);
+
+  const userStore = useUserStore();
+
   function toggle() {
     openNav.value = !openNav.value;
   }
@@ -8,24 +13,31 @@
 <template>
   <header>
     <div
-      class="app-container py-7 tablet:grid tablet:grid-flow-col tablet:grid-cols-nav tablet:items-center"
+      class="app-container py-7 relative tablet:grid tablet:grid-flow-col tablet:grid-cols-nav tablet:items-center"
     >
-      <div class="mobile:flex inline-block">
+      <div class="mobile:flex items-center inline-block">
         <div>
           <nuxt-link to="/">
             <img src="~/assets/images/logo.svg" alt="Logo" />
           </nuxt-link>
         </div>
+        <div
+          class="ml-auto mr-6 tablet:m-0 flex gap-6 items-center justify-center tablet:absolute right-0 top-6"
+          v-if="userStore.isLoggedIn"
+        >
+          <Notifications />
+          <ProfileDropDown />
+        </div>
         <button
-          class="hamburger-menu tablet:hidden"
-          :class="{ hidden: openNav }"
+          class="tablet:hidden"
+          :class="{ hidden: openNav, 'hamburger-menu': !userStore.isLoggedIn }"
           @click="toggle"
         >
           <icons-hamburger />
         </button>
         <button
-          class="close tablet:hidden"
-          :class="[openNav ? '' : 'hidden']"
+          class="tablet:hidden"
+          :class="{ hidden: !openNav, close: !userStore.isLoggedIn }"
           @click="toggle"
         >
           <icons-close />
@@ -49,7 +61,7 @@
             <li class="nav__item">
               <nuxt-link to="/about">About Us</nuxt-link>
             </li>
-            <ul class="nav__list-sub">
+            <ul class="nav__list-sub" v-if="!userStore.isLoggedIn">
               <li class="nav__item signup btn btn-primary">
                 <nuxt-link to="/signup">Signup</nuxt-link>
               </li>
@@ -66,7 +78,7 @@
 
 <style lang="postcss" scoped>
   img {
-  @apply m-0;
+    @apply m-0;
   }
   .hamburger-menu,
   .close {

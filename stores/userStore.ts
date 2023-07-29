@@ -27,8 +27,19 @@ function store() {
     return { data, error };
   }
 
+  function signout() {
+    authToken.value = null;
+    user.value = null;
+  }
+
   const isLoggedIn = computed(() => {
-    return authToken.value !== null;
+    return !!authToken.value;
+  });
+
+  const imageUrl = computed(() => {
+    if (user.value?.imageUrl) {
+      return user.value.imageUrl;
+    }
   });
 
   return {
@@ -37,9 +48,11 @@ function store() {
     registerPatient,
     registerDoctor,
     userSignin,
+    signout,
     forgotpassword,
     resetpassword,
     userMe,
     isLoggedIn,
+    imageUrl,
   };
 }
