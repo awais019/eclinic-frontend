@@ -1,3 +1,5 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  return "/";
+  if (process.server) {
+    return "/";
+  }
 });
