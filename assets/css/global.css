@@ -47,8 +47,12 @@ option {
 }
 
 /* vue toastification styles */
+.Vue-Toastification__container {
+  @apply items-center;
+}
+
 .Vue-Toastification__toast {
-  @apply bg-white border-2 min-w-fit text-neutral-dusty-gray px-8 py-4 font-sans rounded-[40px] shadow-variant2 !important;
+  @apply bg-white border-2 min-w-fit w-16 text-neutral-dusty-gray px-8 py-4 font-sans rounded-[40px] shadow-variant2 !important;
 }
 
 .Vue-Toastification__toast--success {
