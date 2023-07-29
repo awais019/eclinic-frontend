@@ -36,6 +36,24 @@ function store() {
     return !!authToken.value;
   });
 
+  const first_name = computed(() => {
+    if (user.value?.first_name) {
+      return user.value.first_name;
+    }
+  });
+
+  const last_name = computed(() => {
+    if (user.value?.last_name) {
+      return user.value.last_name;
+    }
+  });
+
+  const email = computed(() => {
+    if (user.value?.email) {
+      return user.value.email;
+    }
+  });
+
   const image = computed(() => {
     if (user.value?.image) {
       return user.value.image;
@@ -53,6 +71,9 @@ function store() {
     resetpassword,
     userMe,
     isLoggedIn,
+    first_name,
+    last_name,
+    email,
     image,
   };
 }

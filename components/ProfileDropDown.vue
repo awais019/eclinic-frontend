@@ -10,13 +10,16 @@
   const popperInstance = ref<ReturnType<typeof createPopper>>();
   const profile = ref();
   const dropdown = ref();
+  const isOpen = ref(false);
 
   function show() {
+    isOpen.value = true;
     dropdown.value.setAttribute("data-show", "");
     popperInstance.value?.update();
   }
 
   function hide() {
+    isOpen.value = false;
     dropdown.value.removeAttribute("data-show");
   }
 
@@ -35,12 +38,12 @@
       profile.value,
       dropdown.value,
       {
-        placement: "right-start",
+        placement: "bottom-end",
         modifiers: [
           {
             name: "offset",
             options: {
-              offset: [50, -40],
+              offset: [0, 0],
             },
           },
         ],
@@ -51,21 +54,44 @@
 
 <template>
   <div>
-    <div ref="dropdown" class="dropdown">
-      <ul>
+    <div
+      ref="dropdown"
+      class="dropdown shadow-variant3 p-6 bg-white rounded-lg text-sm font-medium text-neutral-dusty-gray"
+    >
+      <div class="mb-12">
+        <div class="text-h5-sb text-neutral-mine-shaft">
+          {{ userStore.first_name }} {{ userStore.last_name }}
+        </div>
+        <span>{{ userStore.email }}</span>
+      </div>
+      <ul class="flex flex-col gap-4">
         <li><nuxt-link to="/dashboard">Dashboard</nuxt-link></li>
         <li><nuxt-link to="/messages">Messages</nuxt-link></li>
-        <button @click="handleSignout">Sign out</button>
+      </ul>
+      <div class="bg-neutral-gallery w-full h-[1px] my-6"></div>
+      <ul class="flex flex-col gap-4">
+        <li><nuxt-link to="/settings">Account Settings</nuxt-link></li>
+        <li><button @click="handleSignout">Sign Out</button></li>
       </ul>
     </div>
 
-    <button ref="profile" class="rounded-lg w-10 h-10 tablet:w-12 tablet:h-12">
-      <img
-        v-if="userStore.image"
-        :src="`images${userStore.image}`"
-        alt="profile image"
+    <button ref="profile" class="flex items-center gap-2 text-sm font-semibold">
+      <div
+        class="p-1 rounded-lg w-10 h-10 tablet:w-12 tablet:h-12 flex items-center shadow-variant3"
+      >
+        <img
+          v-if="userStore.image"
+          :src="`images${userStore.image}`"
+          alt="profile image"
+        />
+        <img v-else src="~/assets/images/user.jpg" alt="profile image" />
+      </div>
+      <span>{{ userStore.first_name }}</span>
+      <IconsChevron
+        :class="{
+          'transform rotate-180 transition-transform': isOpen,
+        }"
       />
-      <img v-else src="~/assets/images/user.jpg" alt="profile image" />
     </button>
   </div>
 </template>
