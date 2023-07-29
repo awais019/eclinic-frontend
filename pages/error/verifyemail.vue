@@ -2,6 +2,7 @@
   import { useToast } from "vue-toastification";
   definePageMeta({
     layout: false,
+    middleware: "success-error",
   });
 
   const route = useRoute();

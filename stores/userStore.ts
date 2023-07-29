@@ -27,6 +27,10 @@ function store() {
     return { data, error };
   }
 
+  const isLoggedIn = computed(() => {
+    return authToken.value !== null;
+  });
+
   return {
     user,
     authToken,
@@ -36,5 +40,6 @@ function store() {
     forgotpassword,
     resetpassword,
     userMe,
+    isLoggedIn,
   };
 }
