@@ -5,7 +5,7 @@ interface User {
   email: string;
   phone?: string;
   gender: string;
-  readonly imageUrl: string;
+  readonly image: string;
   password: string | null;
 }
 

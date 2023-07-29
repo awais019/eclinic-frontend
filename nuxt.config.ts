@@ -23,5 +23,18 @@ export default defineNuxtConfig({
       baseURL: process.env.BASE_URL,
     },
   },
+  nitro: {
+    devProxy: {
+      "/images": {
+        target: process.env.IMAGES_URL,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*",
+        },
+        prependPath: true,
+        changeOrigin: true,
+      },
+    },
+  },
   plugins: ["~/plugins/toaster.client"],
 });

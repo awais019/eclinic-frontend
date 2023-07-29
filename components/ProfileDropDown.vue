@@ -61,8 +61,8 @@
 
     <button ref="profile" class="rounded-lg w-10 h-10 tablet:w-12 tablet:h-12">
       <img
-        v-if="userStore.imageUrl"
-        :src="userStore.imageUrl"
+        v-if="userStore.image"
+        :src="`images${userStore.image}`"
         alt="profile image"
       />
       <img v-else src="~/assets/images/user.jpg" alt="profile image" />

@@ -36,9 +36,9 @@ function store() {
     return !!authToken.value;
   });
 
-  const imageUrl = computed(() => {
-    if (user.value?.imageUrl) {
-      return user.value.imageUrl;
+  const image = computed(() => {
+    if (user.value?.image) {
+      return user.value.image;
     }
   });
 
@@ -53,6 +53,6 @@ function store() {
     resetpassword,
     userMe,
     isLoggedIn,
-    imageUrl,
+    image,
   };
 }
