@@ -64,6 +64,8 @@ export default <Partial<Config>>{
         variant1: "8px 16px 32px rgba(22, 111, 255, 0.15);",
         variant2: "6px 6px 24px rgba(38, 50, 56, 0.15);",
         variant3: "0px 2px 15px 0px rgba(0, 0, 0, 0.10);",
+        variant4: "0px 8px 45px 10px rgba(0, 0, 0, 0.05);",
+        variant5: " 0px 20px 40px 0px rgba(22, 111, 255, 0.40);",
       },
     },
   },
