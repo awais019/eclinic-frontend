@@ -3,6 +3,7 @@
 <template>
   <div class="app-container">
     <DashboardProfileSection />
+    <Dashboard />
   </div>
 </template>
 
