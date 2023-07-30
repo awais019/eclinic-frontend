@@ -77,6 +77,22 @@ export const useAuth = () => {
     return { data, error };
   }
 
+  async function uploadImage(file: FormData) {
+    const { authToken } = useUserStore();
+    const { data, error } = await useFetch<APIResponse<{ image: string }>>(
+      "/auth/uploadimage",
+      {
+        method: "POST",
+        headers: {
+          "X-Auth-Token": authToken as string,
+        },
+        body: file,
+        baseURL,
+      }
+    );
+    return { data, error };
+  }
+
   return {
     verifyEmail,
     resendVerificationEmail,
@@ -84,5 +100,6 @@ export const useAuth = () => {
     forgotpassword,
     resetpassword,
     me,
+    uploadImage,
   };
 };

@@ -16,19 +16,7 @@
       <h2 class="text-h3-b">Welcome Back</h2>
       <nuxt-link to="/settings">Account Settings <IconsSettings /></nuxt-link>
     </div>
-    <div>
-      <div
-        class="w-[72px] h-[72px] bg-gradient_2 rounded-2xl tablet:w-36 tablet:h-36"
-      >
-        <div class="relative top-3 right-3">
-          <img
-            class="rounded-2xl"
-            :src="`images${userStore.image}`"
-            alt="Profile Image"
-          />
-        </div>
-      </div>
-    </div>
+    <ProfileImage />
   </div>
 </template>
 

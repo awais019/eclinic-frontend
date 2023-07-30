@@ -8,7 +8,7 @@ function store() {
 
   const { registerPatient } = usePatient();
   const { registerDoctor } = useDoctor();
-  const { signin, forgotpassword, resetpassword, me } = useAuth();
+  const { signin, forgotpassword, resetpassword, me, uploadImage } = useAuth();
 
   async function userSignin(email: string, password: string) {
     const { data, error } = await signin(email, password);
@@ -30,6 +30,14 @@ function store() {
   function signout() {
     authToken.value = null;
     user.value = null;
+  }
+
+  async function uploadProfileImage(image: FormData) {
+    const { data, error } = await uploadImage(image);
+    if (data.value) {
+      await userMe();
+    }
+    return { data, error };
   }
 
   const isLoggedIn = computed(() => {
@@ -67,6 +75,7 @@ function store() {
     registerDoctor,
     userSignin,
     signout,
+    uploadProfileImage,
     forgotpassword,
     resetpassword,
     userMe,
