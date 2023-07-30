@@ -1,8 +1,8 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div>
-    Page: foo
+  <div class="app-container">
+    <DashboardProfileSection />
   </div>
 </template>
 
