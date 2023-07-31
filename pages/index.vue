@@ -8,6 +8,7 @@
   <div>
     <HeroSection />
     <SocialProof />
+    <Features />
   </div>
 </template>
 
