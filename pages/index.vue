@@ -7,6 +7,7 @@
 <template>
   <div>
     <HeroSection />
+    <SocialProof />
   </div>
 </template>
 
