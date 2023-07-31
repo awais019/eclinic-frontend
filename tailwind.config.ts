@@ -34,6 +34,7 @@ export default <Partial<Config>>{
           malibu: "#6AA3FF",
           "dodger-blue": "#4089FF",
           zircon: "#FDFEFF",
+          alice_blue: "#F7FBFF",
         },
         neutral: {
           white: "#FFFFFF",

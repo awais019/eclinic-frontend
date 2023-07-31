@@ -4,6 +4,7 @@
   <div class="max-w-screen-3xl mx-auto">
     <Header />
     <slot />
+    <Footer />
   </div>
 </template>
 
