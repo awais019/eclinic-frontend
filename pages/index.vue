@@ -9,6 +9,7 @@
     <HeroSection />
     <SocialProof />
     <Features />
+    <Categories />
   </div>
 </template>
 

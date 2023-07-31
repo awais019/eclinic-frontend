@@ -33,7 +33,7 @@ export default <Partial<Config>>{
           anakiwa: "#94BDFF",
           malibu: "#6AA3FF",
           "dodger-blue": "#4089FF",
-          zircon: "#FDFEFF",
+          zircon: "#F2F7FF",
           alice_blue: "#F7FBFF",
         },
         neutral: {
