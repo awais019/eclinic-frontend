@@ -21,7 +21,7 @@
           class="bg-neutral-mine-shaft px-4 py-2 text-white text-xs font-medium rounded-lg tablet:px-6 tablet:py-3"
         >
           <IconsApple />
-          Download on the
+          Get it on
           <span class="text-base-sb">AppStore</span>
         </button>
         <button
