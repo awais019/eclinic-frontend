@@ -10,6 +10,7 @@
     <SocialProof />
     <Features />
     <Categories />
+    <CallToAction />
   </div>
 </template>
 
