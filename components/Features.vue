@@ -3,7 +3,7 @@
 <template>
   <div class="app-container mt-24 mb-24">
     <div
-      class="tablet:flex tablet:gap-24 tablet:items-center tablet:justify-center"
+      class="desktop:flex desktop:gap-24 desktop:items-center desktop:justify-center"
     >
       <div>
         <h3 class="text-h2-b">
@@ -38,7 +38,7 @@
       <img src="~/assets/images/feature_image_1.svg" alt="Feature image 1" />
     </div>
     <div
-      class="mt-24 tablet:flex tablet:flex-row-reverse tablet:gap-24 tablet:items-center tablet:justify-center"
+      class="mt-24 desktop:flex desktop:flex-row-reverse desktop:gap-24 desktop:items-center desktop:justify-center"
     >
       <div>
         <h3 class="text-h2-b">

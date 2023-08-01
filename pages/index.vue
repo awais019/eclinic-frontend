@@ -11,6 +11,7 @@
     <Features />
     <Categories />
     <CallToAction />
+    <FAQs />
   </div>
 </template>
 

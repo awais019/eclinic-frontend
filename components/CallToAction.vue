@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="app-container py-24 tablet:flex tablet:gap-24 tablet:items-center tablet:justify-center"
+    class="app-container py-24 desktop:flex desktop:gap-24 desktop:items-center desktop:justify-center"
   >
     <div class="mb-8">
       <h3 class="text-h2-b">
