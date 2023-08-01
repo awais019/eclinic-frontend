@@ -19,7 +19,9 @@
 </script>
 
 <template>
-  <div class="app-container desktop:flex desktop:items-center desktop:gap-24">
+  <div
+    class="app-container mb-24 desktop:flex desktop:items-center desktop:gap-24"
+  >
     <img src="~/assets/images/FAQ.svg" alt="FAQs" />
     <div>
       <p

@@ -8,7 +8,7 @@
   >
     <path
       d="M17.3333 1L21.5 4.75M21.5 4.75L17.3333 8.5M21.5 4.75H1.5"
-      stroke="white"
+      stroke="currentColor"
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"

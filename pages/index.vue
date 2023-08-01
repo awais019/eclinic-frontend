@@ -12,6 +12,7 @@
     <Categories />
     <CallToAction />
     <FAQs />
+    <BottomBanner />
   </div>
 </template>
 
