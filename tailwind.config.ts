@@ -57,6 +57,7 @@ export default <Partial<Config>>{
       backgroundImage: {
         gradient: "linear-gradient(92.51deg, #166FFF 3.15%, #76AFFB 105.73%);",
         gradient_2: "linear-gradient(81deg, #166FFF 0%, #76AFFB 100%);",
+        testimonials: "url('~/assets/images/testimonials.svg')",
       },
       gridTemplateColumns: {
         nav: "1fr 2fr",
@@ -68,6 +69,7 @@ export default <Partial<Config>>{
         variant4: "0px 8px 45px 10px rgba(0, 0, 0, 0.05);",
         variant5: " 0px 20px 40px 0px rgba(22, 111, 255, 0.40);",
         variant6: "0px 5px 25px 0px rgba(22, 111, 255, 0.15);",
+        variant7: "0px 5px 30px 0px rgba(85, 149, 247, 0.25);",
       },
     },
   },

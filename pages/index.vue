@@ -10,6 +10,7 @@
     <SocialProof />
     <Features />
     <Categories />
+    <Testimonials />
     <CallToAction />
     <FAQs />
     <BottomBanner />
