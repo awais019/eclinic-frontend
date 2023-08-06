@@ -1,3 +1,5 @@
+import { DoctorsResponse } from "~/types/APIResponse";
+
 export function useDoctor() {
   const { baseURL } = useRuntimeConfig().public;
   async function registerDoctor(newDoctor: FormData) {
@@ -11,7 +13,7 @@ export function useDoctor() {
   }
 
   async function getDoctors() {
-    const { data, error } = await useFetch("/doctors", {
+    const { data, error } = await useFetch<DoctorsResponse>("/doctors", {
       method: "GET",
       baseURL,
     });

@@ -6,7 +6,7 @@
 
   const { getDoctors } = useDoctor();
 
-  const doctors = await getDoctors();
+  const doctors = (await getDoctors()).data.value?.data?.doctors;
 </script>
 
 <template>
@@ -16,9 +16,9 @@
       <p class="text-base-md text-primary-blue-ribbon">Meet our Doctors</p>
       <h2 class="text-h2-b">Our Highly Qualified Professionals</h2>
     </div>
-    <pre>
-      {{ doctors }}
-    </pre>
+    <div class="flex flex-wrap items-center justify-center gap-8">
+      <DoctorCard v-for="doctor in doctors" :key="doctor.id" :doctor="doctor" />
+    </div>
   </div>
 </template>
 
