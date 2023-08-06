@@ -30,8 +30,15 @@
     >
       <div class="relative top-3 right-3">
         <img
-          class="rounded-2xl"
-          :src="`images${userStore.image}`"
+          v-if="userStore.image"
+          class="rounded-lg border-4 border-primary-zircon shadow-variant8"
+          :src="`${userStore.image}`"
+          alt="Profile Image"
+        />
+        <img
+          v-else
+          class="rounded-lg border-4 border-primary-zircon shadow-variant8"
+          src="~/assets/images/user.svg"
           alt="Profile Image"
         />
         <div
@@ -40,17 +47,17 @@
         >
           <AnimationsSpinner />
         </div>
+        <label class="cursor-pointer absolute -bottom-2 left-16">
+          <IconsCamera />
+          <input
+            type="file"
+            accept="image/png, image/gif, image/jpeg, image/jpg"
+            style="display: none"
+            @change="handleImageUpload"
+          />
+        </label>
       </div>
     </div>
-    <label class="cursor-pointer">
-      <IconsPencil />
-      <input
-        type="file"
-        accept="image/png, image/gif, image/jpeg, image/jpg"
-        style="display: none"
-        @change="handleImageUpload"
-      />
-    </label>
   </div>
 </template>
 
