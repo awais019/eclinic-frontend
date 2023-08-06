@@ -58,6 +58,7 @@ export default <Partial<Config>>{
         gradient: "linear-gradient(92.51deg, #166FFF 3.15%, #76AFFB 105.73%);",
         gradient_2: "linear-gradient(81deg, #166FFF 0%, #76AFFB 100%);",
         testimonials: "url('~/assets/images/testimonials.svg')",
+        pagetitle: "url('~/assets/images/pagetitle.svg')",
       },
       gridTemplateColumns: {
         nav: "1fr 2fr",
