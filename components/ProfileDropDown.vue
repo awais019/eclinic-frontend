@@ -81,15 +81,16 @@
       >
         <img
           v-if="userStore.image"
-          :src="`images${userStore.image}`"
+          :src="`${userStore.image}`"
           alt="profile image"
         />
-        <img v-else src="~/assets/images/user.jpg" alt="profile image" />
+        <img v-else src="~/assets/images/user.svg" alt="profile image" />
       </div>
       <span>{{ userStore.first_name }}</span>
       <IconsChevron
         :class="{
           'transform rotate-180 transition-transform': isOpen,
+          'transform rotate-0 transition-transform': !isOpen,
         }"
       />
     </button>
