@@ -6,6 +6,25 @@
     ComboboxOptions,
     ComboboxOption,
   } from "@headlessui/vue";
+
+  const { getSpecializations } = useDoctor();
+
+  const specializations = (await getSpecializations()).data?.value?.data
+    .specializations;
+
+  const query = ref("");
+  const selectedSpecialization = ref("");
+
+  const filteredSpecializations = ref(specializations);
+
+  watch(query, () => {
+    if (query.value === "") {
+      selectedSpecialization.value = "";
+    }
+    filteredSpecializations.value = specializations?.filter((specialization) =>
+      specialization.toLowerCase().includes(query.value.toLowerCase())
+    );
+  });
 </script>
 
 <template>
@@ -23,11 +42,44 @@
           placeholder="Find doctor by name, city or state"
         />
       </div>
-      <Combobox as="div" class="rounded-xl relative shadow-variant10">
-        <ComboboxInput class="py-4 border-none" placeholder="Specialization" />
+      <Combobox
+        as="div"
+        class="rounded-xl relative shadow-variant10"
+        v-model="selectedSpecialization"
+      >
+        <ComboboxInput
+          class="py-4 border-none"
+          placeholder="Specialization"
+          autocomplete="off"
+          :display-value="
+            () => (selectedSpecialization ? selectedSpecialization : query)
+          "
+          @change="query = $event.target.value"
+        />
         <ComboboxButton class="absolute top-3 right-4">
           <IconsChevron2 />
         </ComboboxButton>
+        <ComboboxOptions
+          class="absolute bg-white inset-x-0 rounded-lg shadow-xl cursor-pointer text-neutral-dusty-gray max-w-96"
+        >
+          <ComboboxOption
+            v-for="(specialization, index) in filteredSpecializations"
+            :value="specialization"
+            :key="index"
+            as="template"
+            v-slot="{ selected, active }"
+          >
+            <li
+              :class="{
+                'bg-neutral-dusty-gray text-white font-medium': selected,
+                'bg-neutral-dusty-gray text-white': active,
+              }"
+              class="px-4 py-1 hover:bg-neutral-dusty-gray hover:text-white"
+            >
+              {{ specialization }}
+            </li>
+          </ComboboxOption>
+        </ComboboxOptions>
       </Combobox>
       <input
         type="submit"
@@ -51,15 +103,44 @@
         />
       </div>
       <span class="w-[1px] h-6 bg-neutral-dusty-gray"></span>
-      <Combobox as="div" class="rounded-xl relative">
+      <Combobox
+        as="div"
+        class="rounded-xl relative"
+        v-model="selectedSpecialization"
+      >
         <ComboboxInput
           class="py-4 border-none"
           placeholder="Specialization"
           autocomplete="off"
+          :display-value="
+            () => (selectedSpecialization ? selectedSpecialization : query)
+          "
+          @change="query = $event.target.value"
         />
         <ComboboxButton class="absolute top-3 right-4">
           <IconsChevron2 />
         </ComboboxButton>
+        <ComboboxOptions
+          class="absolute bg-white inset-x-0 py-4 rounded-lg shadow-xl cursor-pointer text-neutral-dusty-gray max-w-96"
+        >
+          <ComboboxOption
+            v-for="(specialization, index) in filteredSpecializations"
+            :key="index"
+            :value="specialization"
+            as="template"
+            v-slot="{ selected, active }"
+          >
+            <li
+              class="px-4 py-1 hover:bg-neutral-dusty-gray hover:text-white"
+              :class="{
+                'bg-neutral-dusty-gray text-white font-medium': selected,
+                'bg-neutral-dusty-gray text-white': active,
+              }"
+            >
+              {{ specialization }}
+            </li>
+          </ComboboxOption>
+        </ComboboxOptions>
       </Combobox>
       <input
         type="submit"

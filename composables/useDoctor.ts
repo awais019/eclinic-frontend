@@ -21,5 +21,18 @@ export function useDoctor() {
     return { data, error };
   }
 
-  return { registerDoctor, getDoctors };
+  async function getSpecializations() {
+    const { data, error } = await useFetch<{
+      message: string;
+      data: {
+        specializations: string[];
+      };
+    }>("/doctors/specializations", {
+      method: "GET",
+      baseURL,
+    });
+    return { data, error };
+  }
+
+  return { registerDoctor, getDoctors, getSpecializations };
 }
