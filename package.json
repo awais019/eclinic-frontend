@@ -16,6 +16,7 @@
   "dependencies": {
     "@formkit/core": "^0.17.2",
     "@formkit/nuxt": "^0.17.2",
+    "@headlessui/vue": "^1.7.15",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@pinia/nuxt": "^0.4.11",
     "@popperjs/core": "^2.11.8",

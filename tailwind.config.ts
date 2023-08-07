@@ -73,6 +73,7 @@ export default <Partial<Config>>{
         variant7: "0px 5px 30px 0px rgba(85, 149, 247, 0.25);",
         variant8: "0px 1.50px 12.50px 0px rgba(0, 0, 0, 0.10);",
         variant9: "0px 5px 10px 0px rgba(0, 0, 0, 0.10);",
+        variant10: "0px 5px 25px 0px rgba(196, 196, 196, 0.25);",
       },
     },
   },
