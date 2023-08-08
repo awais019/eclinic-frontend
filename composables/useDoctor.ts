@@ -12,13 +12,23 @@ export function useDoctor() {
     return { data, error };
   }
 
-  async function getDoctors() {
-    const { data, error } = await useFetch<DoctorsResponse>("/doctors", {
+  async function getDoctors(
+    { query, specialization } = { query: "", specialization: "" }
+  ) {
+    let url = "/doctors";
+    if (query) {
+      url += `?q=${query}`;
+    }
+    if (specialization) {
+      url += `?specialization=${specialization}`;
+    }
+    if (query && specialization) {
+      url += `?q=${query}&specialization=${specialization}`;
+    }
+    return useFetch<DoctorsResponse>(url, {
       method: "GET",
       baseURL,
     });
-
-    return { data, error };
   }
 
   async function getSpecializations() {

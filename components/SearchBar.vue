@@ -6,30 +6,42 @@
     ComboboxOptions,
     ComboboxOption,
   } from "@headlessui/vue";
+  import useDoctorsStore from "../stores/doctors";
 
   const { getSpecializations } = useDoctor();
 
   const specializations = (await getSpecializations()).data?.value?.data
     .specializations;
+  const { getDoctors } = useDoctorsStore();
 
   const query = ref("");
+  const specializationQuery = ref("");
   const selectedSpecialization = ref("");
 
   const filteredSpecializations = ref(specializations);
 
-  watch(query, () => {
-    if (query.value === "") {
+  async function handleSearch() {
+    await getDoctors({
+      query: query.value,
+      specialization: selectedSpecialization.value,
+    });
+  }
+
+  watch(specializationQuery, () => {
+    if (specializationQuery.value === "") {
       selectedSpecialization.value = "";
     }
     filteredSpecializations.value = specializations?.filter((specialization) =>
-      specialization.toLowerCase().includes(query.value.toLowerCase())
+      specialization
+        .toLowerCase()
+        .includes(specializationQuery.value.toLowerCase())
     );
   });
 </script>
 
 <template>
   <div class="mt-12 mb-24 mx-auto max-w-fit">
-    <form class="flex flex-col gap-4 lg:hidden">
+    <form class="flex flex-col gap-4 lg:hidden" @submit.prevent="handleSearch">
       <div class="relative px-4 rounded-xl shadow-variant10">
         <IconsSearch class="absolute top-5 left-4" />
         <label for="search" class="sr-only"
@@ -40,6 +52,7 @@
           name="search"
           class="border-none py-4"
           placeholder="Find doctor by name, city or state"
+          v-model="query"
         />
       </div>
       <Combobox
@@ -52,9 +65,12 @@
           placeholder="Specialization"
           autocomplete="off"
           :display-value="
-            () => (selectedSpecialization ? selectedSpecialization : query)
+            () =>
+              selectedSpecialization
+                ? selectedSpecialization
+                : specializationQuery
           "
-          @change="query = $event.target.value"
+          @change="specializationQuery = $event.target.value"
         />
         <ComboboxButton class="absolute top-3 right-4">
           <IconsChevron2 />
@@ -89,6 +105,7 @@
     </form>
     <form
       class="rounded-xl shadow-variant10 max-w-fit px-2 py-4 items-center gap-8 hidden lg:flex"
+      @submit.prevent="handleSearch"
     >
       <div class="relative px-4 grow">
         <IconsSearch class="absolute top-5 left-4" />
@@ -100,6 +117,7 @@
           name="search"
           class="border-none py-4"
           placeholder="Find doctor by name, city or state"
+          v-model="query"
         />
       </div>
       <span class="w-[1px] h-6 bg-neutral-dusty-gray"></span>
@@ -113,9 +131,12 @@
           placeholder="Specialization"
           autocomplete="off"
           :display-value="
-            () => (selectedSpecialization ? selectedSpecialization : query)
+            () =>
+              selectedSpecialization
+                ? selectedSpecialization
+                : specializationQuery
           "
-          @change="query = $event.target.value"
+          @change="specializationQuery = $event.target.value"
         />
         <ComboboxButton class="absolute top-3 right-4">
           <IconsChevron2 />
@@ -145,7 +166,7 @@
       <input
         type="submit"
         value="Search"
-        class="max-w-fit bg-primary-blue-ribbon text-white border-none font-medium"
+        class="max-w-fit bg-primary-blue-ribbon text-white border-none font-medium cursor-pointer"
       />
     </form>
   </div>

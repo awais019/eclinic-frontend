@@ -1,12 +1,17 @@
 <script lang="ts" setup>
+  import { storeToRefs } from "pinia";
+  import useDoctorsStore from "../stores/doctors";
+
   const breadCrumbs = ref<{ name: string; path: string }[]>([
     { name: "Home", path: "/" },
     { name: "Find doctors", path: "/doctors" },
   ]);
 
-  const { getDoctors } = useDoctor();
+  const doctorsStore = useDoctorsStore();
 
-  const doctors = (await getDoctors()).data.value?.data?.doctors;
+  const { doctors } = storeToRefs(doctorsStore);
+
+  await doctorsStore.getDoctors();
 </script>
 
 <template>
@@ -18,9 +23,11 @@
     </div>
     <SearchBar />
     <div class="flex flex-wrap items-center justify-center gap-8">
-      <div v-for="doctor in doctors" :key="doctor.id">
-        <DoctorCard :doctor="doctor" />
-      </div>
+      <ClientOnly>
+        <div v-for="doctor in doctors" :key="doctor.id">
+          <DoctorCard :doctor="doctor" />
+        </div>
+      </ClientOnly>
     </div>
   </div>
 </template>
