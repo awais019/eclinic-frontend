@@ -15,19 +15,14 @@ export function useDoctor() {
   async function getDoctors(
     { query, specialization } = { query: "", specialization: "" }
   ) {
-    let url = "/doctors";
-    if (query) {
-      url += `?q=${query}`;
-    }
-    if (specialization) {
-      url += `?specialization=${specialization}`;
-    }
-    if (query && specialization) {
-      url += `?q=${query}&specialization=${specialization}`;
-    }
-    return useFetch<DoctorsResponse>(url, {
+    const url = new URL("/api/doctors", baseURL);
+    if (query) url.searchParams.append("q", query);
+    if (specialization)
+      url.searchParams.append("specialization", specialization);
+    console.log(url);
+
+    return useFetch<DoctorsResponse>(url.href, {
       method: "GET",
-      baseURL,
     });
   }
 
