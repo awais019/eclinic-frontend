@@ -6,13 +6,13 @@
     ComboboxOptions,
     ComboboxOption,
   } from "@headlessui/vue";
-  import useDoctorsStore from "../stores/doctors";
+  import useDoctorsStore from "~/stores/doctors";
 
   const { getSpecializations } = useDoctor();
 
   const specializations = (await getSpecializations()).data?.value?.data
     .specializations;
-  const { getDoctors } = useDoctorsStore();
+  const doctorsStore = useDoctorsStore();
 
   const query = ref("");
   const specializationQuery = ref("");
@@ -21,9 +21,10 @@
   const filteredSpecializations = ref(specializations);
 
   async function handleSearch() {
-    await getDoctors({
+    await doctorsStore.getDoctors({
       query: query.value,
       specialization: selectedSpecialization.value,
+      page: 0,
     });
   }
 

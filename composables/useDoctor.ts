@@ -13,13 +13,13 @@ export function useDoctor() {
   }
 
   async function getDoctors(
-    { query, specialization } = { query: "", specialization: "" }
+    { query, specialization, page } = { query: "", specialization: "", page: 0 }
   ) {
     const url = new URL("/api/doctors", baseURL);
     if (query) url.searchParams.append("q", query);
     if (specialization)
       url.searchParams.append("specialization", specialization);
-    console.log(url);
+    if (page) url.searchParams.append("page", page.toString());
 
     return useFetch<DoctorsResponse>(url.href, {
       method: "GET",

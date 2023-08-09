@@ -22,6 +22,7 @@
       <h2 class="text-h2-b">Our Highly Qualified Professionals</h2>
     </div>
     <SearchBar />
+    <Pagination />
     <div class="flex flex-wrap items-center justify-center gap-8">
       <ClientOnly>
         <div v-for="doctor in doctors" :key="doctor.id">

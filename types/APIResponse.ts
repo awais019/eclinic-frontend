@@ -11,6 +11,7 @@ export interface DoctorsResponse {
 export interface Data {
   page: number;
   pageSize: number;
+  totalPages: number;
   doctors: Doctor[];
 }
 
