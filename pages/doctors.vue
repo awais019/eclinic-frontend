@@ -23,13 +23,13 @@
     </div>
     <SearchBar />
     <Pagination />
-    <div class="flex flex-wrap items-center justify-center gap-8">
+    <ul class="flex flex-wrap items-center justify-center gap-8">
       <ClientOnly>
-        <div v-for="doctor in doctors" :key="doctor.id">
+        <li v-for="doctor in doctors" :key="doctor.id">
           <DoctorCard :doctor="doctor" />
-        </div>
+        </li>
       </ClientOnly>
-    </div>
+    </ul>
   </div>
 </template>
 

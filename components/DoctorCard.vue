@@ -5,16 +5,17 @@
     doctor: Doctor;
   }>();
 </script>
-z
 
 <template>
   <NuxtLink :to="`/doctors/${doctor.id}`" class="group">
     <div class="rounded-2xl shadow-variant9">
-      <img
-        class="rounded-t-2xl w-96 h-52"
-        :src="doctor.image"
-        :alt="doctor.first_name + ' ' + doctor.last_name"
-      />
+      <div class="aspect-w-[44] aspect-h-[25] min-w-[352px] min-h-[200px]">
+        <img
+          class="rounded-t-2xl object-fit"
+          :src="doctor.image"
+          :alt="doctor.first_name + ' ' + doctor.last_name"
+        />
+      </div>
       <div class="p-6 flex flex-col gap-[6px]">
         <div class="flex items-center gap-1">
           <h3 class="text-h5-b">
