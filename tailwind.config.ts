@@ -58,6 +58,7 @@ export default <Partial<Config>>{
         gradient: "linear-gradient(92.51deg, #166FFF 3.15%, #76AFFB 105.73%);",
         gradient_2: "linear-gradient(81deg, #166FFF 0%, #76AFFB 100%);",
         testimonials: "url('~/assets/images/testimonials.svg')",
+        pagetitle: "url('~/assets/images/pagetitle.svg')",
       },
       gridTemplateColumns: {
         nav: "1fr 2fr",
@@ -71,7 +72,10 @@ export default <Partial<Config>>{
         variant6: "0px 5px 25px 0px rgba(22, 111, 255, 0.15);",
         variant7: "0px 5px 30px 0px rgba(85, 149, 247, 0.25);",
         variant8: "0px 1.50px 12.50px 0px rgba(0, 0, 0, 0.10);",
+        variant9: "0px 5px 10px 0px rgba(0, 0, 0, 0.10);",
+        variant10: "0px 5px 25px 0px rgba(196, 196, 196, 0.25);",
       },
     },
   },
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };
