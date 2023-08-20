@@ -1,4 +1,4 @@
-import { DoctorsResponse } from "~/types/APIResponse";
+import { DoctorsResponse, Doctor } from "~/types/APIResponse";
 
 export function useDoctor() {
   const { baseURL } = useRuntimeConfig().public;
@@ -39,5 +39,15 @@ export function useDoctor() {
     return { data, error };
   }
 
-  return { registerDoctor, getDoctors, getSpecializations };
+  function getDoctor(id: string) {
+    return useFetch<{
+      message: string;
+      data: Doctor;
+    }>(`/doctors/${id}`, {
+      method: "GET",
+      baseURL,
+    });
+  }
+
+  return { registerDoctor, getDoctors, getSpecializations, getDoctor };
 }
