@@ -99,6 +99,9 @@
         </p>
       </div>
     </section>
+    <section class="py-24">
+      <Reviews :doctor-id="(id as string)" :rating="doctor.rating" />
+    </section>
   </div>
 </template>
 

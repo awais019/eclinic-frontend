@@ -46,4 +46,16 @@ export interface Charges {
   virtual: any;
 }
 
+export interface Review {
+  id: string;
+  rating: number;
+  review: string;
+  date: string;
+  user: {
+    firstName: string;
+    lastName: string;
+    image: string;
+  };
+}
+
 export default APIResponse;
