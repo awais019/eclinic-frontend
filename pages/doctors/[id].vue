@@ -22,8 +22,10 @@
 <template>
   <PageTitle title="Doctor Profile" :bread-crumbs="breadcrumbs" />
   <div class="app-container mb-12" v-if="doctor">
-    <div class="flex flex-col gap-8 items-center sm:flex-row sm:gap-16">
-      <div class="bg-gradient relative w-80 h-80 rounded-xl">
+    <section
+      class="flex flex-col gap-8 items-center sm:flex-row sm:gap-16 md:gap-24"
+    >
+      <div class="bg-gradient relative w-80 max-h-fit h-80 rounded-xl">
         <img
           class="rounded-xl absolute top-5 right-6"
           :src="doctor.image"
@@ -59,7 +61,16 @@
           Book Appointment
         </button>
       </div>
-    </div>
+    </section>
+    <section class="py-24">
+      <h3 class="text-h3-b mb-12 max-w-fit">
+        About Dr. {{ doctor.first_name }} {{ doctor.last_name }}
+        <div class="bg-primary-blue-ribbon h-0.5 w-3/4"></div>
+      </h3>
+      <p class="text-neutral-dusty-gray">
+        {{ doctor.about }}
+      </p>
+    </section>
   </div>
 </template>
 

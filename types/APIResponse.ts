@@ -20,6 +20,7 @@ export interface Doctor {
   specialization: string;
   hospital_clinic_name: string;
   verification: string;
+  about: string;
   locationId: string;
   userId: string;
   appointment_types_allowed: string[];
