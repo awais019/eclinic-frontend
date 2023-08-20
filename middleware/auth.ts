@@ -10,6 +10,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
   }
 
   if (to.name == "doctors-id" && to.params.id && !userStore.isLoggedIn) {
-    return "/signin";
+    return `/signin?redirect=${to.path}`;
   }
 });

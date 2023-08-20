@@ -7,6 +7,7 @@
 
   const userStore = useUserStore();
   const toast = useToast();
+  const route = useRoute();
 
   const handleIconClick = (node: any, e: any) => {
     node.props.suffixIcon =
@@ -21,6 +22,10 @@
     const { error } = await userStore.userSignin(values.email, values.password);
     if (!error.value) {
       toast.success("Signin Successful");
+      if (route.query.redirect) {
+        navigateTo(route.query.redirect as string);
+        return;
+      }
       navigateTo("/dashboard");
     } else {
       toast.error("Signin Unsuccessful");
