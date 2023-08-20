@@ -1,6 +1,10 @@
 <script setup lang="ts">
   import { Doctor } from "~/types/APIResponse";
 
+  definePageMeta({
+    middleware: "auth",
+  });
+
   const { id } = useRoute().params;
 
   const breadcrumbs = [
