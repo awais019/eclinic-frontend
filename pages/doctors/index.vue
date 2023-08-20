@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   import { storeToRefs } from "pinia";
-  import useDoctorsStore from "../stores/doctors";
+  import useDoctorsStore from "~/stores/doctors";
 
   const breadCrumbs = ref<{ name: string; path: string }[]>([
     { name: "Home", path: "/" },
