@@ -62,7 +62,7 @@
         </button>
       </div>
     </section>
-    <section class="py-24">
+    <section class="py-24 border-b border-neutral-gallery">
       <h3 class="text-h3-b mb-12 max-w-fit">
         About Dr. {{ doctor.first_name }} {{ doctor.last_name }}
         <div class="bg-primary-blue-ribbon h-0.5 w-3/4"></div>
@@ -70,6 +70,34 @@
       <p class="text-neutral-dusty-gray">
         {{ doctor.about }}
       </p>
+    </section>
+    <section class="py-24 border-b border-neutral-gallery">
+      <h3 class="text-h3-b mb-12 max-w-fit">
+        Hospital/Clinic Affiliations
+        <div class="bg-primary-blue-ribbon h-0.5 w-3/4"></div>
+      </h3>
+      <div class="mb-12">
+        <h4 class="text-h4-sb mb-3">hospital/clinic name</h4>
+        <p class="text-base-md">{{ doctor.hospital_clinic_name }}</p>
+      </div>
+      <div class="mb-12">
+        <h4 class="text-h4-sb mb-6">Specialization</h4>
+        <p
+          class="text-base-md text-primary-blue-ribbon flex items-center gap-3"
+        >
+          <IconsEmptystar />
+          <span>{{ doctor.specialization }}</span>
+        </p>
+      </div>
+      <div class="mb-12">
+        <h4 class="mb-6 text-h4-sb">Location</h4>
+        <p class="text-base-md flex items-center gap-3">
+          <IconsMarker />
+          <span
+            >{{ doctor.address }} {{ doctor.city }} {{ doctor.state }}
+          </span>
+        </p>
+      </div>
     </section>
   </div>
 </template>
