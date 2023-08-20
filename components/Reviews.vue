@@ -55,7 +55,12 @@
       </p>
     </div>
     <div v-if="data">
-      <div v-for="review in data?.data" :key="review.id">
+      <div
+        v-for="(review, index) in data.data"
+        :key="review.id"
+        class="border-neutral-gallery py-12"
+        :class="{ 'border-b': index != data.data.length - 1 }"
+      >
         <img
           :src="review.user.image"
           :alt="review.user.firstName"
