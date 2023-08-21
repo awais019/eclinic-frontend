@@ -8,7 +8,7 @@
 <template>
   <div class="bg-pagetitle">
     <div class="app-container text-white py-24 mb-24">
-      <h1 class="text-h2-b">Find doctors</h1>
+      <h1 class="text-h2-b">{{ title }}</h1>
       <div v-if="breadCrumbs" class="text-sm">
         <nuxt-link v-for="(breadCrumb, i) in breadCrumbs" :to="breadCrumb.path">
           {{ breadCrumb.name }}

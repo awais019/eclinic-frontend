@@ -7,9 +7,22 @@
   @apply my-3 relative;
 }
 
-.formkit-label::after {
+.formkit-label::after,
+.formkit-legend::after {
   content: "*";
   @apply text-torch-red;
+}
+
+.formkit-option > .formkit-wrapper > .formkit-label::after {
+  content: "";
+}
+
+.formkit-options {
+  @apply flex gap-24;
+}
+
+.formkit-option > .formkit-wrapper {
+  @apply flex items-center gap-3;
 }
 
 button[type="submit"] {

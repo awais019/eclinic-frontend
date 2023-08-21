@@ -59,11 +59,18 @@
             {{ doctor.workingHours.endTime }}
           </span>
         </p>
-        <button
-          class="bg-primary-blue-ribbon shadow-variant1 text-white text-base-sb py-3 rounded-lg"
+        <p class="flex gap-3 flex-wrap text-base-md">
+          <span class="text-neutral-dusty-gray">Appointment Types: </span>
+          <span v-for="atype in doctor.appointment_types_allowed">
+            {{ atype }}
+          </span>
+        </p>
+        <nuxt-link
+          :to="`/doctors/${id}/appointment`"
+          class="bg-primary-blue-ribbon shadow-variant1 text-white text-base-sb py-3 rounded-lg text-center cursor-pointer"
         >
           Book Appointment
-        </button>
+        </nuxt-link>
       </div>
     </section>
     <section class="py-24 border-b border-neutral-gallery">
