@@ -79,3 +79,45 @@ option {
 .Vue-Toastification__toast-body {
   @apply inline-block font-semibold text-xl !important;
 }
+
+/* vue date picker */
+
+.dp__active_date {
+  @apply bg-primary-blue-ribbon text-neutral-white rounded-full font-sans !important;
+}
+
+.dp__action_row {
+  @apply hidden !important;
+}
+
+.dp__menu {
+  @apply border-neutral-gallery bg-white rounded-2xl !important;
+}
+.dp__flex_display {
+  @apply flex flex-col !important;
+}
+
+.dp__menu_inner {
+  @apply px-6 py-4 !important;
+}
+
+.dp__month_year_wrap,
+.dp__inner_nav {
+  @apply text-base font-semibold text-neutral-mine-shaft !important;
+}
+
+.dp__month_year_row {
+  @apply mb-6;
+}
+
+.dp__calendar_header {
+  @apply text-neutral-dusty-gray text-xs font-medium uppercase !important;
+}
+
+.dp__calendar_header_item {
+  @apply text-left !important;
+}
+
+.dp__calendar_header_separator {
+  @apply hidden !important;
+}

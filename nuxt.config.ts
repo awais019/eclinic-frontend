@@ -37,4 +37,7 @@ export default defineNuxtConfig({
     },
   },
   plugins: ["~/plugins/toaster.client"],
+  build: {
+    transpile: ["@vuepic/vue-datepicker"],
+  },
 });

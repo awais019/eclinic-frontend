@@ -99,6 +99,9 @@
           <FormKit type="radio" label="Appointment Type" :options="options" />
         </div>
       </FormKit>
+      <div class="flex flex-col sm:flex-row">
+        <DatePicker :doctor-id="(id as string)" />
+      </div>
     </section>
   </div>
 </template>
