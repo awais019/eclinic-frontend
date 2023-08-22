@@ -81,7 +81,7 @@
         </p>
       </div>
     </section>
-    <section class="py-24 border-b border-neutral-gallery">
+    <section class="py-24">
       <h3
         class="text-h3-b max-w-fit mb-6 mx-auto relative after:absolute after:bg-primary-blue-ribbon after:h-0.5 after:content-[''] after:bottom-0 after:left-0 after:right-1/4"
       >
@@ -118,6 +118,23 @@
             :day="tomorrowDay"
           />
         </div>
+      </div>
+      <div class="mt-6 2xl:w-3/4">
+        <FormKit
+          type="textarea"
+          name="message"
+          label="Message"
+          placeholder="Write details about symptoms patient is experiencing"
+          validation="required"
+          rows="10"
+        />
+      </div>
+      <div class="md:max-w-fit">
+        <FormKit
+          type="submit"
+          name="confirm appointment"
+          label="Confirm Appointment"
+        />
       </div>
     </section>
   </div>

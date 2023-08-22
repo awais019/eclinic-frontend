@@ -33,6 +33,10 @@ button[type="submit"] {
   @apply w-full;
 }
 
+button[name="confirm appointment"] {
+  @apply px-8;
+}
+
 .formkit-message {
   @apply text-xs text-torch-red;
 }
@@ -42,8 +46,9 @@ button[type="submit"] {
 }
 
 input,
-select {
-  @apply w-full text-neutral-dusty-gray px-6 py-3 border-[1px] rounded-lg bg-transparent;
+select,
+textarea {
+  @apply w-full text-neutral-dusty-gray px-6 py-3 border-[1px] rounded-lg bg-transparent resize-none focus:outline-none;
 }
 
 input:focus,
