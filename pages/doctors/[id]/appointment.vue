@@ -43,6 +43,12 @@
   const tomorrowDay = computed(() => {
     return currentDate.value.toLocaleString("en-us", { weekday: "long" });
   });
+
+  const timeSlot = ref<string | null>(null);
+
+  function submitHandler(values: any) {
+    console.log(values);
+  }
 </script>
 
 <template>
@@ -92,50 +98,61 @@
         below. The information you provide will help us to schedule your
         appointment and ensure that you receive the appropriate care.
       </p>
-      <FormKit type="form" :actions="false">
+      <FormKit type="form" :actions="false" @submit="submitHandler">
         <div class="sm:flex sm:items-center sm:gap-24">
           <FormKit
             type="text"
-            name="full_name"
+            name="Patient Name"
             label="Patient Name"
             placeholder="Patient Full Name"
             validation="required"
             class="input"
           />
-          <FormKit type="radio" label="Appointment Type" :options="options" />
-        </div>
-      </FormKit>
-      <div class="flex flex-col gap-8 mt-6 md:flex-row">
-        <div class="flex flex-col gap-3 basis-1/2">
-          <span>Choose Date<span class="text-torch-red">*</span> </span>
-          <DatePicker :doctor-id="(id as string)" />
-        </div>
-        <div class="flex flex-col gap-3 sm:basis-1/3">
-          <span>Choose Time Slot<span class="text-torch-red">*</span> </span>
-          <TimeSlots
-            :doctor-id="(id as string)"
-            :date="currentDate"
-            :day="tomorrowDay"
+          <FormKit
+            type="radio"
+            name="type"
+            label="Appointment Type"
+            :options="options"
+            validation="required"
           />
         </div>
-      </div>
-      <div class="mt-6 2xl:w-3/4">
-        <FormKit
-          type="textarea"
-          name="message"
-          label="Message"
-          placeholder="Write details about symptoms patient is experiencing"
-          validation="required"
-          rows="10"
-        />
-      </div>
-      <div class="md:max-w-fit">
-        <FormKit
-          type="submit"
-          name="confirm appointment"
-          label="Confirm Appointment"
-        />
-      </div>
+
+        <div class="flex flex-col gap-8 mt-6 md:flex-row">
+          <div class="flex flex-col gap-3 basis-1/2">
+            <span>Choose Date<span class="text-torch-red">*</span> </span>
+            <DatePicker
+              :doctor-id="(id as string)"
+              @update:date="(selectedDate: Date) => currentDate = selectedDate"
+            />
+          </div>
+          <div class="flex flex-col gap-3 sm:basis-1/3">
+            <span>Choose Time Slot<span class="text-torch-red">*</span> </span>
+            <TimeSlots
+              :doctor-id="(id as string)"
+              :date="currentDate"
+              :day="tomorrowDay"
+              @update:timeSlot="(selectedSlot: string) => timeSlot = selectedSlot"
+            />
+          </div>
+        </div>
+        <div class="mt-6 2xl:w-3/4">
+          <FormKit
+            type="textarea"
+            name="message"
+            label="Message"
+            placeholder="Write details about symptoms patient is experiencing"
+            validation="required"
+            rows="10"
+          />
+        </div>
+        <div class="md:max-w-fit">
+          <FormKit
+            type="submit"
+            name="confirm appointment"
+            label="Confirm Appointment"
+          />
+        </div>
+      </FormKit>
     </section>
   </div>
 </template>

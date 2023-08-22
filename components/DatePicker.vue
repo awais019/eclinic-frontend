@@ -6,6 +6,10 @@
     doctorId: string;
   }>();
 
+  const emits = defineEmits<{
+    (e: "update:date", selectedDate: Date): void;
+  }>();
+
   const { getTwoWeeks } = useSchedule();
 
   const { data } = await getTwoWeeks(props.doctorId);
@@ -21,7 +25,9 @@
   const selectedDate = ref<Date | null>(null);
 
   watch(selectedDate, () => {
-    console.log(selectedDate.value);
+    if (selectedDate.value) {
+      emits("update:date", selectedDate.value);
+    }
   });
 </script>
 
