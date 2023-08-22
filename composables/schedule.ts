@@ -1,5 +1,9 @@
+import useUserStore from "~/stores/userStore";
+
 export const useSchedule = () => {
   const { baseURL } = useRuntimeConfig().public;
+
+  const userStore = useUserStore();
 
   function getTwoWeeks(doctorId: string) {
     return useFetch<{
@@ -7,6 +11,9 @@ export const useSchedule = () => {
       data: { date: string; day: string; disable: boolean }[];
     }>(`doctors/${doctorId}/schedule`, {
       baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
     });
   }
 
@@ -17,6 +24,9 @@ export const useSchedule = () => {
         method: "POST",
         baseURL,
         body: { date, day },
+        headers: {
+          "X-Auth-Token": userStore.authToken as string,
+        },
       }
     );
   }

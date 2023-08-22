@@ -77,7 +77,7 @@
           <IconsChevron2 />
         </ComboboxButton>
         <ComboboxOptions
-          class="absolute bg-white inset-x-0 rounded-lg shadow-xl cursor-pointer text-neutral-dusty-gray max-w-96"
+          class="absolute bg-white inset-x-0 z-10 rounded-lg shadow-xl cursor-pointer text-neutral-dusty-gray max-w-96"
         >
           <ComboboxOption
             v-for="(specialization, index) in filteredSpecializations"
@@ -143,7 +143,7 @@
           <IconsChevron2 />
         </ComboboxButton>
         <ComboboxOptions
-          class="absolute bg-white inset-x-0 py-4 rounded-lg shadow-xl cursor-pointer text-neutral-dusty-gray max-w-96"
+          class="absolute bg-white inset-x-0 py-4 rounded-lg shadow-xl cursor-pointer text-neutral-dusty-gray max-w-96 z-10"
         >
           <ComboboxOption
             v-for="(specialization, index) in filteredSpecializations"

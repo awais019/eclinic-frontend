@@ -1,7 +1,9 @@
 import { DoctorsResponse, Doctor } from "~/types/APIResponse";
+import useUserStore from "~/stores/userStore";
 
 export function useDoctor() {
   const { baseURL } = useRuntimeConfig().public;
+  const userStore = useUserStore();
   async function registerDoctor(newDoctor: FormData) {
     const { data, error } = await useFetch("/doctors/register", {
       method: "POST",
@@ -46,6 +48,9 @@ export function useDoctor() {
     }>(`/doctors/${id}`, {
       method: "GET",
       baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
     });
   }
 
