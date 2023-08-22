@@ -91,8 +91,8 @@ option {
   @apply bg-primary-blue-ribbon text-neutral-white rounded-full font-sans !important;
 }
 
-.dp__action_row {
-  @apply hidden !important;
+.dp__action_button {
+  @apply bg-primary-blue-ribbon text-white p-2 font-medium !important;
 }
 
 .dp__menu {

@@ -27,8 +27,10 @@
         slot.start == selectedSlot
           ? 'bg-primary-blue-ribbon text-white'
           : 'bg-neutral-wild-sand',
+        slot.disable ? 'text-neutral-mine-shaft cursor-not-allowed' : '',
         ' px-6 py-3 rounded-lg',
       ]"
+      :disabled="slot.disable"
       @click="selectSlot(slot.start)"
     >
       {{ slot.start }}

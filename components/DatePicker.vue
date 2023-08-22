@@ -17,18 +17,23 @@
       }
     }) as string[];
   });
+
+  const selectedDate = ref<Date | null>(null);
+
+  watch(selectedDate, () => {
+    console.log(selectedDate.value);
+  });
 </script>
 
 <template>
   <VueDatePicker
     v-if="data"
+    v-model="selectedDate"
     inline
     :enable-time-picker="false"
     no-today
     :allowed-dates="allowedDates"
-  >
-    <template #action-buttons> </template>
-  </VueDatePicker>
+  />
   <div v-else>Error fetching schedule</div>
 </template>
 
