@@ -22,7 +22,9 @@
     }) as string[];
   });
 
-  const selectedDate = ref<Date | null>(null);
+  const selectedDate = ref<Date | null>(
+    new Date(allowedDates.value[0]) || null
+  );
 
   watch(selectedDate, () => {
     if (selectedDate.value) {

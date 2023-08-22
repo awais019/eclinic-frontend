@@ -12,6 +12,7 @@
   const { getTimeSlots } = useSchedule();
 
   const { date } = toRefs(props);
+  date.value.setHours(0, 0, 0, 0);
 
   const slots = ref<
     { start: string; end: string; disable: boolean }[] | undefined
@@ -28,11 +29,12 @@
   };
 
   watch(date, async () => {
+    date.value.setHours(0, 0, 0, 0);
     const { data } = await getTimeSlots(props.doctorId, date.value, props.day);
     slots.value = data.value ? data.value : undefined;
   });
 
-  watch(selectSlot, () => {
+  watch(selectedSlot, () => {
     if (selectedSlot.value) {
       emits("update:timeSlot", selectedSlot.value);
     }
@@ -50,11 +52,13 @@
         slot.start == selectedSlot
           ? 'bg-primary-blue-ribbon text-white'
           : 'bg-neutral-wild-sand',
-        slot.disable ? 'text-neutral-mine-shaft cursor-not-allowed' : '',
-        ' px-6 py-3 rounded-lg',
+        slot.disable
+          ? 'relative after:absolute after:inset-0 after:bg-torch-red after:opacity-50 after:rounded-lg cursor-not-allowed'
+          : '',
+        'px-6 py-3 rounded-lg',
       ]"
       :disabled="slot.disable"
-      @click="selectSlot(slot.start)"
+      @click.prevent="selectSlot(slot.start)"
     >
       {{ slot.start }}
     </button>

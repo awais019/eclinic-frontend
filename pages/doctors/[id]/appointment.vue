@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { setErrors } from "@formkit/core";
   import { Doctor } from "~/types/APIResponse";
 
   const { id } = useRoute().params;
@@ -9,6 +10,8 @@
     { name: "Doctor Profile", path: `/doctors/${id}` },
     { name: "Book Appointment", path: `/doctors/${id}/appointment` },
   ]);
+
+  const formId = ref("appointment-form");
 
   const { getDoctor } = useDoctor();
   const doctor = ref<Doctor | null>(null);
@@ -44,10 +47,33 @@
     return currentDate.value.toLocaleString("en-us", { weekday: "long" });
   });
 
-  const timeSlot = ref<string | null>(null);
+  const creatingAppointment = ref(false);
 
-  function submitHandler(values: any) {
-    console.log(values);
+  const timeSlot = ref<string | null>(null);
+  const { createAppointment } = useAppointment();
+
+  async function submitHandler(values: {
+    patient_name: string;
+    message: string;
+    appointment_type: string;
+  }) {
+    if (!timeSlot.value || !currentDate.value) {
+      setErrors(formId.value, "Select date and time slot");
+      return;
+    }
+    creatingAppointment.value = true;
+
+    currentDate.value.setHours(0, 0, 0, 0);
+
+    const { data } = await createAppointment(
+      id as string,
+      values.patient_name,
+      currentDate.value,
+      timeSlot.value,
+      values.appointment_type,
+      values.message
+    );
+    creatingAppointment.value = false;
   }
 </script>
 
@@ -98,11 +124,16 @@
         below. The information you provide will help us to schedule your
         appointment and ensure that you receive the appropriate care.
       </p>
-      <FormKit type="form" :actions="false" @submit="submitHandler">
+      <FormKit
+        type="form"
+        :id="formId"
+        :actions="false"
+        @submit="submitHandler"
+      >
         <div class="sm:flex sm:items-center sm:gap-24">
           <FormKit
             type="text"
-            name="Patient Name"
+            name="patient_name"
             label="Patient Name"
             placeholder="Patient Full Name"
             validation="required"
@@ -110,7 +141,7 @@
           />
           <FormKit
             type="radio"
-            name="type"
+            name="appointment_type"
             label="Appointment Type"
             :options="options"
             validation="required"
@@ -155,6 +186,7 @@
       </FormKit>
     </section>
   </div>
+  <AppLoader v-if="creatingAppointment" />
 </template>
 
 <style scoped></style>
