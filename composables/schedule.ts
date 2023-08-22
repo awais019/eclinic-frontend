@@ -10,5 +10,16 @@ export const useSchedule = () => {
     });
   }
 
-  return { getTwoWeeks };
+  function getTimeSlots(doctorId: string, date: Date, day: string) {
+    return useFetch<{ start: string; end: string; disable: boolean }[]>(
+      `doctors/${doctorId}/timeSlots`,
+      {
+        method: "POST",
+        baseURL,
+        body: { date, day },
+      }
+    );
+  }
+
+  return { getTwoWeeks, getTimeSlots };
 };

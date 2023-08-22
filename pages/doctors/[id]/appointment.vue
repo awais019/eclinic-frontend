@@ -37,6 +37,12 @@
       });
     });
   }
+
+  const currentDate = ref(new Date());
+  currentDate.value.setDate(currentDate.value.getDate() + 1);
+  const tomorrowDay = computed(() => {
+    return currentDate.value.toLocaleString("en-us", { weekday: "long" });
+  });
 </script>
 
 <template>
@@ -99,8 +105,19 @@
           <FormKit type="radio" label="Appointment Type" :options="options" />
         </div>
       </FormKit>
-      <div class="flex flex-col sm:flex-row">
-        <DatePicker :doctor-id="(id as string)" />
+      <div class="flex flex-col gap-8 mt-6 md:flex-row">
+        <div class="flex flex-col gap-3 basis-1/2">
+          <span>Choose Date<span class="text-torch-red">*</span> </span>
+          <DatePicker :doctor-id="(id as string)" />
+        </div>
+        <div class="flex flex-col gap-3 sm:basis-1/3">
+          <span>Choose Time Slot<span class="text-torch-red">*</span> </span>
+          <TimeSlots
+            :doctor-id="(id as string)"
+            :date="currentDate"
+            :day="tomorrowDay"
+          />
+        </div>
       </div>
     </section>
   </div>
