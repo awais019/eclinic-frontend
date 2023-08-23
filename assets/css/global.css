@@ -126,3 +126,7 @@ option {
 .dp__calendar_header_separator {
   @apply hidden !important;
 }
+
+.dp__action_row {
+  @apply hidden !important;
+}

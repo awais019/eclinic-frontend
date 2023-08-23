@@ -26,6 +26,10 @@
     new Date(allowedDates.value[0]) || null
   );
 
+  function handleChange(date: Date) {
+    selectedDate.value = date;
+  }
+
   watch(selectedDate, () => {
     if (selectedDate.value) {
       emits("update:date", selectedDate.value);
@@ -36,11 +40,11 @@
 <template>
   <VueDatePicker
     v-if="data"
-    v-model="selectedDate"
     inline
     :enable-time-picker="false"
     no-today
     :allowed-dates="allowedDates"
+    @internal-model-change="handleChange"
   />
   <div v-else>Error fetching schedule</div>
 </template>
