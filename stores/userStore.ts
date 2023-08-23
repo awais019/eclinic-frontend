@@ -87,5 +87,8 @@ function store() {
     isPatient: computed(() => {
       return user.value?.role === "PATIENT";
     }),
+    isDoctor: computed(() => {
+      return user.value?.role === "DOCTOR";
+    }),
   };
 }
