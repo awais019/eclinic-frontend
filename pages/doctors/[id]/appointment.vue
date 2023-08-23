@@ -47,6 +47,8 @@
     return currentDate.value.toLocaleString("en-us", { weekday: "long" });
   });
 
+  const creatingAppointment = ref(false);
+
   const timeSlot = ref<string | null>(null);
   const { createAppointment } = useAppointment();
 
@@ -62,6 +64,7 @@
 
     currentDate.value.setHours(0, 0, 0, 0);
 
+    creatingAppointment.value = true;
     const { data } = await createAppointment(
       id as string,
       values.patient_name,
@@ -70,6 +73,7 @@
       values.appointment_type,
       values.message
     );
+    creatingAppointment.value = false;
     if (data.value) {
       navigateTo(data.value.data.paymentLink, {
         external: true,
@@ -114,7 +118,7 @@
         </p>
       </div>
     </section>
-    <section class="py-24">
+    <section class="py-24 relative">
       <h3
         class="text-h3-b max-w-fit mb-6 mx-auto relative after:absolute after:bg-primary-blue-ribbon after:h-0.5 after:content-[''] after:bottom-0 after:left-0 after:right-1/4"
       >
@@ -185,6 +189,7 @@
           />
         </div>
       </FormKit>
+      <AppLoader v-if="creatingAppointment" />
     </section>
   </div>
 </template>
