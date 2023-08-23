@@ -41,10 +41,11 @@
     });
   }
 
-  const currentDate = ref(new Date());
-  currentDate.value.setDate(currentDate.value.getDate() + 1);
+  const currentDate = ref<Date | null>(null);
   const tomorrowDay = computed(() => {
-    return currentDate.value.toLocaleString("en-us", { weekday: "long" });
+    return (
+      currentDate.value?.toLocaleString("en-us", { weekday: "long" }) || ""
+    );
   });
 
   const creatingAppointment = ref(false);
@@ -161,7 +162,7 @@
               @update:date="(selectedDate: Date) => currentDate = selectedDate"
             />
           </div>
-          <div class="flex flex-col gap-3 sm:basis-1/3">
+          <div class="flex flex-col gap-3 sm:basis-1/3" v-if="currentDate">
             <span>Choose Time Slot<span class="text-torch-red">*</span> </span>
             <TimeSlots
               :doctor-id="(id as string)"
