@@ -12,7 +12,10 @@ export const useAppointment = () => {
     appointment_type: string,
     message: string
   ) {
-    return useFetch("/appointments/create", {
+    return useFetch<{
+      message: string;
+      data: { paymentLink: string };
+    }>("/appointments/create", {
       method: "POST",
       baseURL,
       headers: {

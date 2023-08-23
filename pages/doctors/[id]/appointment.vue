@@ -70,6 +70,11 @@
       values.appointment_type,
       values.message
     );
+    if (data.value) {
+      navigateTo(data.value.data.paymentLink, {
+        external: true,
+      });
+    }
   }
 </script>
 
