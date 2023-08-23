@@ -7,8 +7,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
     userStore.isLoggedIn &&
     userStore.isDoctor &&
     !userStore.profileSetUp &&
-    to.path != "/"
+    to.path != "/" &&
+    to.path != "/profilesetup"
   ) {
-    return "/";
+    return "/profilesetup";
   }
 });
