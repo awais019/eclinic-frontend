@@ -84,5 +84,8 @@ function store() {
     last_name,
     email,
     image,
+    isPatient: computed(() => {
+      return user.value?.role === "PATIENT";
+    }),
   };
 }

@@ -7,6 +7,7 @@ interface User {
   gender: string;
   readonly image: string;
   password: string | null;
+  role: "PATIENT" | "DOCTOR";
 }
 
 interface Doctor extends User {

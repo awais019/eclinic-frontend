@@ -1,9 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  definePageMeta({
+    middleware: "dashboard",
+  });
+</script>
 
 <template>
   <div class="app-container">
     <DashboardProfileSection />
-    <Dashboard />
+    <PatientDashboard />
   </div>
 </template>
 
