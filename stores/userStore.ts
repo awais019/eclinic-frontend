@@ -90,5 +90,8 @@ function store() {
     isDoctor: computed(() => {
       return user.value?.role === "DOCTOR";
     }),
+    profileSetUp: computed(() => {
+      return user.value?.profile_setup;
+    }),
   };
 }

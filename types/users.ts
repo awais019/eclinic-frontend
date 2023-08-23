@@ -8,6 +8,7 @@ interface User {
   readonly image: string;
   password: string | null;
   role: "PATIENT" | "DOCTOR";
+  profile_setup: boolean;
 }
 
 interface Doctor extends User {
