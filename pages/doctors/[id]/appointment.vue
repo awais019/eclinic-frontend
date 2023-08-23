@@ -47,8 +47,6 @@
     return currentDate.value.toLocaleString("en-us", { weekday: "long" });
   });
 
-  const creatingAppointment = ref(false);
-
   const timeSlot = ref<string | null>(null);
   const { createAppointment } = useAppointment();
 
@@ -61,7 +59,6 @@
       setErrors(formId.value, "Select date and time slot");
       return;
     }
-    creatingAppointment.value = true;
 
     currentDate.value.setHours(0, 0, 0, 0);
 
@@ -73,7 +70,6 @@
       values.appointment_type,
       values.message
     );
-    creatingAppointment.value = false;
   }
 </script>
 
@@ -186,7 +182,6 @@
       </FormKit>
     </section>
   </div>
-  <AppLoader v-if="creatingAppointment" />
 </template>
 
 <style scoped></style>
