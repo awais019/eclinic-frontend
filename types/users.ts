@@ -38,4 +38,9 @@ interface Schedule {
   appointment_interval: number;
 }
 
-export { Doctor, Patient, Schedule };
+interface Charge {
+  appointment_type: string;
+  amount: number;
+}
+
+export { Doctor, Patient, Schedule, Charge };

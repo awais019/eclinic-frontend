@@ -10,6 +10,7 @@
   const index = ref(true);
   const phone = ref(false);
   const schedule = ref(false);
+  const charges = ref(false);
 
   function goToPhone() {
     index.value = false;
@@ -23,6 +24,14 @@
 
   function goToCharges() {
     schedule.value = false;
+    charges.value = true;
+  }
+
+  async function goToDashboard() {
+    console.log("goToDashboard");
+
+    await userStore.userMe();
+    navigateTo("/dashboard/doctor");
   }
 </script>
 
@@ -47,6 +56,10 @@
       <Schedule
         v-if="schedule || (userStore.phone && !index && !userStore.hasSchedule)"
         @continue="goToCharges"
+      />
+      <Charges
+        v-if="charges || (userStore.hasSchedule && userStore.phone && !index)"
+        @continue="goToDashboard"
       />
     </div>
   </div>
