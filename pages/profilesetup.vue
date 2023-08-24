@@ -1,10 +1,24 @@
 <script setup lang="ts">
+  import useUserStore from "~/stores/userStore";
+
   definePageMeta({
     layout: false,
   });
 
+  const userStore = useUserStore();
+
+  const index = ref(true);
+  const phone = ref(false);
+  const schedule = ref(false);
+
   function goToPhone() {
-    console.log("go to phone");
+    index.value = false;
+    phone.value = true;
+  }
+
+  function goToSchedule() {
+    phone.value = false;
+    schedule.value = true;
   }
 </script>
 
@@ -24,7 +38,8 @@
       <h1 class="text-h2-sb text-center text-primary-blue-ribbon">
         Profile Setup
       </h1>
-      <Profilesetup @continue="goToPhone" />
+      <Profilesetup @continue="goToPhone" v-if="index" />
+      <Phone v-if="phone" @continue="goToSchedule" />
     </div>
   </div>
 </template>

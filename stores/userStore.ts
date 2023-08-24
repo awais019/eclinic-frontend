@@ -90,6 +90,9 @@ function store() {
     isDoctor: computed(() => {
       return user.value?.role === "DOCTOR";
     }),
+    isPhoneVerified: computed(() => {
+      return !!user.value?.phone;
+    }),
     profileSetUp: computed(() => {
       return user.value?.profile_setup;
     }),

@@ -51,6 +51,15 @@ textarea {
   @apply w-full text-neutral-dusty-gray px-6 py-3 border-[1px] rounded-lg bg-transparent resize-none focus:outline-none;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 input:focus,
 select:focus {
   @apply outline-none;
