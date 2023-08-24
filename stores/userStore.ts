@@ -90,11 +90,17 @@ function store() {
     isDoctor: computed(() => {
       return user.value?.role === "DOCTOR";
     }),
-    isPhoneVerified: computed(() => {
-      return !!user.value?.phone;
-    }),
     profileSetUp: computed(() => {
       return user.value?.profile_setup;
+    }),
+    phone: computed(() => {
+      return user.value?.phone;
+    }),
+    hasSchedule: computed(() => {
+      if (user.value && user.value.role == "DOCTOR") {
+        const doctor = user.value as Doctor;
+        return doctor.schedule.length > 0;
+      }
     }),
   };
 }

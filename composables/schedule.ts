@@ -1,4 +1,5 @@
 import useUserStore from "~/stores/userStore";
+import { Schedule } from "~/types/users";
 
 export const useSchedule = () => {
   const { baseURL } = useRuntimeConfig().public;
@@ -31,5 +32,16 @@ export const useSchedule = () => {
     );
   }
 
-  return { getTwoWeeks, getTimeSlots };
+  function setSchedule(schedule: Schedule[]) {
+    return useFetch("doctors/schedule/set", {
+      method: "POST",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      body: schedule,
+    });
+  }
+
+  return { getTwoWeeks, getTimeSlots, setSchedule };
 };

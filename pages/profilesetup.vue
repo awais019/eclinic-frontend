@@ -20,6 +20,10 @@
     phone.value = false;
     schedule.value = true;
   }
+
+  function goToCharges() {
+    schedule.value = false;
+  }
 </script>
 
 <template>
@@ -33,13 +37,17 @@
       <img src="~/assets/images/signin.svg" alt="Decorative image" />
     </div>
     <div
-      class="flex flex-col gap-4 justify-center mt-12 tablet:mt-0 tablet:max-w-[30.5rem]"
+      class="flex flex-col gap-4 justify-center mt-12 tablet:mt-0 tablet:max-w-[44rem]"
     >
       <h1 class="text-h2-sb text-center text-primary-blue-ribbon">
         Profile Setup
       </h1>
       <Profilesetup @continue="goToPhone" v-if="index" />
-      <Phone v-if="phone" @continue="goToSchedule" />
+      <Phone v-if="phone && !userStore.phone" @continue="goToSchedule" />
+      <Schedule
+        v-if="schedule || (userStore.phone && !index && !userStore.hasSchedule)"
+        @continue="goToCharges"
+      />
     </div>
   </div>
 </template>

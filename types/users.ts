@@ -22,10 +22,20 @@ interface Doctor extends User {
     state: string;
   };
   degree: Blob;
+  schedule: Schedule[];
 }
 
 interface Patient extends User {
   birth_date: string;
 }
+interface Schedule {
+  day: string;
+  startTime: string;
+  endTime: string;
+  break_start: string;
+  break_end: string;
+  is_active: boolean;
+  appointment_interval: number;
+}
 
-export { Doctor, Patient };
+export { Doctor, Patient, Schedule };
