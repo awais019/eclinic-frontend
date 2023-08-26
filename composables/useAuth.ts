@@ -85,7 +85,7 @@ export const useAuth = () => {
     birthdate?: string;
   }) {
     const { authToken } = useUserStore();
-    const { data, error } = await useFetch<APIResponse<Patient>>("/auth/me", {
+    const { data, error } = await useFetch("/auth/me", {
       method: "PUT",
       headers: {
         "X-Auth-Token": authToken as string,
