@@ -1,11 +1,14 @@
-<script setup lang="ts">
+<script lang="ts" setup>
   definePageMeta({
     middleware: "dashboard",
   });
 </script>
 
 <template>
-  <div>Doctor dashboard</div>
+  <div class="app-container">
+    <DashboardProfileSection />
+    <DoctorDashboard />
+  </div>
 </template>
 
 <style scoped></style>
