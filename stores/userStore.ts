@@ -8,7 +8,8 @@ function store() {
 
   const { registerPatient } = usePatient();
   const { registerDoctor } = useDoctor();
-  const { signin, forgotpassword, resetpassword, me, uploadImage } = useAuth();
+  const { signin, forgotpassword, resetpassword, me, updateMe, uploadImage } =
+    useAuth();
 
   async function userSignin(email: string, password: string) {
     const { data, error } = await signin(email, password);
@@ -25,6 +26,28 @@ function store() {
       user.value = data.value.data;
     }
     return { data, error };
+  }
+
+  async function updateUserMe(info: {
+    first_name: string;
+    last_name: string;
+    gender: string;
+    specialization?: string;
+    birthdate?: string;
+  }) {
+    const { error } = await updateMe(info);
+    if (!user.value || error.value) {
+      return;
+    }
+    user.value.first_name = info.first_name;
+    user.value.last_name = info.last_name;
+    user.value.gender = info.gender;
+    if (info.specialization) {
+      (user.value as Doctor).specialization = info.specialization;
+    }
+    if (info.birthdate) {
+      (user.value as Patient).birth_date = info.birthdate;
+    }
   }
 
   function signout() {
@@ -56,6 +79,12 @@ function store() {
     }
   });
 
+  const gender = computed(() => {
+    if (user.value?.gender) {
+      return user.value.gender;
+    }
+  });
+
   const email = computed(() => {
     if (user.value?.email) {
       return user.value.email;
@@ -79,9 +108,11 @@ function store() {
     forgotpassword,
     resetpassword,
     userMe,
+    updateUserMe,
     isLoggedIn,
     first_name,
     last_name,
+    gender,
     email,
     image,
     isPatient: computed(() => {
@@ -100,6 +131,18 @@ function store() {
       if (user.value && user.value.role == "DOCTOR") {
         const doctor = user.value as Doctor;
         return doctor.schedule.length > 0;
+      }
+    }),
+    birth_date: computed(() => {
+      if (user.value && user.value.role == "PATIENT") {
+        const patient = user.value as Patient;
+        return patient.birth_date;
+      }
+    }),
+    specialization: computed(() => {
+      if (user.value && user.value.role == "DOCTOR") {
+        const doctor = user.value as Doctor;
+        return doctor.specialization;
       }
     }),
   };
