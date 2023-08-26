@@ -6,7 +6,10 @@ export const useAuth = () => {
   const { baseURL } = useRuntimeConfig().public;
 
   async function verifyEmail(token: string) {
-    const { data, error } = await useFetch("/auth/verifyEmail", {
+    const { data, error } = await useFetch<{
+      message: string;
+      data: string | null;
+    }>("/auth/verifyEmail", {
       method: "POST",
       body: {
         token,
@@ -21,6 +24,21 @@ export const useAuth = () => {
       method: "POST",
       body: {
         token,
+      },
+      baseURL,
+    });
+    return { data, error };
+  }
+
+  async function sendUpdateEmail(email: string) {
+    const { authToken } = useUserStore();
+    const { data, error } = await useFetch("/auth/sendUpdateEmail", {
+      method: "POST",
+      headers: {
+        "X-Auth-Token": authToken as string,
+      },
+      body: {
+        email,
       },
       baseURL,
     });
@@ -115,6 +133,7 @@ export const useAuth = () => {
   return {
     verifyEmail,
     resendVerificationEmail,
+    sendUpdateEmail,
     signin,
     forgotpassword,
     resetpassword,

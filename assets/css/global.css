@@ -37,7 +37,8 @@ button[name="confirm appointment"] {
   @apply px-8;
 }
 
-.formkit-message {
+.formkit-message,
+.formkit-help {
   @apply text-xs text-torch-red;
 }
 
