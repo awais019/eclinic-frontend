@@ -115,14 +115,12 @@
           :options="['Male', 'Female', 'Other']"
           validation="required"
         />
-        <div
-          class="tablet:grid tablet:grid-flow-col tablet:grid-cols-2 tablet:gap-3 tablet:items-baseline"
-        >
+        <div class="grid grid-cols-2 gap-3 items-baseline">
           <FormKit type="submit" label="Save Changes" />
           <input
             type="reset"
             value="Cancel"
-            class="cursor-pointer border border-neutral-dusty-gray shadow-variant11"
+            class="cursor-pointer border border-neutral-dusty-gray shadow-variant11 py-3.5"
           />
         </div>
       </FormKit>
