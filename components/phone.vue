@@ -9,7 +9,7 @@
   const phoneFormId = "phone-number";
   const codeFormId = "phone-code";
   const phone = ref("");
-  const formaettedPhone = ref("");
+  const formatted = ref("");
   const code = ref("");
 
   const verifyPhone = ref(false);
@@ -22,7 +22,7 @@
       setErrors(phoneFormId, "Invalid phone number");
       return;
     }
-    formaettedPhone.value = phoneNumber.number;
+    formatted.value = phoneNumber.number;
     const { error } = await getVerificationCode(phoneNumber.number);
     if (error.value) {
       setErrors(phoneFormId, error.value.data);
@@ -32,7 +32,7 @@
   }
 
   async function verifySubmitHandler() {
-    const { error } = await verifyCode(formaettedPhone.value, code.value);
+    const { error } = await verifyCode(formatted.value, code.value);
     if (error.value) {
       setErrors(codeFormId, error.value.data);
     } else {

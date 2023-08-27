@@ -63,6 +63,13 @@ function store() {
     return { data, error };
   }
 
+  function updatePhone(phone: string) {
+    if (!user.value) {
+      return;
+    }
+    user.value.phone = phone;
+  }
+
   const isLoggedIn = computed(() => {
     return !!authToken.value;
   });
@@ -105,6 +112,7 @@ function store() {
     userSignin,
     signout,
     uploadProfileImage,
+    updatePhone,
     forgotpassword,
     resetpassword,
     userMe,
