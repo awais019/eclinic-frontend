@@ -3,6 +3,10 @@
   import { reset } from "@formkit/core";
   import useUserStore from "~/stores/userStore";
 
+  definePageMeta({
+    middleware: "auth",
+  });
+
   const breadCrumbs = ref([
     {
       name: "Home",

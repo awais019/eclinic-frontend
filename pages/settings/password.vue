@@ -2,6 +2,10 @@
   import { reset, setErrors } from "@formkit/core";
   import { useToast } from "vue-toastification";
 
+  definePageMeta({
+    middleware: "auth",
+  });
+
   const breadCrumbs = ref([
     {
       name: "Home",

@@ -1,6 +1,10 @@
 <script lang="ts" setup>
   import useUserStore from "~/stores/userStore";
 
+  definePageMeta({
+    middleware: "auth",
+  });
+
   const breadCrumbs = ref<{ name: string; path: string }[]>([
     { name: "Home", path: "/" },
     { name: "Dashboard", path: "/dashboard" },

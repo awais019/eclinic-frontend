@@ -4,6 +4,10 @@
   import { useToast } from "vue-toastification";
   import useUserStore from "~/stores/userStore";
 
+  definePageMeta({
+    middleware: "auth",
+  });
+
   const breadCrumbs = ref([
     {
       name: "Home",
