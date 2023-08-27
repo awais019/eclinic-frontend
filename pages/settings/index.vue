@@ -3,6 +3,7 @@
 
   const breadCrumbs = ref<{ name: string; path: string }[]>([
     { name: "Home", path: "/" },
+    { name: "Dashboard", path: "/dashboard" },
     { name: "Settings", path: "/settings" },
   ]);
 

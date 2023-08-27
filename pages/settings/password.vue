@@ -8,6 +8,10 @@
       path: "/",
     },
     {
+      name: "Dashboard",
+      path: "/dashboard",
+    },
+    {
       name: "Settings",
       path: "/settings",
     },
