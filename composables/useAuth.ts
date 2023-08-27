@@ -83,6 +83,26 @@ export const useAuth = () => {
     return { data, error };
   }
 
+  async function updatePassword(
+    current_password: string,
+    new_password: string
+  ) {
+    const { authToken } = useUserStore();
+    const { data, error } = await useFetch("/auth/updatepassword", {
+      method: "POST",
+      headers: {
+        "X-Auth-Token": authToken as string,
+      },
+      body: {
+        current_password,
+        new_password,
+      },
+      baseURL,
+    });
+
+    return { data, error };
+  }
+
   async function me() {
     const { authToken } = useUserStore();
     const { data, error } = await useFetch<APIResponse<Patient>>("/auth/me", {
@@ -137,6 +157,7 @@ export const useAuth = () => {
     signin,
     forgotpassword,
     resetpassword,
+    updatePassword,
     me,
     updateMe,
     uploadImage,
