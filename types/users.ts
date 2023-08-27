@@ -14,13 +14,10 @@ interface User {
 interface Doctor extends User {
   specialization: string;
   charges: string;
-  location: {
-    lat: number;
-    lng: number;
-    address: string;
-    city: string;
-    state: string;
-  };
+  hospital_clinic_name: string;
+  address: string;
+  city: string;
+  state: string;
   degree: Blob;
   schedule: Schedule[];
 }

@@ -8,8 +8,15 @@ function store() {
 
   const { registerPatient } = usePatient();
   const { registerDoctor } = useDoctor();
-  const { signin, forgotpassword, resetpassword, me, updateMe, uploadImage } =
-    useAuth();
+  const {
+    signin,
+    forgotpassword,
+    resetpassword,
+    me,
+    updateMe,
+    updateHospital,
+    uploadImage,
+  } = useAuth();
 
   async function userSignin(email: string, password: string) {
     const { data, error } = await signin(email, password);
@@ -50,6 +57,28 @@ function store() {
     }
   }
 
+  async function updateHospitalInfo(
+    hospital_clinic_name: string,
+    address: string,
+    city: string,
+    state: string
+  ) {
+    const { data, error } = await updateHospital(
+      hospital_clinic_name,
+      address,
+      city,
+      state
+    );
+    if (!user.value || error.value) {
+      return { data, error };
+    }
+    (user.value as Doctor).hospital_clinic_name = hospital_clinic_name;
+    (user.value as Doctor).address = address;
+    (user.value as Doctor).city = city;
+    (user.value as Doctor).state = state;
+    return { data, error };
+  }
+
   function signout() {
     authToken.value = null;
     user.value = null;
@@ -72,6 +101,18 @@ function store() {
 
   const isLoggedIn = computed(() => {
     return !!authToken.value;
+  });
+
+  const isPatient = computed(() => {
+    return user.value?.role === "PATIENT";
+  });
+
+  const isDoctor = computed(() => {
+    return user.value?.role === "DOCTOR";
+  });
+
+  const profileSetUp = computed(() => {
+    return user.value?.profile_setup;
   });
 
   const first_name = computed(() => {
@@ -98,6 +139,61 @@ function store() {
     }
   });
 
+  const phone = computed(() => {
+    if (user.value?.phone) {
+      return user.value.phone;
+    }
+  });
+
+  const birth_date = computed(() => {
+    if (user.value && user.value.role == "PATIENT") {
+      const patient = user.value as Patient;
+      return patient.birth_date;
+    }
+  });
+
+  const specialization = computed(() => {
+    if (user.value && user.value.role == "DOCTOR") {
+      const doctor = user.value as Doctor;
+      return doctor.specialization;
+    }
+  });
+
+  const hasSchedule = computed(() => {
+    if (user.value && user.value.role == "DOCTOR") {
+      const doctor = user.value as Doctor;
+      return doctor.schedule.length > 0;
+    }
+  });
+
+  const hospital_clinicName = computed(() => {
+    if (user.value && user.value.role == "DOCTOR") {
+      const doctor = user.value as Doctor;
+      return doctor.hospital_clinic_name;
+    }
+  });
+
+  const address = computed(() => {
+    if (user.value && user.value.role == "DOCTOR") {
+      const doctor = user.value as Doctor;
+      return doctor.address;
+    }
+  });
+
+  const city = computed(() => {
+    if (user.value && user.value.role == "DOCTOR") {
+      const doctor = user.value as Doctor;
+      return doctor.city;
+    }
+  });
+
+  const state = computed(() => {
+    if (user.value && user.value.role == "DOCTOR") {
+      const doctor = user.value as Doctor;
+      return doctor.state;
+    }
+  });
+
   const image = computed(() => {
     if (user.value?.image) {
       return user.value.image;
@@ -117,41 +213,23 @@ function store() {
     resetpassword,
     userMe,
     updateUserMe,
+    updateHospitalInfo,
     isLoggedIn,
     first_name,
     last_name,
     gender,
     email,
     image,
-    isPatient: computed(() => {
-      return user.value?.role === "PATIENT";
-    }),
-    isDoctor: computed(() => {
-      return user.value?.role === "DOCTOR";
-    }),
-    profileSetUp: computed(() => {
-      return user.value?.profile_setup;
-    }),
-    phone: computed(() => {
-      return user.value?.phone;
-    }),
-    hasSchedule: computed(() => {
-      if (user.value && user.value.role == "DOCTOR") {
-        const doctor = user.value as Doctor;
-        return doctor.schedule.length > 0;
-      }
-    }),
-    birth_date: computed(() => {
-      if (user.value && user.value.role == "PATIENT") {
-        const patient = user.value as Patient;
-        return patient.birth_date;
-      }
-    }),
-    specialization: computed(() => {
-      if (user.value && user.value.role == "DOCTOR") {
-        const doctor = user.value as Doctor;
-        return doctor.specialization;
-      }
-    }),
+    isPatient,
+    isDoctor,
+    profileSetUp,
+    phone,
+    hasSchedule,
+    birth_date,
+    specialization,
+    hospital_clinicName,
+    address,
+    city,
+    state,
   };
 }

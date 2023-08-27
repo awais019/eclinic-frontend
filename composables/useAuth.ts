@@ -134,6 +134,29 @@ export const useAuth = () => {
     return { data, error };
   }
 
+  async function updateHospital(
+    hospital_clinic_name: string,
+    address: string,
+    city: string,
+    state: string
+  ) {
+    const { authToken } = useUserStore();
+    const { data, error } = await useFetch("/auth/updatehospital", {
+      method: "POST",
+      headers: {
+        "X-Auth-Token": authToken as string,
+      },
+      baseURL,
+      body: {
+        hospital_clinic_name,
+        address,
+        city,
+        state,
+      },
+    });
+    return { data, error };
+  }
+
   async function uploadImage(file: FormData) {
     const { authToken } = useUserStore();
     const { data, error } = await useFetch<APIResponse<{ image: string }>>(
@@ -160,6 +183,7 @@ export const useAuth = () => {
     updatePassword,
     me,
     updateMe,
+    updateHospital,
     uploadImage,
   };
 };

@@ -29,7 +29,6 @@
   const _gender = computed(() => gender.value);
   const _specialization = computed(() => specialization.value);
 
-  const updating = ref(false);
   const formId = ref("personal-info");
   const date = new Date().toISOString().slice(0, 10);
 
