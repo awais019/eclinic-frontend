@@ -24,7 +24,7 @@
 </script>
 
 <template>
-  <div class="flex items-center justify-center gap-3">
+  <div class="flex items-center justify-center gap-3 -z-10">
     <div
       class="w-[72px] h-[72px] bg-gradient_2 rounded-2xl tablet:w-36 tablet:h-36"
     >

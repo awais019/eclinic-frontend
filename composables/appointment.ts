@@ -1,3 +1,4 @@
+import { Appointment } from "~/types/APIResponse";
 import useUserStore from "~/stores/userStore";
 
 export const useAppointment = () => {
@@ -32,5 +33,21 @@ export const useAppointment = () => {
     });
   }
 
-  return { createAppointment };
+  function upcomingAppointments(date?: Date) {
+    return useFetch<{
+      message: string;
+      data: Appointment[];
+    }>("/appointments", {
+      method: "GET",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      query: {
+        date: date ? date.toISOString() : new Date().toISOString(),
+      },
+    });
+  }
+
+  return { createAppointment, upcomingAppointments };
 };
