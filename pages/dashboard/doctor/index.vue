@@ -18,6 +18,9 @@
       title="Dashboard"
       :subtitle="`Welcome Back Dr. ${first_name}`"
     />
+    <section class="py-8 px-16 2xl:px-36">
+      <DoctorStatistics />
+    </section>
   </div>
 </template>
 
