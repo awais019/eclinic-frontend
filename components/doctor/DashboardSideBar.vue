@@ -33,7 +33,7 @@
         <span>Appointment</span>
       </nuxt-link>
       <nuxt-link
-        to="/dashboard/doctor/schedule"
+        to="/dashboard/doctor/availability"
         class="py-6 px-16 flex items-center gap-4"
       >
         <IconsClock />
@@ -66,7 +66,7 @@
     @apply mx-0;
   }
 
-  .router-link-active {
+  .router-link-exact-active {
     @apply border-l-2 border-white bg-[#1061E5];
   }
 </style>
