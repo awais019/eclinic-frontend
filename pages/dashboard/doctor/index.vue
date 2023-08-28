@@ -19,6 +19,9 @@
       :subtitle="`Welcome Back Dr. ${first_name}`"
     />
     <section class="py-8 px-16 2xl:px-36">
+      <div class="pt-12 pb-20 flex">
+        <ProfileImage />
+      </div>
       <DoctorStatistics />
     </section>
   </div>
