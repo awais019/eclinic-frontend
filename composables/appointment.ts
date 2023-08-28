@@ -62,5 +62,43 @@ export const useAppointment = () => {
     });
   }
 
-  return { createAppointment, upcomingAppointments, appointmentRequests };
+  function acceptAppointment(appointmentId: string) {
+    return useFetch<{
+      message: string;
+      data: null;
+    }>("/appointments/requests/accept", {
+      method: "POST",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      body: {
+        appointmentId,
+      },
+    });
+  }
+
+  function rejectAppointment(appointmentId: string) {
+    return useFetch<{
+      message: string;
+      data: null;
+    }>("/appointments/requests/reject", {
+      method: "POST",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      body: {
+        appointmentId,
+      },
+    });
+  }
+
+  return {
+    createAppointment,
+    upcomingAppointments,
+    appointmentRequests,
+    acceptAppointment,
+    rejectAppointment,
+  };
 };

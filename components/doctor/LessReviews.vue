@@ -9,7 +9,7 @@
     <h2 class="font-semibold px-6 py-4 border-b border-neutral-gallery">
       Patient Reviews
     </h2>
-    <ul v-if="data">
+    <ul v-if="data && data.data.length">
       <li
         v-for="(review, index) in data.data.slice(0, 3)"
         :key="review.id"
@@ -23,19 +23,17 @@
           :alt="review.user.firstName"
           class="w-12 h-12 rounded-lg"
         />
-        <div class="flex justify-between items-center grow">
-          <p class="text-sm flex flex-col gap-4">
-            <span class="font-semibold"
-              >{{ review.user.firstName }} {{ review.user.lastName }}</span
-            >
-            <span class="text-neutral-dusty-gray">{{
-              shrinkText(review.review, 30)
-            }}</span>
-          </p>
-          <span>
-            <IconsFillstar v-for="i in review.rating" />
-            <IconsStar v-for="i in 5 - review.rating" />
-          </span>
+        <p class="text-sm flex flex-col gap-4">
+          <span class="font-semibold"
+            >{{ review.user.firstName }} {{ review.user.lastName }}</span
+          >
+          <span class="text-neutral-dusty-gray">{{
+            shrinkText(review.review, 30)
+          }}</span>
+        </p>
+        <div class="ml-auto">
+          <IconsFillstar v-for="i in review.rating" />
+          <IconsStar v-for="i in 5 - review.rating" />
         </div>
       </li>
     </ul>
