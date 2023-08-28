@@ -65,6 +65,7 @@ export interface Appointment {
   type: string;
   charges: number;
   image: string;
+  message?: string;
 }
 
 export default APIResponse;

@@ -41,11 +41,7 @@
             <div class="flex flex-col gap-3">
               <span class="font-semibold">{{ appointment.patient_name }}</span>
               <span class="text-neutral-dusty-gray text-sm">{{
-                new Date(appointment.date).toLocaleDateString("default", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })
+                formatDate(appointment.date)
               }}</span>
               <span class="text-sm text-neutral-dusty-gray">{{
                 appointment.time

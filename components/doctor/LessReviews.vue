@@ -1,11 +1,7 @@
 <script setup lang="ts">
   const { getReviews } = useReviews();
 
-  const { data, error } = await getReviews();
-
-  function shrinkText(text: string, length: number) {
-    return text.length > length ? text.substring(0, length) + "..." : text;
-  }
+  const { data } = await getReviews();
 </script>
 
 <template>
@@ -17,7 +13,7 @@
       <li
         v-for="(review, index) in data.data.slice(0, 3)"
         :key="review.id"
-        class="flex gap-4 py-3 px-6 justify-start"
+        class="flex gap-4 py-4 px-6 justify-start"
         :class="{
           'border-b border-neutral-gallery': index != data.data.length - 1,
         }"
@@ -43,7 +39,7 @@
         </div>
       </li>
     </ul>
-    <p class="py-3 text-neutral-dusty-gray" v-else>No reviews yet.</p>
+    <p class="py-4 px-6 text-neutral-dusty-gray" v-else>No reviews yet.</p>
   </div>
 </template>
 

@@ -28,8 +28,9 @@
         <DoctorStatistics />
         <div class="flex justify-between items-start">
           <DoctorUpcomingAppointments />
-          <div>
+          <div class="flex flex-col gap-8">
             <DoctorLessReviews />
+            <DoctorAppointmentRequests />
           </div>
         </div>
       </section>
