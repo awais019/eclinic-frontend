@@ -53,7 +53,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="z-10">
     <div
       ref="dropdown"
       class="dropdown shadow-variant3 p-6 bg-white rounded-lg text-sm font-medium text-neutral-dusty-gray"

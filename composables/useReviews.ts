@@ -4,7 +4,8 @@ import useUserStore from "~/stores/userStore";
 export const useReviews = () => {
   const { baseURL } = useRuntimeConfig().public;
   const userStore = useUserStore();
-  function getReviews(id: string) {
+
+  async function getReviews(id?: string) {
     return useFetch<{
       message: string;
       data: Review[];
