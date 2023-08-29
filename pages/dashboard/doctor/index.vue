@@ -2,11 +2,6 @@
   import { storeToRefs } from "pinia";
   import useUserStore from "~/stores/userStore";
 
-  definePageMeta({
-    layout: false,
-    middleware: "dashboard",
-  });
-
   const userStore = useUserStore();
 
   const { first_name } = storeToRefs(userStore);
