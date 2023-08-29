@@ -21,6 +21,12 @@
     <section
       class="py-8 px-4 lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-16 lg:overflow-y-scroll md:px-8 xl:px-16 2xl:px-36"
     >
+      <div class="pt-8 sm:hidden">
+        <h2 class="text-h3-b">Dashboard</h2>
+        <span class="text-neutral-dusty-gray font-medium">
+          Welcome Back Dr. {{ first_name }}
+        </span>
+      </div>
       <div class="pt-12 pb-20 flex">
         <ProfileImage />
       </div>

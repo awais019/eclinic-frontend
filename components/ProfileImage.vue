@@ -47,7 +47,7 @@
         >
           <AnimationsSpinner />
         </div>
-        <label class="cursor-pointer absolute -bottom-2 left-16">
+        <label class="cursor-pointer absolute -bottom-2 left-6 sm:left-16">
           <IconsCamera />
           <input
             type="file"
