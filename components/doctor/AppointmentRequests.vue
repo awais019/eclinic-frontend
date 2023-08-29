@@ -40,12 +40,12 @@
     <h2 class="px-6 py-4 font-semibold border-b border-neutral-gallery">
       Appoitment Requests
     </h2>
-    <ul v-if="data && data.data.length">
+    <ul v-if="appointments && appointments.length">
       <li
-        v-for="(appointment, index) in data.data"
+        v-for="(appointment, index) in appointments"
         class="px-6 py-3 flex gap-4 items-start flex-col md:flex-row md:items-center"
         :class="{
-          'border-b border-neutral-gallery': index != data.data.length - 1,
+          'border-b border-neutral-gallery': index != appointments.length - 1,
         }"
       >
         <img
