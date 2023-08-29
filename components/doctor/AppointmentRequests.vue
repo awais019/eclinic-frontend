@@ -43,7 +43,7 @@
     <ul v-if="data && data.data.length">
       <li
         v-for="(appointment, index) in data.data"
-        class="px-6 py-3 flex gap-4 items-center"
+        class="px-6 py-3 flex gap-4 items-start flex-col md:flex-row md:items-center"
         :class="{
           'border-b border-neutral-gallery': index != data.data.length - 1,
         }"

@@ -1,9 +1,8 @@
 <script setup lang="ts">
   const { upcomingAppointments } = useAppointment();
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
+  const today = new Date();
 
-  const { data } = await upcomingAppointments(tomorrow);
+  const { data } = await upcomingAppointments(today);
 </script>
 
 <template>
@@ -23,16 +22,16 @@
           appointment.time
         }}</span>
         <div
-          class="flex flex-col gap-4 ml-24 pt-4 pl-4 pb-4 pr-12 rounded-2xl shadow-variant11"
+          class="flex flex-col gap-4 ml-20 p-4 rounded-2xl shadow-variant11 md:pr-12"
           :class="{
             'bg-primary-zumthor': index == 0,
             'mb-8': index != data.data.length - 1,
           }"
         >
-          <span class="font-medium self-end"
+          <span class="font-medium md:self-end text-xs"
             >Fee Paid: {{ appointment.charges }}</span
           >
-          <div class="flex items-center gap-3">
+          <div class="flex flex-col items-start md:flex-row gap-3">
             <img
               :src="appointment.image"
               :alt="appointment.patient_name"
@@ -62,4 +61,8 @@
   </div>
 </template>
 
-<style scoped></style>
+<style lang="postcss" scoped>
+  img {
+    @apply m-0;
+  }
+</style>

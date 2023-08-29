@@ -7,7 +7,7 @@
 
 <template>
   <div
-    class="bg-white px-8 py-3 flex justify-between items-center xl:px-16 2xl:px-36"
+    class="bg-white px-4 py-3 justify-between items-center md:px-8 xl:px-16 2xl:px-36 hidden md:flex"
   >
     <div>
       <h2 class="text-h3-b">{{ title }}</h2>

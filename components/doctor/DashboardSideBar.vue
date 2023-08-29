@@ -13,7 +13,7 @@
 </script>
 
 <template>
-  <div class="basis-1/4 bg-primary-blue-ribbon py-9">
+  <div class="basis-1/4 bg-primary-blue-ribbon py-9 hidden lg:block">
     <nuxt-link to="/" class="px-16 block">
       <img src="~/assets/images/logo-white.svg" alt="Eclinic" />
     </nuxt-link>

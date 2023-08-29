@@ -13,20 +13,22 @@
 </script>
 
 <template>
-  <div class="basis-3/4 relative z-0">
+  <div class="lg:basis-3/4 relative z-0">
     <DoctorDashboardHeader
       title="Dashboard"
       :subtitle="`Welcome Back Dr. ${first_name}`"
     />
     <section
-      class="py-8 px-8 absolute inset-x-0 bottom-0 top-16 overflow-y-scroll xl:px-16 2xl:px-36"
+      class="py-8 px-4 lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-16 lg:overflow-y-scroll md:px-8 xl:px-16 2xl:px-36"
     >
       <div class="pt-12 pb-20 flex">
         <ProfileImage />
       </div>
       <section class="flex flex-col gap-12">
         <DoctorStatistics />
-        <div class="flex justify-between items-start gap-4">
+        <div
+          class="flex justify-between flex-col items-start gap-4 md:flex-row"
+        >
           <DoctorUpcomingAppointments />
           <div class="flex flex-col gap-8">
             <DoctorLessReviews />

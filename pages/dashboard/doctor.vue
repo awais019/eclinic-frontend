@@ -7,7 +7,9 @@
 
 <template>
   <div>
-    <div class="max-w-[1920px] h-screen w-screen bg-neutral-wild-sand flex">
+    <div
+      class="max-w-[1920px] lg:h-screen lg:w-screen bg-neutral-wild-sand flex"
+    >
       <DoctorDashboardSideBar />
       <NuxtPage />
     </div>
