@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <div class="px-6 py-4 bg-white rounded-2xl">
+  <div class="px-6 py-4 bg-white rounded-2xl -z-10">
     <h2 class="font-semibold">Today's Appointments</h2>
     <div v-if="data && data.data.length" class="py-6">
       <div

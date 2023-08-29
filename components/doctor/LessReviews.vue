@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl">
+  <div class="bg-white rounded-2xl -z-10">
     <h2 class="font-semibold px-6 py-4 border-b border-neutral-gallery">
       Patient Reviews
     </h2>

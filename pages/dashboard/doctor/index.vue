@@ -19,14 +19,14 @@
       :subtitle="`Welcome Back Dr. ${first_name}`"
     />
     <section
-      class="py-8 px-16 absolute inset-x-0 bottom-0 top-16 overflow-y-scroll 2xl:px-36"
+      class="py-8 px-8 absolute inset-x-0 bottom-0 top-16 overflow-y-scroll xl:px-16 2xl:px-36"
     >
       <div class="pt-12 pb-20 flex">
         <ProfileImage />
       </div>
       <section class="flex flex-col gap-12">
         <DoctorStatistics />
-        <div class="flex justify-between items-start">
+        <div class="flex justify-between items-start gap-4">
           <DoctorUpcomingAppointments />
           <div class="flex flex-col gap-8">
             <DoctorLessReviews />

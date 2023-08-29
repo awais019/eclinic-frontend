@@ -6,7 +6,9 @@
 </script>
 
 <template>
-  <div class="bg-white px-16 py-3 flex justify-between items-center 2xl:px-36">
+  <div
+    class="bg-white px-8 py-3 flex justify-between items-center xl:px-16 2xl:px-36"
+  >
     <div>
       <h2 class="text-h3-b">{{ title }}</h2>
       <span class="text-neutral-dusty-gray font-medium"> {{ subtitle }} </span>

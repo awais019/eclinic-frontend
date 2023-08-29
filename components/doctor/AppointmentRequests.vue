@@ -36,7 +36,7 @@
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl">
+  <div class="bg-white rounded-2xl -z-10">
     <h2 class="px-6 py-4 font-semibold border-b border-neutral-gallery">
       Appoitment Requests
     </h2>

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="text-sm text-neutral-dusty-gray font-medium flex gap-8">
+  <div class="text-sm text-neutral-dusty-gray font-medium flex gap-8 -z-10">
     <div class="p-6 bg-white basis-1/3 rounded-2xl flex flex-col gap-4">
       <div>
         <h5>Total Patients</h5>
