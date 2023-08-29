@@ -1,13 +1,10 @@
 <script setup lang="ts">
-  import { useToast } from "vue-toastification";
+  import { storeToRefs } from "pinia";
   import useUserStore from "~/stores/userStore";
-
-  defineProps<{
-    title: string;
-    subtitle: string;
-  }>();
+  import { useToast } from "vue-toastification";
 
   const userStore = useUserStore();
+  const { image } = storeToRefs(userStore);
   const toast = useToast();
 
   const showNav = ref(false);
@@ -24,29 +21,26 @@
 </script>
 
 <template>
-  <div>
-    <div
-      class="bg-white px-4 py-3 justify-between items-center md:px-8 xl:px-16 2xl:px-36 hidden md:flex"
-    >
-      <div>
-        <h2 class="text-h3-b">{{ title }}</h2>
-        <span class="text-neutral-dusty-gray font-medium">
-          {{ subtitle }}
-        </span>
-      </div>
-      <div class="flex gap-6 items-center">
+  <div class="md:hidden">
+    <div class="bg-white px-4 py-6 flex justify-between items-center">
+      <img src="~/assets/images/logo.svg" alt="Eclinic" />
+      <div class="flex items-center gap-4">
         <Notifications />
-        <ProfileDropDown />
-        <button @click="handleNavToggle" v-if="!showNav" class="lg:hidden">
+        <div
+          class="w-10 h-10 p-1 shadow-variant12 rounded-lg flex items-center"
+        >
+          <img :src="image" alt="user" />
+        </div>
+        <button @click="handleNavToggle" v-if="!showNav">
           <IconsHamburger />
         </button>
-        <button v-else class="lg:hidden" @click="handleNavToggle">
+        <button v-else @click="handleNavToggle">
           <IconsClose />
         </button>
       </div>
     </div>
-    <div v-if="showNav" class="lg:hidden absolute inset-0 top-20">
-      <nav class="py-8 font-medium text-white bg-primary-blue-ribbon">
+    <div v-if="showNav" class="absolute inset-0 top-20">
+      <nav class="py-16 font-medium text-white bg-primary-blue-ribbon h-screen">
         <nuxt-link
           to="/dashboard/doctor"
           class="py-6 px-16 flex items-center gap-4"
@@ -92,7 +86,10 @@
       </nav>
     </div>
   </div>
-  <DoctorMobileHeader />
 </template>
 
-<style scoped></style>
+<style lang="postcss" scoped>
+  img {
+    @apply m-0;
+  }
+</style>
