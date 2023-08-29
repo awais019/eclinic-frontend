@@ -56,7 +56,7 @@
         <p class="flex flex-col gap-2 text-sm">
           <span class="font-semibold">{{ appointment.patient_name }}</span>
           <span class="text-primary-blue-ribbon font-medium">{{
-            shrinkText(appointment.message, 20)
+            shrinkText(appointment.message as string, 20)
           }}</span>
           <span class="text-neutral-dusty-gray">{{
             formatDate(appointment.date)
