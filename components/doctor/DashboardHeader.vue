@@ -54,6 +54,10 @@
           <IconsBoxes />
           <span>Dashboard</span>
         </nuxt-link>
+        <nuxt-link to="/messages" class="py-6 px-16 flex items-center gap-4">
+          <IconsMessage />
+          <span>Messages</span>
+        </nuxt-link>
         <nuxt-link
           to="/dashboard/doctor/appointments"
           class="py-6 px-16 flex items-center gap-4"
