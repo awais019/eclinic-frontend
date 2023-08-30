@@ -78,11 +78,13 @@
             <td class="py-6 pr-6 pl-2 flex whitespace-nowrap">
               <button
                 class="bg-green-haze bg-opacity-5 px-4 py-2 rounded-full flex gap-1 items-center text-green-haze font-semibold"
+                @click="handleAppointmentAccept(appointment.id)"
               >
                 Accept <IconsAccept />
               </button>
               <button
                 class="bg-torch-red bg-opacity-5 px-4 py-2 rounded-full flex gap-1 items-center text-torch-red font-semibold"
+                @click="handleAppointmentReject(appointment.id)"
               >
                 Reject <IconsReject />
               </button>
