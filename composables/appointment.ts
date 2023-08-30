@@ -49,6 +49,19 @@ export const useAppointment = () => {
     });
   }
 
+  function completedAppointments() {
+    return useFetch<{
+      message: string;
+      data: Appointment[];
+    }>("/appointments/completed", {
+      method: "GET",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+    });
+  }
+
   function appointmentRequests() {
     return useFetch<{
       message: string;
@@ -97,6 +110,7 @@ export const useAppointment = () => {
   return {
     createAppointment,
     upcomingAppointments,
+    completedAppointments,
     appointmentRequests,
     acceptAppointment,
     rejectAppointment,

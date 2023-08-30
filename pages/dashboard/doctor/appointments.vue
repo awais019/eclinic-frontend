@@ -75,6 +75,9 @@
       <DoctorFullUpcomingAppointements
         v-else-if="currentTab?.name == 'Upcoming'"
       />
+      <DoctorCompletedAppointements
+        v-else-if="currentTab?.name == 'Completed'"
+      />
     </section>
   </div>
 </template>
