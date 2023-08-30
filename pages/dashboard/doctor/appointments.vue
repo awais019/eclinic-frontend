@@ -48,7 +48,7 @@
 </script>
 
 <template>
-  <div class="lg:basis-3/4 relative z-0">
+  <div class="lg:basis-3/4 relative z-0 w-screen">
     <DoctorDashboardHeader
       title="Appointments"
       :subtitle="`Welcome Back Dr. ${first_name}`"
@@ -56,18 +56,15 @@
     <section
       class="py-6 px-4 lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-24 lg:overflow-y-scroll md:px-8 xl:px-16"
     >
-      <div class="pt-8 sm:hidden">
-        <h2 class="text-h3-b">Dashboard</h2>
-        <span class="text-neutral-dusty-gray font-medium">
-          Welcome Back Dr. {{ first_name }}
-        </span>
+      <div class="py-8 sm:hidden">
+        <h2 class="text-h3-b">Appointments</h2>
       </div>
       <div
-        class="bg-white p-2 max-w-fit shadow-variant13 rounded-full font-semibold text-neutral-dusty-gray"
+        class="bg-white p-2 max-w-fit shadow-variant13 rounded-full font-semibold text-neutral-dusty-gray flex"
       >
         <button
           v-for="tab in tabs"
-          class="px-6 py-3 rounded-full"
+          class="px-2 py-3 rounded-full text-xs sm:px-6 sm:text-sm"
           :class="{ 'bg-primary-blue-ribbon text-white': tab.isActive }"
           @click="changeTab(tab.name)"
         >
