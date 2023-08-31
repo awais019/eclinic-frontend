@@ -15,8 +15,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
     return `/signin?redirect=${to.path}`;
   }
 
-  if (to.path == "/settings/hospitalinfo" && !userStore.isDoctor) {
-    return "/settings";
+  if (userStore.isDoctor && userStore.isLoggedIn) {
+    return "/dashboard/doctor";
   }
   if (to.name == "doctors-id" && to.params.id && !userStore.isLoggedIn) {
     return `/signin?redirect=${to.path}`;
