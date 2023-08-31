@@ -7,6 +7,11 @@
   const userStore = useUserStore();
   const toast = useToast();
 
+  const settingsLink = computed(() => {
+    if (userStore.isDoctor) return "/dashboard/doctor/settings";
+    return "/settings";
+  });
+
   const popperInstance = ref<ReturnType<typeof createPopper>>();
   const profile = ref();
   const dropdown = ref();
@@ -70,7 +75,7 @@
       </ul>
       <div class="bg-neutral-gallery w-full h-[1px] my-6"></div>
       <ul class="flex flex-col gap-4">
-        <li><nuxt-link to="/settings">Account Settings</nuxt-link></li>
+        <li><nuxt-link :to="settingsLink">Account Settings</nuxt-link></li>
         <li><button @click="handleSignout">Sign Out</button></li>
       </ul>
     </div>
