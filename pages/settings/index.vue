@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-  import useUserStore from "~/stores/userStore";
-
   definePageMeta({
     middleware: "auth",
   });
@@ -17,15 +15,6 @@
     { name: "Phone Number", path: "/settings/phone" },
     { name: "Password", path: "/settings/password" },
   ]);
-
-  const userStore = useUserStore();
-
-  if (userStore.isDoctor) {
-    settingLinks.value.push({
-      name: "Hospital Info",
-      path: "/settings/hospitalinfo",
-    });
-  }
 </script>
 
 <template>
