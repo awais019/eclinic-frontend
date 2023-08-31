@@ -145,7 +145,7 @@
                     placeholder="8:00"
                     min="8:00"
                     :minute-interval="30"
-                    hideClearButton="true"
+                    :hideClearButton="true"
                     :hour-range="[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]"
                   />
                 </div>
@@ -156,7 +156,7 @@
                     name="endtime"
                     placeholder="18:00"
                     :minute-interval="30"
-                    hideClearButton="true"
+                    :hideClearButton="true"
                     :hour-range="[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]"
                   />
                 </div>
@@ -172,7 +172,7 @@
                     placeholder="8:00"
                     min="8:00"
                     :minute-interval="30"
-                    hideClearButton="true"
+                    :hideClearButton="true"
                     :hour-range="[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]"
                   />
                 </div>
@@ -185,7 +185,7 @@
                     name="endtime"
                     placeholder="18:00"
                     :minute-interval="30"
-                    hideClearButton="true"
+                    :hideClearButton="true"
                     :hour-range="[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]"
                   />
                 </div>

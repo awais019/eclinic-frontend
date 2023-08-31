@@ -28,7 +28,7 @@ export default <Partial<Config>>{
       colors: {
         primary: {
           "blue-ribbon": "#166FFF",
-          zumthor: "#E0E7FF",
+          zumthor: "#E7F0FF",
           periwinkle: "#BED6FF",
           anakiwa: "#94BDFF",
           malibu: "#6AA3FF",
@@ -75,6 +75,10 @@ export default <Partial<Config>>{
         variant9: "0px 5px 10px 0px rgba(0, 0, 0, 0.10);",
         variant10: "0px 5px 25px 0px rgba(196, 196, 196, 0.25);",
         variant11: "8px 16px 32px 0px rgba(22, 111, 255, 0.05);",
+        variant12: "0px 2px 10px 0px rgba(0, 0, 0, 0.06);",
+        variant13: "0px 3px 25px 0px rgba(0, 0, 0, 0.10);",
+        variant14: "0px 4px 16px 0px rgba(0, 0, 0, 0.05);",
+        border: "0px 0px 0px 1px rgba(235, 235, 235, 1);",
       },
     },
   },

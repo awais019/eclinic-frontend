@@ -58,4 +58,15 @@ export interface Review {
   };
 }
 
+export interface Appointment {
+  id: string;
+  patient_name: string;
+  date: string;
+  time: string;
+  type: string;
+  charges: number;
+  image: string;
+  message?: string;
+}
+
 export default APIResponse;

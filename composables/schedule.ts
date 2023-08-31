@@ -43,5 +43,31 @@ export const useSchedule = () => {
     });
   }
 
-  return { getTwoWeeks, getTimeSlots, setSchedule };
+  function updateSchedule(schedule: Schedule[]) {
+    return useFetch("doctors/schedule/update", {
+      method: "POST",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      body: schedule,
+    });
+  }
+
+  function getSchedule() {
+    return useFetch<{ message: string; data: Schedule[] }>("doctors/schedule", {
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+    });
+  }
+
+  return {
+    getTwoWeeks,
+    getTimeSlots,
+    setSchedule,
+    updateSchedule,
+    getSchedule,
+  };
 };

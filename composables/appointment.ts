@@ -1,3 +1,4 @@
+import { Appointment } from "~/types/APIResponse";
 import useUserStore from "~/stores/userStore";
 
 export const useAppointment = () => {
@@ -32,5 +33,86 @@ export const useAppointment = () => {
     });
   }
 
-  return { createAppointment };
+  function upcomingAppointments(date?: Date) {
+    return useFetch<{
+      message: string;
+      data: Appointment[];
+    }>("/appointments", {
+      method: "GET",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      query: {
+        date: date ? date.toISOString() : new Date().toISOString(),
+      },
+    });
+  }
+
+  function completedAppointments() {
+    return useFetch<{
+      message: string;
+      data: Appointment[];
+    }>("/appointments/completed", {
+      method: "GET",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+    });
+  }
+
+  function appointmentRequests() {
+    return useFetch<{
+      message: string;
+      data: Appointment[];
+    }>("/appointments/requests", {
+      method: "GET",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+    });
+  }
+
+  function acceptAppointment(appointmentId: string) {
+    return useFetch<{
+      message: string;
+      data: null;
+    }>("/appointments/requests/accept", {
+      method: "POST",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      body: {
+        appointmentId,
+      },
+    });
+  }
+
+  function rejectAppointment(appointmentId: string) {
+    return useFetch<{
+      message: string;
+      data: null;
+    }>("/appointments/requests/reject", {
+      method: "POST",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      body: {
+        appointmentId,
+      },
+    });
+  }
+
+  return {
+    createAppointment,
+    upcomingAppointments,
+    completedAppointments,
+    appointmentRequests,
+    acceptAppointment,
+    rejectAppointment,
+  };
 };

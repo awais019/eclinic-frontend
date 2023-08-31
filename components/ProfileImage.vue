@@ -24,7 +24,7 @@
 </script>
 
 <template>
-  <div class="flex items-center justify-center gap-3">
+  <div class="flex items-center justify-center gap-3 -z-10">
     <div
       class="w-[72px] h-[72px] bg-gradient_2 rounded-2xl tablet:w-36 tablet:h-36"
     >
@@ -47,7 +47,7 @@
         >
           <AnimationsSpinner />
         </div>
-        <label class="cursor-pointer absolute -bottom-2 left-16">
+        <label class="cursor-pointer absolute -bottom-2 left-6 sm:left-16">
           <IconsCamera />
           <input
             type="file"
