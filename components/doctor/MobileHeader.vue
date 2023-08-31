@@ -39,7 +39,7 @@
         </button>
       </div>
     </div>
-    <div v-if="showNav" class="absolute inset-0 top-20">
+    <div v-if="showNav" class="absolute inset-0 top-20 z-10">
       <nav class="py-16 font-medium text-white bg-primary-blue-ribbon h-screen">
         <nuxt-link
           to="/dashboard/doctor"
