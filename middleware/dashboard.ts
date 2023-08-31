@@ -2,6 +2,7 @@ import useUserStore from "~/stores/userStore";
 
 export default defineNuxtRouteMiddleware((to, from) => {
   const userStore = useUserStore();
+
   if (!userStore.isLoggedIn) {
     return `/signin?redirect=${to.path}`;
   } else if (userStore.isPatient && to.path !== "/dashboard/patient") {
@@ -12,7 +13,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
     to.path !== "/dashboard/doctor/appointments" &&
     to.path !== "/dashboard/doctor/availability" &&
     to.path !== "/dashboard/doctor/payments" &&
-    to.path !== "/dashboard/doctor/settings"
+    to.path !== "/dashboard/doctor/settings" &&
+    to.path !== "/dashboard/doctor/settings/personalinfo" &&
+    to.path !== "/dashboard/doctor/settings/hospitalinfo" &&
+    to.path !== "/dashboard/doctor/settings/phone" &&
+    to.path !== "/dashboard/doctor/settings/password" &&
+    to.path !== "/dashboard/doctor/settings/email"
   ) {
     return "/dashboard/doctor";
   }

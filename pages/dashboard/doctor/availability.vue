@@ -11,7 +11,7 @@
     >
       <div class="py-8 sm:hidden">
         <h2 class="text-h3-b">Availability</h2>
-        <p>Set up your schedule</p>
+        <p class="text-neutral-dusty-gray font-medium">Set up your schedule</p>
       </div>
       <DoctorSchedule />
     </section>
