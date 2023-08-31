@@ -4,117 +4,98 @@
   import VueTimePicker from "vue3-timepicker";
   import "vue3-timepicker/dist/VueTimepicker.css";
   import { setErrors } from "@formkit/core";
-
-  const emits = defineEmits<{
-    (e: "continue"): void;
-  }>();
+  import { useToast } from "vue-toastification";
+  import { Schedule } from "types/users";
 
   const formId = ref("schedule");
 
   const interval = ref(30);
+  const { getSchedule, updateSchedule } = useSchedule();
+  const toast = useToast();
 
-  const appointment_interval = computed(() => interval.value);
+  const updating = ref(false);
 
-  const days = ref([
-    {
-      day: "Monday",
-      is_active: false,
-      startTime: "08:00",
-      endTime: "18:00",
-      break_start: "12:00",
-      break_end: "13:00",
-      appointment_interval: appointment_interval.value,
-    },
-    {
-      day: "Tuesday",
-      is_active: false,
-      startTime: "08:00",
-      endTime: "18:00",
-      break_start: "12:00",
-      break_end: "13:00",
-      appointment_interval: appointment_interval.value,
-    },
-    {
-      day: "Wednesday",
-      is_active: false,
-      startTime: "08:00",
-      endTime: "18:00",
-      break_start: "12:00",
-      break_end: "13:00",
-      appointment_interval: appointment_interval.value,
-    },
-    {
-      day: "Thursday",
-      is_active: false,
-      startTime: "08:00",
-      endTime: "18:00",
-      break_start: "12:00",
-      break_end: "13:00",
-      appointment_interval: appointment_interval.value,
-    },
-    {
-      day: "Friday",
-      is_active: false,
-      startTime: "08:00",
-      endTime: "18:00",
-      break_start: "12:00",
-      break_end: "13:00",
-      appointment_interval: appointment_interval.value,
-    },
-    {
-      day: "Saturday",
-      is_active: false,
-      startTime: "08:00",
-      endTime: "18:00",
-      break_start: "12:00",
-      break_end: "13:00",
-      appointment_interval: appointment_interval.value,
-    },
-    {
-      day: "Sunday",
-      is_active: false,
-      startTime: "08:00",
-      endTime: "18:00",
-      break_start: "12:00",
-      break_end: "13:00",
-      appointment_interval: appointment_interval.value,
-    },
-  ]);
+  const days = ref<Schedule[]>([]);
 
-  const disableContinue = computed(() => {
-    return days.value.filter((day) => day.is_active).length === 0;
+  const { data } = await getSchedule();
+
+  const weekdays = [
+    "MONDAY",
+    "TUESDAY",
+    "WEDNESDAY",
+    "THURSDAY",
+    "FRIDAY",
+    "SATURDAY",
+    "SUNDAY",
+  ];
+
+  weekdays.forEach((day) => {
+    if (data.value?.data) {
+      const dayData = data.value.data.find((d) => d.day === day);
+      if (dayData) {
+        days.value.push(dayData);
+      } else {
+        days.value.push({
+          day: day,
+          is_active: false,
+          startTime: "08:00",
+          endTime: "18:00",
+          break_start: "12:00",
+          break_end: "13:00",
+          appointment_interval: 30,
+        });
+      }
+    }
   });
 
-  const { setSchedule } = useSchedule();
+  const disableContinue = computed(() => {
+    return days.value?.filter((day) => day.is_active).length === 0;
+  });
 
   async function submitHandler() {
-    const { error } = await setSchedule(days.value);
-    if (error.value) {
-      setErrors(formId.value, error.value.data);
-    } else {
-      emits("continue");
+    if (days.value) {
+      days.value.forEach((day) => {
+        day.appointment_interval = interval.value;
+      });
+      updating.value = true;
+      const { error } = await updateSchedule(days.value);
+      if (error.value) {
+        setErrors(formId.value, error.value.data);
+      } else {
+        toast.success("Schedule updated successfully");
+      }
+      updating.value = false;
     }
   }
 </script>
 
 <template>
-  <div class="bg-white">
-    <h3 class="text-h5-sb">Setup your Availability</h3>
-    <FormKit type="form" :id="formId" :actions="false" @submit="submitHandler">
-      <FormKit
-        type="select"
-        v-model="interval"
-        name="duration"
-        label="Per Appointment Duration"
-        aria-placeholder="30 mins"
-        :options="[
-          { label: '30 mins', value: '30' },
-          { label: '45 mins', value: '45' },
-          { label: '60 mins', value: '60' },
-        ]"
-      />
-      <div class="py-16">
-        <h3 class="text-h5-sb mb-3">Availability</h3>
+  <div class="bg-white rounded-lg p-12 relative">
+    <FormKit
+      type="form"
+      :id="formId"
+      :actions="false"
+      @submit="submitHandler"
+      v-if="days"
+    >
+      <div class="lg:w-1/2">
+        <FormKit
+          type="select"
+          v-model="interval"
+          name="duration"
+          label="Per Appointment Duration"
+          aria-placeholder="30 mins"
+          :options="[
+            { label: '30 mins', value: '30' },
+            { label: '45 mins', value: '45' },
+            { label: '60 mins', value: '60' },
+          ]"
+        />
+      </div>
+      <div class="py-12">
+        <h3 class="font-medium mb-3 text-primary-blue-ribbon">
+          Available Timings
+        </h3>
         <div class="flex flex-col gap-6">
           <div v-for="day in days" class="flex gap-6 flex-col sm:flex-row">
             <Switch
@@ -136,7 +117,7 @@
               class="flex flex-col gap-6 !text-neutral-dusty-gray !font-medium items-center"
               v-if="day.is_active"
             >
-              <div class="flex gap-6">
+              <div class="flex flex-col gap-6 sm:flex-row">
                 <div class="flex flex-col gap-2">
                   <label for="starttime" class="font-medium">Start Time</label>
                   <VueTimePicker
@@ -161,7 +142,7 @@
                   />
                 </div>
               </div>
-              <div class="flex gap-6 items-center">
+              <div class="flex flex-col gap-6 items-center sm:flex-row">
                 <div class="flex flex-col gap-2">
                   <label for="starttime" class="font-medium"
                     >Break Start Time</label
@@ -193,20 +174,27 @@
             </div>
           </div>
         </div>
+        <input
+          type="submit"
+          value="Continue"
+          class="max-w-fit float-right font-medium mt-4"
+          :class="[
+            disableContinue
+              ? 'cursor-not-allowed bg-transparent text-neutral-dusty-gray'
+              : 'cursor-pointer text-white bg-primary-blue-ribbon',
+          ]"
+          :disabled="disableContinue"
+        />
       </div>
-      <input
-        type="submit"
-        value="Continue"
-        class="max-w-fit float-right font-medium"
-        :class="[
-          disableContinue
-            ? 'cursor-not-allowed bg-transparent text-neutral-dusty-gray'
-            : 'cursor-pointer text-white bg-primary-blue-ribbon',
-        ]"
-        :disabled="disableContinue"
-      />
     </FormKit>
+    <teleport to="body">
+      <AppLoader v-if="updating" />
+    </teleport>
   </div>
 </template>
 
-<style scoped></style>
+<style lang="postcss" scoped>
+  .formkit-form {
+    @apply m-0 !important;
+  }
+</style>
