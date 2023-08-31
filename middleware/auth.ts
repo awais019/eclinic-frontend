@@ -1,4 +1,3 @@
-import { LazyPageTitle } from ".nuxt/components";
 import useUserStrore from "~/stores/userStore";
 
 export default defineNuxtRouteMiddleware((to, from) => {
