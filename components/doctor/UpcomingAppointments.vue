@@ -22,7 +22,7 @@
           appointment.time
         }}</span>
         <div
-          class="flex flex-col gap-4 ml-20 p-4 rounded-2xl shadow-variant11 md:pr-12"
+          class="flex flex-col gap-4 ml-20 p-4 rounded-2xl shadow-variant12 md:pr-12"
           :class="{
             'bg-primary-zumthor': index == 0,
             'mb-8': index != data.data.length - 1,

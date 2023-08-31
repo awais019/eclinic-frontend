@@ -27,7 +27,7 @@
       <div class="flex items-center gap-4">
         <Notifications />
         <div
-          class="w-10 h-10 p-1 shadow-variant12 rounded-lg flex items-center"
+          class="w-10 h-10 p-1 shadow-variant13 rounded-lg flex items-center"
         >
           <img :src="image" alt="user" />
         </div>

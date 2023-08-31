@@ -60,7 +60,7 @@
         <h2 class="text-h3-b">Appointments</h2>
       </div>
       <div
-        class="bg-white p-2 max-w-fit shadow-variant13 rounded-full font-semibold text-neutral-dusty-gray flex"
+        class="bg-white p-2 max-w-fit shadow-variant14 rounded-full font-semibold text-neutral-dusty-gray flex"
       >
         <button
           v-for="tab in tabs"
