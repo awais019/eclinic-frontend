@@ -12,10 +12,10 @@
 
 <template>
   <section class="py-10 flex flex-col gap-10">
-    <h3 class="text-h4-sb">Appointment Requests</h3>
+    <h3 class="text-h4-sb">Upcoming Appointments</h3>
     <div class="overflow-x-auto">
       <table
-        class="w-full table-fixed bg-white text-left border-collapse rounded-2xl border-hidden shadow-border relative isolate m-auto"
+        class="w-full bg-white text-left border-collapse rounded-2xl border-hidden shadow-border relative isolate m-auto"
       >
         <thead>
           <tr>
