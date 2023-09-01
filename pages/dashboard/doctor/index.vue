@@ -8,7 +8,7 @@
 </script>
 
 <template>
-  <div class="lg:basis-3/4 relative z-0">
+  <div class="lg:basis-3/4 relative z-0 w-screen">
     <DoctorDashboardHeader
       title="Dashboard"
       :subtitle="`Welcome Back Dr. ${first_name}`"

@@ -54,7 +54,7 @@
       :subtitle="`Welcome Back Dr. ${first_name}`"
     />
     <section
-      class="py-6 px-4 lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-24 lg:overflow-y-scroll md:px-8 xl:px-16"
+      class="py-6 px-4 h-screen md:h-auto lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-24 lg:overflow-y-scroll md:px-8 xl:px-16"
     >
       <div class="py-8 sm:hidden">
         <h2 class="text-h3-b">Appointments</h2>
