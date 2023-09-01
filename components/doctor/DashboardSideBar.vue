@@ -47,6 +47,13 @@
         <span>Payments</span>
       </nuxt-link>
       <nuxt-link
+        to="/dashboard/doctor/ratings"
+        class="py-6 px-16 flex items-center gap-4"
+      >
+        <IconsWhitestar />
+        <span>My Ratings</span>
+      </nuxt-link>
+      <nuxt-link
         to="/dashboard/doctor/settings"
         class="py-6 px-16 flex items-center gap-4"
       >
