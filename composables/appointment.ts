@@ -44,7 +44,7 @@ export const useAppointment = () => {
         "X-Auth-Token": userStore.authToken as string,
       },
       query: {
-        date: date ? date.toISOString() : new Date().toISOString(),
+        date: date ? date.toISOString() : "",
       },
     });
   }
