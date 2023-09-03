@@ -22,8 +22,7 @@
             <th class="py-6 pl-6 pr-2 whitespace-nowrap">Name</th>
             <th class="py-6 px-2 whitespace-nowrap">Date & Time</th>
             <th class="py-6 px-2 whitespace-nowrap">Type</th>
-            <th class="py-6 px-2 whitespace-nowrap">Message</th>
-            <th class="py-6 pr-6 pl-2 whitespace-nowrap">Action</th>
+            <th class="py-6 px-2 whitespace-nowrap">Amount</th>
           </tr>
         </thead>
         <div class="absolute h-[1px] left-6 right-6 bg-neutral-gallery"></div>
@@ -48,14 +47,7 @@
               {{ appointment.type }}
             </td>
             <td class="py-6 px-2 text-neutral-dusty-gray whitespace-nowrap">
-              {{ shrinkText(appointment.message as string, 10) }}
-            </td>
-            <td class="py-6 pr-6 pl-2 flex whitespace-nowrap">
-              <button
-                class="bg-primary-blue-ribbon px-4 py-2 rounded-full flex gap-1 items-center text-white font-semibold text-sm"
-              >
-                Prescribe
-              </button>
+              {{ appointment.charges }}
             </td>
           </tr>
         </tbody>
