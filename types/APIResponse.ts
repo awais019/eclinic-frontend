@@ -69,4 +69,13 @@ export interface Appointment {
   message?: string;
 }
 
+export interface Transaction {
+  id: string;
+  patient_name: string;
+  created_at: string;
+  type: string;
+  appointment_type: string;
+  amount: number;
+}
+
 export default APIResponse;

@@ -1,7 +1,28 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>Payments</div>
+  <div class="lg:basis-3/4 relative z-0 w-screen">
+    <DoctorDashboardHeader title="Payments" subtitle="Manage Your Payments" />
+    <section
+      class="py-6 px-4 lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-24 lg:overflow-y-scroll md:px-8 xl:px-16 2xl:px-36"
+    >
+      <div class="pt-8 sm:hidden">
+        <h2 class="text-h3-b">Dashboard</h2>
+        <span class="text-neutral-dusty-gray font-medium">
+          Manage Your Payments
+        </span>
+      </div>
+      <section class="flex flex-col gap-8">
+        <DoctorPaymentStatistics />
+        <button
+          class="px-6 py-3 bg-primary-blue-ribbon rounded-lg text-medi text-white self-start"
+        >
+          Withdraw Amount
+        </button>
+        <DoctorTransactions />
+      </section>
+    </section>
+  </div>
 </template>
 
 <style scoped></style>
