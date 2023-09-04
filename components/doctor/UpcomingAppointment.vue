@@ -13,6 +13,8 @@
 
     return today.getDate() === appointmentDate.getDate();
   });
+
+  const controller = useModal();
 </script>
 
 <template>
@@ -38,10 +40,11 @@
     </td>
     <td
       class="py-6 pr-6 pl-2 text-sm flex whitespace-nowrap"
-      v-if="!isDateToday"
+      v-if="isDateToday"
     >
       <button
         class="bg-green-haze bg-opacity-5 px-4 py-2 rounded-full flex gap-1 items-center text-green-haze font-semibold"
+        @click="controller.open"
       >
         Done
       </button>
@@ -52,6 +55,9 @@
       </button>
     </td>
   </tr>
+  <AppModal :controller="controller">
+    <Prescription @close="controller.close" />
+  </AppModal>
 </template>
 
 <style scoped></style>

@@ -74,6 +74,10 @@ option {
   @apply text-neutral-dusty-gray;
 }
 
+#prescription button[type="submit"] {
+  @apply mt-6 w-fit px-4;
+}
+
 /* vue toastification styles */
 .Vue-Toastification__container {
   @apply items-center;
