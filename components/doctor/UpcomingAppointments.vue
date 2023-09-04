@@ -1,6 +1,7 @@
 <script setup lang="ts">
   const { upcomingAppointments } = useAppointment();
   const today = new Date();
+  today.setDate(today.getDate() + 1);
 
   const { data } = await upcomingAppointments(today);
 </script>

@@ -18,7 +18,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
     to.path !== "/dashboard/doctor/settings/hospitalinfo" &&
     to.path !== "/dashboard/doctor/settings/phone" &&
     to.path !== "/dashboard/doctor/settings/password" &&
-    to.path !== "/dashboard/doctor/settings/email"
+    to.path !== "/dashboard/doctor/settings/email" &&
+    to.path !== "/dashboard/doctor/ratings"
   ) {
     return "/dashboard/doctor";
   }

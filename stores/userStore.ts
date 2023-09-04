@@ -194,6 +194,13 @@ function store() {
     }
   });
 
+  const rating = computed(() => {
+    if (user.value && user.value.role == "DOCTOR") {
+      const doctor = user.value as Doctor;
+      return doctor.rating;
+    }
+  });
+
   const image = computed(() => {
     if (user.value?.image) {
       return user.value.image;
@@ -231,5 +238,6 @@ function store() {
     address,
     city,
     state,
+    rating,
   };
 }

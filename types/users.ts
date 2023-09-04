@@ -20,6 +20,7 @@ interface Doctor extends User {
   state: string;
   degree: Blob;
   schedule: Schedule[];
+  rating: number;
 }
 
 interface Patient extends User {
