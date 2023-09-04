@@ -28,36 +28,11 @@
         </thead>
         <div class="absolute h-[1px] left-6 right-6 bg-neutral-gallery"></div>
         <tbody>
-          <tr v-for="appointment in appointments" :key="appointment.id">
-            <td
-              class="py-6 pl-6 pr-2 flex items-center gap-2 whitespace-nowrap"
-            >
-              <!-- <div class="h-11 w-11 bg-gradient rounded-[4px] relative">
-              <img
-              :src="appointment.image"
-              :alt="appointment.patient_name"
-              class="w-11 h-11 rounded-[4px] absolute right-1 top-0.5"
-              />
-            </div> -->
-              <span class="font-semibold">{{ appointment.patient_name }}</span>
-            </td>
-            <td class="py-6 px-2 text-neutral-dusty-gray whitespace-nowrap">
-              {{ formatDate(appointment.date) }} {{ appointment.time }}
-            </td>
-            <td class="py-6 px-2 text-primary-blue-ribbon whitespace-nowrap">
-              {{ appointment.type }}
-            </td>
-            <td class="py-6 px-2 text-neutral-dusty-gray whitespace-nowrap">
-              {{ appointment.charges }}
-            </td>
-            <td class="py-6 pr-6 pl-2 flex whitespace-nowrap">
-              <button
-                class="bg-primary-blue-ribbon px-4 py-2 rounded-full flex gap-1 items-center text-white font-semibold text-sm"
-              >
-                Prescribe
-              </button>
-            </td>
-          </tr>
+          <DoctorAppointment
+            v-for="appointment in appointments"
+            :key="appointment.id"
+            :appointment="appointment"
+          />
         </tbody>
       </table>
     </div>

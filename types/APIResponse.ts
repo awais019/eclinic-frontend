@@ -67,6 +67,7 @@ export interface Appointment {
   charges: number;
   image: string;
   message?: string;
+  completed: boolean;
 }
 
 export interface Transaction {

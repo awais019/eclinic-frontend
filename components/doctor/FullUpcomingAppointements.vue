@@ -34,7 +34,7 @@
         </thead>
         <div class="absolute h-[1px] left-6 right-6 bg-neutral-gallery"></div>
         <tbody>
-          <DoctorUpcomingAppointment
+          <DoctorAppointment
             v-for="appointment in appointments"
             :key="appointment.id"
             :appointment="appointment"
