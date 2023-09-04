@@ -1,5 +1,9 @@
 <script setup lang="ts">
-  import { Appointment } from "types/APIResponse";
+  import { Appointment } from "~/types/APIResponse";
+
+  defineEmits<{
+    (e: "removeAppointment", id: string): void;
+  }>();
 
   const props = defineProps<{
     appointment: Appointment;
@@ -56,7 +60,11 @@
     </td>
   </tr>
   <AppModal :controller="controller">
-    <Prescription @close="controller.close" />
+    <Prescription
+      :appointment-id="appointment.id"
+      @close="controller.close"
+      @remove-appointment="$emit('removeAppointment', appointment.id)"
+    />
   </AppModal>
 </template>
 

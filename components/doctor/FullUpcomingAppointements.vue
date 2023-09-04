@@ -9,13 +9,10 @@
 
   appointments.value = data.value?.data;
 
-  function isDateToday(date: string) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const appointmentDate = new Date(date);
-    appointmentDate.setHours(0, 0, 0, 0);
-
-    return today.getDate() === appointmentDate.getDate();
+  function removeAppointment(id: string) {
+    appointments.value = appointments.value?.filter(
+      (appointment) => appointment.id !== id
+    );
   }
 </script>
 
@@ -41,6 +38,7 @@
             v-for="appointment in appointments"
             :key="appointment.id"
             :appointment="appointment"
+            @remove-appointment="removeAppointment"
           />
         </tbody>
       </table>

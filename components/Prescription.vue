@@ -1,13 +1,49 @@
 <script setup lang="ts">
-  defineEmits<{
+  import { useToast } from "vue-toastification";
+
+  const props = defineProps<{
+    appointmentId: string;
+  }>();
+  const emits = defineEmits<{
     (e: "close"): void;
+    (e: "removeAppointment"): void;
   }>();
 
   const formId = "prescription";
 
   const numberOfMedications = ref(1);
+  const prescription = ref<
+    {
+      medication: string;
+      dosage: string;
+      instructions: string;
+    }[]
+  >([]);
 
-  function submitHandler(values: any) {}
+  const { createPrescription } = usePrescription();
+  const toast = useToast();
+
+  async function submitHandler(values: any) {
+    for (let i = 1; i <= numberOfMedications.value; i++) {
+      prescription.value.push({
+        medication: values[`medication${i}`],
+        dosage: values[`dosage${i}`],
+        instructions: values[`instructions${i}`],
+      });
+    }
+    const { error } = await createPrescription(
+      prescription.value,
+      props.appointmentId
+    );
+    if (error.value) {
+      toast.error("Something went wrong");
+      return;
+    } else {
+      toast.success("Prescription added successfully");
+      emits("removeAppointment");
+      emits("close");
+    }
+  }
 </script>
 
 <template>
@@ -24,7 +60,7 @@
         type="form"
         :id="formId"
         :actions="false"
-        @submit="(values) => submitHandler(values)"
+        @submit="submitHandler"
       >
         <div
           class="tablet:grid tablet:grid-cols-3 tablet:gap-3 relative"
