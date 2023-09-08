@@ -6,7 +6,7 @@ export const useCharges = () => {
   const userStore = useUserStore();
 
   function setCharges(charges: Charge[]) {
-    return useFetch("/doctors/charges/set", {
+    return useFetch("/doctors/charges", {
       method: "POST",
       baseURL,
       headers: {
@@ -16,5 +16,28 @@ export const useCharges = () => {
     });
   }
 
-  return { setCharges };
+  function getCharges() {
+    return useFetch<{
+      data: Charge[];
+      message: string;
+    }>("/doctors/charges", {
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+    });
+  }
+
+  function updateCharges(charges: Charge[]) {
+    return useFetch("/doctors/charges", {
+      method: "PUT",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      body: charges,
+    });
+  }
+
+  return { setCharges, getCharges, updateCharges };
 };

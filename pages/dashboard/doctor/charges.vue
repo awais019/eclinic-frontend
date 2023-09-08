@@ -1,34 +1,42 @@
 <script lang="ts" setup>
+  import { useToast } from "vue-toastification";
   import { Switch } from "@headlessui/vue";
   import { setErrors } from "@formkit/core";
   import { Charge } from "~/types/users";
 
-  const emits = defineEmits<{
-    (e: "continue"): void;
-  }>();
+  interface ICharge extends Charge {
+    is_active: boolean;
+  }
 
   const formId = ref("charges");
+  const toast = useToast();
 
-  const charges = ref([
-    {
-      appointment_type: "PHYSICAL",
-      amount: 0,
-      is_active: true,
-    },
-    {
+  const { getCharges, updateCharges } = useCharges();
+
+  const { data } = await getCharges();
+
+  const charges = ref<ICharge[]>([]);
+
+  if (data.value && data.value.data) {
+    data.value.data.forEach((charge: Charge) => {
+      charges.value.push({
+        appointment_type: charge.appointment_type,
+        amount: charge.amount,
+        is_active: charge.amount > 0,
+      });
+    });
+  }
+  if (charges.value.length != 2) {
+    charges.value.push({
       appointment_type: "VIRTUAL",
       amount: 0,
       is_active: false,
-    },
-  ]);
+    });
+  }
 
   const disableContinue = computed(() => {
-    return charges.value.some(
-      (charge) => charge.is_active && charge.amount === 0
-    );
+    return charges.value.some((charge) => charge.amount === 0);
   });
-
-  const { setCharges } = useCharges();
 
   async function submitHandler() {
     const charge: Charge[] = [];
@@ -40,17 +48,18 @@
           amount: parseInt(rest.amount.toString()),
         });
     });
-    const { error } = await setCharges(charge);
+
+    const { error } = await updateCharges(charge);
     if (error.value) {
       setErrors(formId.value, error.value.data);
     } else {
-      emits("continue");
+      toast.success("Charges updated");
     }
   }
 </script>
 
 <template>
-  <div class="lg:basis-3/4 relative z-0 w-screen">
+  <div class="lg:basis-3/4 relative z-0 w-screen h-screen">
     <DoctorDashboardHeader
       title="Charges"
       subtitle="Change your charges for the physical and virtual consultation"
@@ -75,7 +84,7 @@
           <div class="flex flex-col gap-6 mb-6">
             <div
               v-for="charge in charges"
-              class="flex flex-col gap-6 sm:flex-row items-center"
+              class="flex flex-col gap-6 sm:flex-row sm:items-center"
             >
               <Switch
                 v-model="charge.is_active"
@@ -85,9 +94,7 @@
                     : 'bg-neutral-gallery'
                 "
                 class="relative inline-flex h-6 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-                :disabled="
-                  charge.is_active && charge.appointment_type === 'PHYSICAL'
-                "
+                :disabled="charge.appointment_type === 'PHYSICAL'"
               >
                 <span class="sr-only"> {{ charge.appointment_type }} </span>
                 <span
@@ -104,6 +111,7 @@
                 type="number"
                 placeholder="Amount"
                 v-model="charge.amount"
+                min="10"
               />
             </div>
           </div>

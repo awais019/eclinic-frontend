@@ -66,6 +66,13 @@
           <span>Availability</span>
         </nuxt-link>
         <nuxt-link
+          to="/dashboard/doctor/charges"
+          class="py-6 px-16 flex items-center gap-4"
+        >
+          <IconsDollar2 class="w-8 h-8 text-white" />
+          <span>Charges</span>
+        </nuxt-link>
+        <nuxt-link
           to="/dashboard/doctor/payments"
           class="py-6 px-16 flex items-center gap-4"
         >

@@ -37,8 +37,9 @@
         class="py-6 px-16 flex items-center gap-4"
       >
         <IconsClock />
-        <span>Availability</span> </nuxt-link
-      ><nuxt-link
+        <span>Availability</span>
+      </nuxt-link>
+      <nuxt-link
         to="/dashboard/doctor/charges"
         class="py-6 px-16 flex items-center gap-4"
       >
