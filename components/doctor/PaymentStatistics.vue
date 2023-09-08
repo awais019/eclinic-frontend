@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="p-6 bg-white basis-1/3 rounded-2xl flex flex-col gap-4">
-      <IconsDollar2 />
+      <IconsDollar2 class="text-primary-blue-ribbon" />
       <div>
         <h5>Total Earnings</h5>
         <span class="text-h4-b text-neutral-mine-shaft">30,000</span>
