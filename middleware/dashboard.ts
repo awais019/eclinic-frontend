@@ -12,6 +12,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     to.path !== "/dashboard/doctor" &&
     to.path !== "/dashboard/doctor/appointments" &&
     to.path !== "/dashboard/doctor/availability" &&
+    to.path !== "/dashboard/doctor/charges" &&
     to.path !== "/dashboard/doctor/payments" &&
     to.path !== "/dashboard/doctor/settings" &&
     to.path !== "/dashboard/doctor/settings/personalinfo" &&
