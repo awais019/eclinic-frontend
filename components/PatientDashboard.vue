@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div><PatientQuickActions /></div>
+  <PatientQuickActions />
 </template>
 
 <style scoped></style>
