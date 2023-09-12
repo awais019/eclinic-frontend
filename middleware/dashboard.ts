@@ -5,7 +5,11 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
   if (!userStore.isLoggedIn) {
     return `/signin?redirect=${to.path}`;
-  } else if (userStore.isPatient && to.path !== "/dashboard/patient") {
+  } else if (
+    userStore.isPatient &&
+    to.path !== "/dashboard/patient" &&
+    to.path !== "/dashboard/patient/appointments"
+  ) {
     return "/dashboard/patient";
   } else if (
     userStore.isDoctor &&

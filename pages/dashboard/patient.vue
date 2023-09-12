@@ -6,8 +6,7 @@
 
 <template>
   <div class="app-container">
-    <DashboardProfileSection />
-    <PatientDashboard />
+    <NuxtPage />
   </div>
 </template>
 
