@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "find24-frontend-dev",
+      name: "eclinic-frontend",
       exec_mode: "cluster",
       port: 3000,
       instances: "1",
