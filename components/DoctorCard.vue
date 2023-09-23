@@ -9,9 +9,11 @@
 <template>
   <NuxtLink :to="`/doctors/${doctor.id}`" class="group">
     <div class="rounded-2xl shadow-variant9">
-      <div class="aspect-w-[44] aspect-h-[25] min-w-[352px] min-h-[200px]">
+      <div
+        class="max-w-[328px] max-h-[200px] aspect-w-8 aspect-h-5 tablet:max-w-[352px] tablet:aspect-w-10 tablet:aspect-h-6"
+      >
         <img
-          class="rounded-t-2xl object-fit"
+          class="rounded-t-2xl object-cover w-full h-full"
           :src="doctor.image"
           :alt="doctor.first_name + ' ' + doctor.last_name"
         />
