@@ -82,14 +82,20 @@
 
     <button ref="profile" class="flex items-center gap-2 text-sm font-semibold">
       <div
-        class="p-1 rounded-lg w-10 h-10 tablet:w-12 tablet:h-12 flex items-center shadow-variant3"
+        class="p-1 rounded-lg max-w-[40px] max-h-[40px] tablet:max-w-[48px] tablet:max-h-[48px] aspect-1 flex items-center shadow-variant3"
       >
         <img
           v-if="userStore.image"
-          :src="`${userStore.image}`"
+          :src="userStore.image"
           alt="profile image"
+          class="w-full h-full object-cover"
         />
-        <img v-else src="~/assets/images/user.svg" alt="profile image" />
+        <img
+          v-else
+          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"
+          alt="profile image"
+          class="w-full h-full object-cover"
+        />
       </div>
       <span>{{ userStore.first_name }}</span>
       <IconsChevron
