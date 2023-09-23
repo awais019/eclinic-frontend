@@ -13,32 +13,32 @@
     const file = event.target.files[0];
     const body = new FormData();
     body.append("image", file);
+    console.log(body);
+
     const { error } = await userStore.uploadProfileImage(body);
+    editing.value = false;
     if (error.value) {
-      toast.error(error.value);
+      toast.error(error.value.data);
     } else {
       toast.success("Profile image updated.");
     }
-    editing.value = false;
   }
 </script>
 
 <template>
-  <div class="flex items-center justify-center gap-3 -z-10">
-    <div
-      class="w-[72px] h-[72px] bg-gradient_2 rounded-2xl tablet:w-36 tablet:h-36"
-    >
-      <div class="relative top-3 right-3">
+  <div class="flex items-center justify-center gap-3">
+    <div class="max-w-[146px] bg-gradient_2 rounded-2xl">
+      <div class="relative top-3 right-3 aspect-1">
         <img
           v-if="userStore.image"
-          class="rounded-lg border-4 border-primary-zircon shadow-variant8"
-          :src="`${userStore.image}`"
+          class="rounded-lg shadow-variant8 w-full h-full object-cover"
+          :src="userStore.image"
           alt="Profile Image"
         />
         <img
           v-else
-          class="rounded-lg border-4 border-primary-zircon shadow-variant8"
-          src="~/assets/images/user.svg"
+          class="rounded-lg shadow-variant8 w-full h-full object-cover"
+          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"
           alt="Profile Image"
         />
         <div
@@ -47,7 +47,7 @@
         >
           <AnimationsSpinner />
         </div>
-        <label class="cursor-pointer absolute -bottom-2 left-6 sm:left-16">
+        <label class="cursor-pointer absolute -bottom-2 left-[40%] sm:left-16">
           <IconsCamera />
           <input
             type="file"
@@ -61,4 +61,8 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  img {
+    margin: 0;
+  }
+</style>

@@ -24,7 +24,7 @@
           >
         </div>
       </nuxt-link>
-      <nuxt-link to="/doctors" class="group">
+      <nuxt-link to="/dashboard/patient/appointments" class="group">
         <div
           class="px-10 py-12 shadow-variant4 rounded-2xl group-hover:bg-primary-blue-ribbon group-hover:text-white"
         >
@@ -41,7 +41,7 @@
           >
         </div>
       </nuxt-link>
-      <nuxt-link to="/doctors" class="group">
+      <!-- <nuxt-link to="/doctors" class="group">
         <div
           class="px-10 py-12 shadow-variant4 rounded-2xl group-hover:bg-primary-blue-ribbon group-hover:text-white"
         >
@@ -57,7 +57,7 @@
             online.</span
           >
         </div>
-      </nuxt-link>
+      </nuxt-link> -->
       <nuxt-link to="/doctors" class="group">
         <div
           class="px-10 py-12 shadow-variant4 rounded-2xl group-hover:bg-primary-blue-ribbon group-hover:text-white"
@@ -91,7 +91,7 @@
           >
         </div>
       </nuxt-link>
-      <nuxt-link to="/doctors" class="group">
+      <!-- <nuxt-link to="/doctors" class="group">
         <div
           class="px-10 py-12 shadow-variant4 rounded-2xl group-hover:bg-primary-blue-ribbon group-hover:text-white"
         >
@@ -106,7 +106,7 @@
             >Find labs that can get samples from your home and test.</span
           >
         </div>
-      </nuxt-link>
+      </nuxt-link> -->
     </div>
   </div>
 </template>

@@ -1,7 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <PatientQuickActions />
+  <DashboardProfileSection />
+  <PatientDashboard />
 </template>
 
 <style scoped></style>
