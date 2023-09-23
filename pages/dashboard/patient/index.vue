@@ -1,8 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-  <DashboardProfileSection />
-  <PatientDashboard />
+  <div class="app-container">
+    <DashboardProfileSection />
+    <PatientDashboard />
+  </div>
 </template>
 
 <style scoped></style>

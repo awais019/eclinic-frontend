@@ -1,9 +1,14 @@
 <script setup lang="ts">
-  console.log("appointments");
+  const breadCrumbs = ref([
+    { name: "Home", path: "/" },
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Appointments", path: "/dashboard/patient/appointments" },
+  ]);
 </script>
 
 <template>
-  <div>Appointment</div>
+  <PageTitle :bread-crumbs="breadCrumbs" title="Appointments" />
+  <div class="app-container">Appointment</div>
 </template>
 
 <style scoped></style>

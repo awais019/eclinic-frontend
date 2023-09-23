@@ -5,9 +5,7 @@
 </script>
 
 <template>
-  <div class="app-container">
-    <NuxtPage />
-  </div>
+  <NuxtPage />
 </template>
 
 <style scoped></style>
