@@ -89,9 +89,9 @@
     <section
       class="flex flex-col pt-12 pb-24 gap-8 items-center sm:flex-row sm:gap-16 md:gap-24 border-b border-neutral-gallery"
     >
-      <div class="bg-gradient relative w-80 max-h-fit h-80 rounded-xl">
+      <div class="bg-gradient max-w-[146px] max-h-[146px] aspect-1 rounded-xl">
         <img
-          class="rounded-xl absolute top-5 right-6"
+          class="rounded-xl relative top-2 right-3 w-full h-full object-cover"
           :src="doctor.image"
           :alt="doctor.first_name + ' ' + doctor.last_name"
         />
