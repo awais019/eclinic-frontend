@@ -36,7 +36,7 @@
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl -z-10">
+  <div class="bg-white rounded-2xl">
     <h2 class="px-6 py-4 font-semibold border-b border-neutral-gallery">
       Appoitment Requests
     </h2>
@@ -48,11 +48,13 @@
           'border-b border-neutral-gallery': index != appointments.length - 1,
         }"
       >
-        <img
-          :src="appointment.image"
-          :alt="appointment.patient_name"
-          class="w-12 h-12 rounded-lg"
-        />
+        <div class="max-w-[48px] max-h-[48px] aspect-1 mb-2">
+          <img
+            :src="appointment.image"
+            :alt="appointment.patient_name"
+            class="w-full h-full object-cover rounded-lg"
+          />
+        </div>
         <p class="flex flex-col gap-2 text-sm">
           <span class="font-semibold">{{ appointment.patient_name }}</span>
           <span class="text-primary-blue-ribbon font-medium">{{
@@ -62,7 +64,7 @@
             formatDate(appointment.date)
           }}</span>
         </p>
-        <div class="flex gap-4 ml-auto">
+        <div class="flex gap-4 ml-auto z-20">
           <button @click="handleAppointmentAccept(appointment.id)">
             <IconsAccept />
           </button>

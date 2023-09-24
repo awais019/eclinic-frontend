@@ -49,6 +49,24 @@ export const useAppointment = () => {
     });
   }
 
+  function updatePayment(id: string) {
+    return useFetch<{
+      message: string;
+      data: {
+        date: string;
+        time: string;
+        doctor: string;
+        type: string;
+      };
+    }>(`/appointments/${id}`, {
+      method: "PUT",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+    });
+  }
+
   function completedAppointments() {
     return useFetch<{
       message: string;
@@ -110,6 +128,7 @@ export const useAppointment = () => {
   return {
     createAppointment,
     upcomingAppointments,
+    updatePayment,
     completedAppointments,
     appointmentRequests,
     acceptAppointment,
