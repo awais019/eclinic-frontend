@@ -33,11 +33,27 @@ export const useAppointment = () => {
     });
   }
 
-  function upcomingAppointments(date?: Date) {
+  function upcomingDoctorAppointments(date?: Date) {
     return useFetch<{
       message: string;
       data: Appointment[];
-    }>("/appointments", {
+    }>("/appointments/doctor", {
+      method: "GET",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      query: {
+        date: date ? date.toISOString() : "",
+      },
+    });
+  }
+
+  function upcomingPatientAppointments(date?: Date) {
+    return useFetch<{
+      message: string;
+      data: Appointment[];
+    }>("/appointments/patient", {
       method: "GET",
       baseURL,
       headers: {
@@ -127,7 +143,8 @@ export const useAppointment = () => {
 
   return {
     createAppointment,
-    upcomingAppointments,
+    upcomingDoctorAppointments,
+    upcomingPatientAppointments,
     updatePayment,
     completedAppointments,
     appointmentRequests,

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  const { upcomingAppointments } = useAppointment();
+  const { upcomingDoctorAppointments } = useAppointment();
   const today = new Date();
   today.setDate(today.getDate() + 1);
 
-  const { data } = await upcomingAppointments(today);
+  const { data } = await upcomingDoctorAppointments(today);
 </script>
 
 <template>

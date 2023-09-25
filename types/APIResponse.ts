@@ -68,6 +68,11 @@ export interface Appointment {
   image: string;
   message?: string;
   completed: boolean;
+  doctor?: {
+    first_name: string;
+    last_name: string;
+    specialization: string;
+  };
 }
 
 export interface Transaction {

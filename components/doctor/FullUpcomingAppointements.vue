@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import { Appointment } from "~/types/APIResponse";
 
-  const { upcomingAppointments } = useAppointment();
+  const { upcomingDoctorAppointments } = useAppointment();
 
   const appointments = ref<Appointment[] | undefined>([]);
 
-  const { data } = await upcomingAppointments();
+  const { data } = await upcomingDoctorAppointments();
 
   appointments.value = data.value?.data;
 
