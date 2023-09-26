@@ -10,6 +10,7 @@
   <PageTitle :bread-crumbs="breadCrumbs" title="Appointments" />
   <div class="app-container overflow-x-auto flex flex-col gap-24">
     <PatientTodayAppointments />
+    <PatientAppointmentStats />
     <PatientUpcomingAppointments />
   </div>
 </template>
