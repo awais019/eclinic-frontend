@@ -141,6 +141,22 @@ export const useAppointment = () => {
     });
   }
 
+  function cancelAppointment(appointmentId: string) {
+    return useFetch<{
+      message: string;
+      data: null;
+    }>("/appointments/cancel", {
+      method: "POST",
+      baseURL,
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      body: {
+        appointmentId,
+      },
+    });
+  }
+
   return {
     createAppointment,
     upcomingDoctorAppointments,
@@ -150,5 +166,6 @@ export const useAppointment = () => {
     appointmentRequests,
     acceptAppointment,
     rejectAppointment,
+    cancelAppointment,
   };
 };

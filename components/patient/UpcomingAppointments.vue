@@ -1,7 +1,28 @@
 <script setup lang="ts">
-  const { upcomingPatientAppointments } = useAppointment();
+  import { useToast } from "vue-toastification";
+  import { Appointment } from "~/types/APIResponse";
+
+  const { upcomingPatientAppointments, cancelAppointment } = useAppointment();
+
+  const appointments = ref<Appointment[]>([]);
 
   const { data } = await upcomingPatientAppointments();
+  const toast = useToast();
+
+  if (data.value && data.value.data) {
+    appointments.value = data.value.data;
+  }
+  async function handleCancelAppointment(id: string) {
+    const { error } = await cancelAppointment(id);
+    if (error.value) {
+      toast.error(error.value.data);
+      return;
+    }
+    toast.success("Appointment cancelled successfully");
+    appointments.value = appointments.value.filter(
+      (appointment) => appointment.id !== id
+    );
+  }
 </script>
 
 <template>
@@ -25,15 +46,15 @@
       </thead>
       <div class="absolute h-[1px] left-6 right-6 bg-neutral-gallery"></div>
       <tbody v-if="data && data.data">
-        <tr v-for="appointment in data.data" :key="appointment.id">
+        <tr v-for="appointment in appointments" :key="appointment.id">
           <td class="py-6 pl-6 pr-2 flex items-center gap-2 whitespace-nowrap">
-            <div class="h-11 w-11 bg-gradient rounded-[4px] relative">
+            <!-- <div class="h-11 w-11 bg-gradient rounded-[4px] relative">
               <img
                 :src="appointment.image"
                 :alt="appointment.patient_name"
                 class="w-11 h-11 rounded-[4px] absolute right-1 top-0.5"
               />
-            </div>
+            </div> -->
             <span class="font-semibold"
               >{{ appointment.doctor?.first_name }}
               {{ appointment.doctor?.last_name }}</span
@@ -51,6 +72,7 @@
           <td class="py-6 pr-6 pl-2 text-sm flex whitespace-nowrap">
             <button
               class="bg-torch-red bg-opacity-5 px-4 py-2 rounded-full flex gap-1 items-center text-torch-red font-semibold"
+              @click="handleCancelAppointment(appointment.id)"
             >
               Cancel <IconsReject />
             </button>

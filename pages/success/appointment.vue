@@ -44,8 +44,9 @@
         }}</span>
         at
         <span class="text-primary-blue-ribbon">{{ appointment.time }}</span>
-        has been confirmed. Please reach the clinic/hospital at the given time.
-        You might have to wait for 10 minutes after the appointment time starts.
+        has been confirmed. Doctor will review and accept your request shorly.
+        Please reach the clinic/hospital at the given time. You might have to
+        wait for 10 minutes after the appointment time starts.
       </p>
       <p
         v-else-if="appointment.type.toLowerCase() === 'virtual'"
@@ -61,8 +62,9 @@
         }}</span>
         at
         <span class="text-primary-blue-ribbon">{{ appointment.time }}</span>
-        has been confirmed. You will receive a link to join the video call 10
-        minutes before or after the appointment time starts.
+        has been confirmed. Doctor will review and accept your request shorly.
+        You will receive a link to join the video call 10 minutes before or
+        after the appointment time starts.
       </p>
     </div>
     <p v-if="error" class="text-error app-container text-center">
