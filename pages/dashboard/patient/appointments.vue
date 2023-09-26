@@ -8,7 +8,8 @@
 
 <template>
   <PageTitle :bread-crumbs="breadCrumbs" title="Appointments" />
-  <div class="app-container overflow-x-auto">
+  <div class="app-container overflow-x-auto flex flex-col gap-24">
+    <PatientTodayAppointments />
     <PatientUpcomingAppointments />
   </div>
 </template>
