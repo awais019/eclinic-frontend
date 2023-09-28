@@ -8,7 +8,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
   } else if (
     userStore.isPatient &&
     to.path !== "/dashboard/patient" &&
-    to.path !== "/dashboard/patient/appointments"
+    to.path !== "/dashboard/patient/appointments" &&
+    to.path !== "/dashboard/patient/payments" &&
+    to.path !== "/dashboard/patient/prescriptions"
   ) {
     return "/dashboard/patient";
   } else if (

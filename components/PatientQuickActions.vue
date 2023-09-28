@@ -75,7 +75,7 @@
           >
         </div>
       </nuxt-link>
-      <nuxt-link to="/doctors" class="group">
+      <nuxt-link to="/dashboard/patient/payments" class="group">
         <div
           class="px-10 py-12 shadow-variant4 rounded-2xl group-hover:bg-primary-blue-ribbon group-hover:text-white"
         >
