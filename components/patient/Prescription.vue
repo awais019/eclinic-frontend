@@ -36,12 +36,19 @@
     </div>
     <div class="flex flex-col gap-6">
       <h2 class="text-h4-sb">Medications</h2>
-      <div class="flex flex-wrap gap-6">
+      <div class="flex flex-wrap gap-6 print:flex-col" id="print-area">
+        <div class="hidden print:block">
+          <img src="~/assets/images/logo.svg" alt="logo" />
+          <h1 class="text-h3-b">
+            Dr. {{ prescription.doctor.first_name }}
+            {{ prescription.doctor.last_name }}
+          </h1>
+        </div>
         <div
           v-for="medication in prescription.medication"
           class="flex flex-col gap-3 tablet:mr-auto"
         >
-          <p class="flex justify-between">
+          <p class="flex justify-between print:justify-normal print:gap-12">
             <span class="font-semibold text-primary-blue-ribbon">{{
               medication.medication
             }}</span>
@@ -53,6 +60,12 @@
         </div>
       </div>
     </div>
+    <button
+      v-print="'#print-area'"
+      class="bg-primary-blue-ribbon rounded-lg font-semibold px-6 py-3 text-white self-start"
+    >
+      Print
+    </button>
   </section>
 </template>
 
