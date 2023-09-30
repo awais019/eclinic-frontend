@@ -5,11 +5,11 @@ export const useTransactions = () => {
   const { authToken } = useUserStore();
   const { baseURL } = useRuntimeConfig().public;
 
-  function getTransactions() {
+  function getDoctorTransactions() {
     return useFetch<{
       message: string;
       data: Transaction[];
-    }>("/transactions", {
+    }>("/transactions/doctor", {
       headers: {
         "X-Auth-Token": authToken as string,
       },
@@ -17,5 +17,17 @@ export const useTransactions = () => {
     });
   }
 
-  return { getTransactions };
+  function getPatientTransactions() {
+    return useFetch<{
+      message: string;
+      data: Transaction[];
+    }>("/transactions/patient", {
+      headers: {
+        "X-Auth-Token": authToken as string,
+      },
+      baseURL,
+    });
+  }
+
+  return { getDoctorTransactions, getPatientTransactions };
 };

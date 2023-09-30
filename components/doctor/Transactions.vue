@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import { Transaction } from "~/types/APIResponse";
 
-  const { getTransactions } = useTransactions();
+  const { getDoctorTransactions } = useTransactions();
 
   const transactions = ref<Transaction[]>([]);
 
-  const { data } = await getTransactions();
+  const { data } = await getDoctorTransactions();
   if (data.value) {
     transactions.value = data.value.data;
   }

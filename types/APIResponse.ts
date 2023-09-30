@@ -77,10 +77,12 @@ export interface Appointment {
 
 export interface Transaction {
   id: string;
-  patient_name: string;
+  patient_name?: string;
+  doctor_name?: string;
   created_at: string;
   type: string;
   appointment_type: string;
+  appointment_status?: string;
   amount: number;
 }
 
