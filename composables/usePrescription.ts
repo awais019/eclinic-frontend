@@ -1,4 +1,5 @@
 import useUserStore from "~/stores/userStore";
+import { Prescription } from "~/types/APIResponse";
 
 export const usePrescription = () => {
   const { authToken } = useUserStore();
@@ -24,5 +25,19 @@ export const usePrescription = () => {
       baseURL,
     });
   }
-  return { createPrescription };
+
+  function getPrescription() {
+    return useFetch<{
+      message: string;
+      data: Prescription[];
+    }>("/prescription", {
+      method: "GET",
+      headers: {
+        "X-Auth-Token": authToken as string,
+      },
+      baseURL,
+    });
+  }
+
+  return { createPrescription, getPrescription };
 };

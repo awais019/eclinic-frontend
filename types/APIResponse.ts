@@ -86,4 +86,22 @@ export interface Transaction {
   amount: number;
 }
 
+export interface Prescription {
+  id: string;
+  appointment: {
+    date: string;
+    type: string;
+  };
+  doctor: {
+    first_name: string;
+    last_name: string;
+    image: string;
+  };
+  medication: {
+    medication: string;
+    dosage: string;
+    instructions: string;
+  }[];
+}
+
 export default APIResponse;
