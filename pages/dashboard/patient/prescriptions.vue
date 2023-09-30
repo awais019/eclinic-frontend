@@ -30,19 +30,19 @@
 
 <template>
   <PageTitle title="Access Prescriptions" :bread-crumbs="breadCrumbs" />
-  <section class="app-container">
+  <main class="app-container">
     <h1
       class="text-h3-b relative max-w-fit after:absolute after:bottom-0 after:left-0 after:right-1/3 after:bg-primary-blue-ribbon after:h-0.5 after:content-['']"
     >
       Recent Prescription
     </h1>
-    <p v-if="prescriptions.length == 0" class="pt-8 text-neutral-dusty-gray">
+    <p v-show="prescriptions.length == 0" class="pt-8 text-neutral-dusty-gray">
       No prescriptions available
     </p>
-    <main v-else>
-      {{ prescriptions }}
-    </main>
-  </section>
+    <section v-if="prescriptions.length > 0">
+      <PatientPrescription :prescription="prescriptions[0]" />
+    </section>
+  </main>
 </template>
 
 <style scoped></style>
