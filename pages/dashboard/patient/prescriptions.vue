@@ -20,11 +20,18 @@
   const { getPrescription } = usePrescription();
 
   const prescriptions = ref<Prescription[]>([]);
+  const currentPrescription = ref<Prescription | null>(null);
 
   const { data } = await getPrescription();
 
   if (data.value && data.value.data) {
     prescriptions.value = data.value.data;
+    currentPrescription.value = prescriptions.value[0];
+  }
+
+  function updateCurrentPrescription(presId: string) {
+    currentPrescription.value =
+      prescriptions.value.find((pres) => pres.id === presId) || null;
   }
 </script>
 
@@ -40,7 +47,14 @@
       No prescriptions available
     </p>
     <section v-if="prescriptions.length > 0">
-      <PatientPrescription :prescription="prescriptions[0]" />
+      <PatientPrescription
+        v-if="currentPrescription"
+        :prescription="currentPrescription"
+      />
+      <PatientAllPrescriptions
+        :prescriptions="prescriptions"
+        @update-current-prescription="updateCurrentPrescription"
+      />
     </section>
   </main>
 </template>
