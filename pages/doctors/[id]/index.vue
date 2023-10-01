@@ -65,6 +65,9 @@
             {{ atype }}
           </span>
         </p>
+        <Nuxt-link :to="`/messages/${doctor.userId}`">
+          <IconsMessageBlue />
+        </Nuxt-link>
         <nuxt-link
           :to="`/doctors/${id}/appointment`"
           class="bg-primary-blue-ribbon shadow-variant1 text-white text-base-sb py-3 rounded-lg text-center cursor-pointer"
