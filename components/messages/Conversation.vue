@@ -1,11 +1,16 @@
 <script setup lang="ts">
-  import { formatTimeAgo } from "@vueuse/core";
   import { Conversation } from "~/types/APIResponse";
+  import useMessageStore from "~/stores/messages";
+  import { storeToRefs } from "pinia";
 
   defineProps<{
     conversation: Conversation;
     isCurrentConversation: boolean;
   }>();
+
+  const { messages } = storeToRefs(useMessageStore());
+
+  const lastMessage = computed(() => messages.value[messages.value.length - 1]);
 </script>
 
 <template>
@@ -26,14 +31,19 @@
         {{ conversation.Participant.first_name }}
         {{ conversation.Participant.last_name }}
       </p>
-      <p
-        v-if="conversation.message"
-        class="text-sm text-neutral-dusty-gray flex justify-between w-full"
-      >
-        <span>
-          {{ shrinkText(conversation.message.message, 10) }}
+      <p class="text-sm text-neutral-dusty-gray flex justify-between w-full">
+        <span v-if="conversation.Message">
+          {{ shrinkText(conversation.Message.message, 10) }}
         </span>
-        <span>{{ getTime(conversation.message.created_at) }}</span>
+        <span v-else-if="lastMessage">
+          {{ shrinkText(lastMessage.message, 10) }}
+        </span>
+        <span v-if="conversation.Message"
+          >{{ getTime(conversation.Message.created_at) }}
+        </span>
+        <span v-else-if="lastMessage">
+          {{ getTime(lastMessage.created_at) }}
+        </span>
       </p>
     </div>
   </nuxt-link>

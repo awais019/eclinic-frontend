@@ -15,7 +15,12 @@ export default defineStore("messages", () => {
     const { data } = await _getConversationsList();
     if (data.value) {
       _conversations.value = data.value.data;
-      if (_currentConversation.value && _currentConversation.value.message) {
+      if (
+        _currentConversation.value &&
+        !conversations.value.find((conversation) => {
+          return conversation.id === _currentConversation.value?.id;
+        })
+      ) {
         _conversations.value.push(_currentConversation.value);
       }
     }
@@ -41,6 +46,10 @@ export default defineStore("messages", () => {
     messages.value.push(message);
   }
 
+  function updateConversationsList(conversations: Conversation[]) {
+    _conversations.value = conversations;
+  }
+
   const conversations = computed(() => _conversations.value);
   const currentConversation = computed(() => _currentConversation.value);
   const messages = computed(() => _messages.value);
@@ -50,6 +59,7 @@ export default defineStore("messages", () => {
     currentConversation,
     messages,
     getConversationsList,
+    updateConversationsList,
     getConversation,
     getMessages,
     pushMessage,

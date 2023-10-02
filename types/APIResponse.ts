@@ -121,7 +121,7 @@ export interface Conversation {
     last_name: string;
     image: string;
   };
-  message: Message | null;
+  Message: Message | null;
 }
 
 export default APIResponse;

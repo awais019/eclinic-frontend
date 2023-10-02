@@ -2,7 +2,7 @@
   import { storeToRefs } from "pinia";
   import useMessageStore from "~/stores/messages";
   import useUserStore from "~/stores/userStore";
-  import { Message } from "~/types/APIResponse";
+  import { Message, Conversation } from "~/types/APIResponse";
 
   definePageMeta({
     layout: false,
