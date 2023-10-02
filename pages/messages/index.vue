@@ -11,7 +11,9 @@
   });
 
   onBeforeRouteLeave(() => {
-    $socket.disconnect();
+    if ($socket.connected) {
+      $socket.disconnect();
+    }
   });
 </script>
 

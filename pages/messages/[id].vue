@@ -41,16 +41,25 @@
     }
   }
 
-  onMounted(() => {
-    $socket.emit("join", currentConversation.value?.id);
-    $socket.on("message", (message: Message) => {
-      console.log("listening");
-      messageStore.pushMessage(message);
-    });
+  onBeforeMount(() => {
+    if (currentConversation.value) {
+      if (!$socket.connected) {
+        $socket.connect();
+      }
+      $socket.emit("join", currentConversation.value.id);
+      $socket.on("message", (message: Message) => {
+        messageStore.pushMessage(message);
+      });
+    }
   });
 
   onBeforeRouteLeave(() => {
-    $socket.emit("leave", currentConversation.value?.id);
+    if (currentConversation.value) {
+      $socket.emit("leave", currentConversation.value.id);
+      if ($socket.connected) {
+        $socket.disconnect();
+      }
+    }
   });
 </script>
 
