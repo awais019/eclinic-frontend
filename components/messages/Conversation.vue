@@ -3,11 +3,15 @@
 
   defineProps<{
     conversation: Conversation;
+    isCurrentConversation: boolean;
   }>();
 </script>
 
 <template>
-  <div class="px-8 py-6 flex gap-3">
+  <div
+    class="px-8 py-6 flex gap-3"
+    :class="{ 'bg-primary-zumthor rounded-lg': isCurrentConversation }"
+  >
     <div class="max-w-[56px] max-h-[56px] aspect-1 rounded-lg">
       <img
         :src="conversation.Participant.image"

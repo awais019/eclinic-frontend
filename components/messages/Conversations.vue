@@ -1,10 +1,19 @@
 <script setup lang="ts">
   import { storeToRefs } from "pinia";
+  import { Conversation } from "types/APIResponse";
   import useMessagesStore from "~/stores/messages";
 
   const messageStore = useMessagesStore();
 
-  const { conversations } = storeToRefs(messageStore);
+  const { conversations, currentConversation } = storeToRefs(messageStore);
+
+  const isCurrentConversation = (conversation: Conversation) => {
+    return (
+      (currentConversation.value &&
+        conversation.id === currentConversation.value.id) ||
+      false
+    );
+  };
 </script>
 
 <template>
@@ -19,6 +28,7 @@
       <MessagesConversation
         v-for="conversation in conversations"
         :conversation="conversation"
+        :isCurrentConversation="isCurrentConversation(conversation)"
         :key="conversation.id"
       />
     </div>
