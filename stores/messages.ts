@@ -18,7 +18,6 @@ export default defineStore("messages", () => {
         !_conversations.value.includes(_currentConversationId.value)
       ) {
         _conversations.value.push(_currentConversationId.value);
-        console.log(_conversations.value);
       }
     }
   }

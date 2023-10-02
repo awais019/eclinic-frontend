@@ -115,11 +115,11 @@ export interface Conversation {
   id: string;
   Participant: {
     id: string;
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     image: string;
   };
-  messages: Message[] | null;
+  message: Message | null;
 }
 
 export default APIResponse;
