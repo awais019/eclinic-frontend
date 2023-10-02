@@ -49,7 +49,7 @@
       if (!$socket.connected) {
         $socket.connect();
       }
-      $socket.emit("join", currentConversation.value.id);
+      $socket.emit("join", currentConversation.value.id, userStore.user?.id);
 
       $socket.emit("set-user", userStore.user?.id);
       $socket.on("new-message", (conversations: Conversation[]) => {
