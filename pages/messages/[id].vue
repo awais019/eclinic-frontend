@@ -21,6 +21,7 @@
   function adjustTextareaHeight() {
     if (messageInput.value) {
       messageInput.value.style.height = "auto";
+      console.log(messageInput.value.scrollHeight);
       messageInput.value.style.height = messageInput.value.scrollHeight + "px";
     }
   }
@@ -38,6 +39,8 @@
         receiver: currentConversation.value.Participant.id,
       });
       messageInput.value.value = "";
+      messageInput.value.style.height = "auto";
+      messageInput.value.style.height = messageInput.value.scrollHeight + "px";
     }
   }
 
@@ -65,7 +68,7 @@
 
 <template>
   <main
-    class="h-screen basis-3/4 border-l-[0.5px] border-neutral-gallery"
+    class="h-screen basis-3/4 relative border-l-[0.5px] border-neutral-gallery"
     v-if="currentConversation"
   >
     <div class="p-8 bg-white">

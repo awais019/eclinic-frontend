@@ -6,13 +6,32 @@
   const { messages, currentConversation } = storeToRefs(useMessagesStore());
   const { image } = storeToRefs(useUserStore());
 
+  const messagesRef = ref<HTMLElement | null>(null);
+
   const isRecieved = (sender: string) => {
     return sender == currentConversation.value?.Participant.id;
   };
+
+  function scrollToBottom() {
+    if (messagesRef.value) {
+      messagesRef.value.scrollTop = messagesRef.value.scrollHeight;
+    }
+  }
+
+  onMounted(() => {
+    scrollToBottom();
+  });
+
+  onUpdated(() => {
+    scrollToBottom();
+  });
 </script>
 
 <template>
-  <section class="p-8 flex flex-col gap-[72px]">
+  <section
+    class="p-8 flex flex-col gap-[72px] absolute inset-x-0 top-[120px] bottom-16 overflow-y-auto"
+    ref="messagesRef"
+  >
     <div v-for="message in messages" :key="message.id" class="flex">
       <div
         :class="{ 'ml-auto flex-row-reverse': !isRecieved(message.sender) }"
