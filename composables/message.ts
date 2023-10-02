@@ -1,5 +1,5 @@
 import useUserStore from "~/stores/userStore";
-import { Conversation } from "~/types/APIResponse";
+import { Conversation, Message } from "~/types/APIResponse";
 
 export const useMessage = () => {
   const { baseURL } = useRuntimeConfig().public;
@@ -29,5 +29,17 @@ export const useMessage = () => {
     });
   }
 
-  return { getConversationsList, getConversation };
+  function getMessages(conversationId: string) {
+    return useFetch<{
+      message: string;
+      data: Message[];
+    }>(`/messages/${conversationId}/messages`, {
+      headers: {
+        "X-Auth-Token": userStore.authToken as string,
+      },
+      baseURL,
+    });
+  }
+
+  return { getConversationsList, getConversation, getMessages };
 };

@@ -3,7 +3,8 @@ import useMessagesStore from "~/stores/messages";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const userStore = useUserStrore();
-  const { getConversation, getConversationsList } = useMessagesStore();
+  const { getConversation, getConversationsList, getMessages } =
+    useMessagesStore();
 
   if (!userStore.isLoggedIn) {
     return `/signin?redirect=${to.path}`;
@@ -11,6 +12,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   const id = to.params.id;
   if (id) {
     await getConversation(id as string);
+    await getMessages();
   }
   await getConversationsList();
 });

@@ -72,6 +72,7 @@
         </p>
       </div>
     </div>
+    <Messages />
     <form
       class="bg-white border-x-[0.5px] border-neutral-gallery px-6 py-3 fixed bottom-0 right-0 left-1/4 flex gap-6"
       @submit.prevent="sendMessage"
@@ -79,6 +80,7 @@
       <label for="message" class="sr-only">Write message</label>
       <textarea
         name="message"
+        id="message"
         placeholder="Write a message"
         class="px-6 resize-none h-10 overflow-y-auto"
         ref="messageInput"

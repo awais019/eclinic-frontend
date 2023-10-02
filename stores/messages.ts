@@ -1,12 +1,14 @@
-import { Conversation } from "~/types/APIResponse";
+import { Conversation, Message } from "~/types/APIResponse";
 
 export default defineStore("messages", () => {
   const _conversations = ref<Conversation[]>([]);
   const _currentConversation = ref<Conversation>();
+  const messages = ref<Message[]>([]);
 
   const {
     getConversation: _getConversation,
     getConversationsList: _getConversationsList,
+    getMessages: _getMessages,
   } = useMessage();
 
   async function getConversationsList() {
@@ -26,13 +28,24 @@ export default defineStore("messages", () => {
     }
   }
 
+  async function getMessages() {
+    const { data } = await _getMessages(
+      _currentConversation.value?.id as string
+    );
+    if (data.value) {
+      messages.value = data.value.data;
+    }
+  }
+
   const conversations = computed(() => _conversations.value);
   const currentConversation = computed(() => _currentConversation.value);
 
   return {
     conversations,
     currentConversation,
+    messages,
     getConversationsList,
     getConversation,
+    getMessages,
   };
 });
