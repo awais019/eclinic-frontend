@@ -9,6 +9,21 @@
   const messageStore = useMessageStore();
 
   const { currentConversation } = storeToRefs(messageStore);
+
+  const messageInput = ref<HTMLTextAreaElement | null>(null);
+
+  function adjustTextareaHeight() {
+    if (messageInput.value) {
+      messageInput.value.style.height = "auto";
+      messageInput.value.style.height = messageInput.value.scrollHeight + "px";
+    }
+  }
+
+  function sendMessage() {
+    if (messageInput.value) {
+      messageInput.value.value = "";
+    }
+  }
 </script>
 
 <template>
@@ -29,6 +44,22 @@
         </p>
       </div>
     </div>
+    <form
+      class="bg-white border-x-[0.5px] border-neutral-gallery px-6 py-3 fixed bottom-0 right-0 left-1/4 flex gap-6"
+      @submit.prevent="sendMessage"
+    >
+      <label for="message" class="sr-only">Write message</label>
+      <textarea
+        name="message"
+        placeholder="Write a message"
+        class="px-6 resize-none h-10 overflow-y-auto"
+        ref="messageInput"
+        @input="adjustTextareaHeight"
+      />
+      <button type="submit" class="!w-6 h-6 !m-0 !bg-white">
+        <IconsSend />
+      </button>
+    </form>
   </main>
 </template>
 
@@ -40,5 +71,13 @@
         rgba(255, 255, 255, 0.5) 81.96%
       ),
       #e7f0ff;
+  }
+  textarea {
+    border-top: 0;
+    border-bottom: 0;
+    border-radius: 0;
+    border-left: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
+    resize: none;
   }
 </style>
