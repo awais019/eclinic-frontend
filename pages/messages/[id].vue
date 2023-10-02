@@ -1,6 +1,10 @@
 <script setup lang="ts">
+  import io from "socket.io-client";
   import { storeToRefs } from "pinia";
   import useMessageStore from "~/stores/messages";
+  import useUserStore from "~/stores/userStore";
+  import { Message } from "~/types/APIResponse";
+
   definePageMeta({
     layout: false,
     middleware: ["message"],
@@ -8,7 +12,11 @@
 
   const messageStore = useMessageStore();
 
+  const { socketBaseUrl } = useRuntimeConfig().public;
+  const socket = io(socketBaseUrl);
+
   const { currentConversation } = storeToRefs(messageStore);
+  const { user } = storeToRefs(useUserStore());
 
   const messageInput = ref<HTMLTextAreaElement | null>(null);
 
@@ -21,9 +29,26 @@
 
   function sendMessage() {
     if (messageInput.value) {
+      socket.emit("message", {
+        conversationId: currentConversation.value?.id,
+        message: messageInput.value.value,
+        sender: user.value?.id,
+        receiver: currentConversation.value?.Participant.id,
+      });
       messageInput.value.value = "";
     }
   }
+
+  onMounted(() => {
+    socket.connect();
+    socket.emit("join", currentConversation.value?.id);
+    socket.on("message", (data: Message) => {});
+  });
+
+  onUnmounted(() => {
+    socket.emit("leave", currentConversation.value?.id);
+    socket.disconnect();
+  });
 </script>
 
 <template>

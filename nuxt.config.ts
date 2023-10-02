@@ -21,6 +21,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseURL: process.env.BASE_URL,
+      socketBaseUrl: process.env.SOCKET_BASE_URL,
     },
   },
   plugins: ["~/plugins/toaster.client"],
