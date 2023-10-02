@@ -3,7 +3,7 @@ import { Conversation, Message } from "~/types/APIResponse";
 export default defineStore("messages", () => {
   const _conversations = ref<Conversation[]>([]);
   const _currentConversation = ref<Conversation>();
-  const messages = ref<Message[]>([]);
+  const _messages = ref<Message[]>([]);
 
   const {
     getConversation: _getConversation,
@@ -33,12 +33,17 @@ export default defineStore("messages", () => {
       _currentConversation.value?.id as string
     );
     if (data.value) {
-      messages.value = data.value.data;
+      _messages.value = data.value.data;
     }
+  }
+
+  function pushMessage(message: Message) {
+    messages.value.push(message);
   }
 
   const conversations = computed(() => _conversations.value);
   const currentConversation = computed(() => _currentConversation.value);
+  const messages = computed(() => _messages.value);
 
   return {
     conversations,
@@ -47,5 +52,6 @@ export default defineStore("messages", () => {
     getConversationsList,
     getConversation,
     getMessages,
+    pushMessage,
   };
 });

@@ -80,6 +80,7 @@ export default <Partial<Config>>{
         variant13: "0px 3px 25px 0px rgba(0, 0, 0, 0.10);",
         variant14: "0px 4px 16px 0px rgba(0, 0, 0, 0.05);",
         variant15: "0px 4px 35px 0px rgba(0, 0, 0, 0.10);",
+        variant16: "0px 2px 15px 0px rgba(0, 0, 0, 0.05);",
         border: "0px 0px 0px 1px rgba(235, 235, 235, 1);",
       },
     },

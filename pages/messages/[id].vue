@@ -42,7 +42,9 @@
   onMounted(() => {
     socket.connect();
     socket.emit("join", currentConversation.value?.id);
-    socket.on("message", (data: Message) => {});
+    socket.on("message", (message: Message) => {
+      messageStore.pushMessage(message);
+    });
   });
 
   onUnmounted(() => {
