@@ -10,6 +10,7 @@
   });
 
   const messageStore = useMessageStore();
+  const userStore = useUserStore();
 
   const { $socket } = useNuxtApp();
 
@@ -21,7 +22,6 @@
   function adjustTextareaHeight() {
     if (messageInput.value) {
       messageInput.value.style.height = "auto";
-      console.log(messageInput.value.scrollHeight);
       messageInput.value.style.height = messageInput.value.scrollHeight + "px";
     }
   }
@@ -50,6 +50,12 @@
         $socket.connect();
       }
       $socket.emit("join", currentConversation.value.id);
+
+      $socket.emit("set-user", userStore.user?.id);
+      $socket.on("new-message", (conversations: Conversation[]) => {
+        messageStore.updateConversationsList(conversations);
+      });
+
       $socket.on("message", (message: Message) => {
         messageStore.pushMessage(message);
       });

@@ -1,13 +1,23 @@
 <script setup lang="ts">
+  import { Conversation } from "types/APIResponse";
+  import useUserStore from "~/stores/userStore";
+  import useMessagesStore from "~/stores/messages";
+
   definePageMeta({
     layout: false,
     middleware: ["message"],
   });
 
   const { $socket } = useNuxtApp();
+  const userStore = useUserStore();
+  const messagesStore = useMessagesStore();
 
   onMounted(() => {
     $socket.connect();
+    $socket.emit("set-user", userStore.user?.id);
+    $socket.on("new-message", (conversations: Conversation[]) => {
+      messagesStore.updateConversationsList(conversations);
+    });
   });
 
   onBeforeRouteLeave(() => {
