@@ -3,6 +3,16 @@
     layout: false,
     middleware: ["message"],
   });
+
+  const { $socket } = useNuxtApp();
+
+  onMounted(() => {
+    $socket.connect();
+  });
+
+  onBeforeRouteLeave(() => {
+    $socket.disconnect();
+  });
 </script>
 
 <template>

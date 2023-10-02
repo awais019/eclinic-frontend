@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import io from "socket.io-client";
   import { storeToRefs } from "pinia";
   import useMessageStore from "~/stores/messages";
   import useUserStore from "~/stores/userStore";
@@ -12,8 +11,7 @@
 
   const messageStore = useMessageStore();
 
-  const { socketBaseUrl } = useRuntimeConfig().public;
-  const socket = io(socketBaseUrl);
+  const { $socket } = useNuxtApp();
 
   const { currentConversation } = storeToRefs(messageStore);
   const { user } = storeToRefs(useUserStore());
@@ -28,28 +26,31 @@
   }
 
   function sendMessage() {
-    if (messageInput.value) {
-      socket.emit("message", {
-        conversationId: currentConversation.value?.id,
+    if (
+      messageInput.value &&
+      messageInput.value.value &&
+      currentConversation.value
+    ) {
+      $socket.emit("message", {
+        conversationId: currentConversation.value.id,
         message: messageInput.value.value,
         sender: user.value?.id,
-        receiver: currentConversation.value?.Participant.id,
+        receiver: currentConversation.value.Participant.id,
       });
       messageInput.value.value = "";
     }
   }
 
   onMounted(() => {
-    socket.connect();
-    socket.emit("join", currentConversation.value?.id);
-    socket.on("message", (message: Message) => {
+    $socket.emit("join", currentConversation.value?.id);
+    $socket.on("message", (message: Message) => {
+      console.log("listening");
       messageStore.pushMessage(message);
     });
   });
 
-  onUnmounted(() => {
-    socket.emit("leave", currentConversation.value?.id);
-    socket.disconnect();
+  onBeforeRouteLeave(() => {
+    $socket.emit("leave", currentConversation.value?.id);
   });
 </script>
 
