@@ -104,4 +104,22 @@ export interface Prescription {
   }[];
 }
 
+export interface Message {
+  id: string;
+  message: string;
+  sender: string;
+  createdAt: string;
+}
+
+export interface Conversation {
+  id: string;
+  Participant: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    image: string;
+  };
+  messages: Message[] | null;
+}
+
 export default APIResponse;
