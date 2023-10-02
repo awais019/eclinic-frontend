@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { formatTimeAgo } from "@vueuse/core";
   import { Conversation } from "~/types/APIResponse";
 
   defineProps<{
@@ -8,7 +9,8 @@
 </script>
 
 <template>
-  <div
+  <nuxt-link
+    :to="`/messages/${conversation.Participant.id}`"
     class="px-8 py-6 flex gap-3"
     :class="{ 'bg-primary-zumthor rounded-lg': isCurrentConversation }"
   >
@@ -19,19 +21,22 @@
         class="w-full h-full object-cover rounded-lg"
       />
     </div>
-    <div class="flex flex-col items-center justify-center">
+    <div class="flex flex-col justify-center w-full">
       <p class="whitespace-nowrap font-semibold">
         {{ conversation.Participant.first_name }}
         {{ conversation.Participant.last_name }}
       </p>
-      <p v-if="conversation.message" class="text-sm text-neutral-dusty-gray">
+      <p
+        v-if="conversation.message"
+        class="text-sm text-neutral-dusty-gray flex justify-between w-full"
+      >
         <span>
           {{ shrinkText(conversation.message.message, 10) }}
         </span>
-        <span>{{}}</span>
+        <span>{{ getTime(conversation.message.created_at) }}</span>
       </p>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <style scoped></style>

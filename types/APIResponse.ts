@@ -106,9 +106,11 @@ export interface Prescription {
 
 export interface Message {
   id: string;
+  conversationId: string;
   message: string;
   sender: string;
-  createdAt: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Conversation {

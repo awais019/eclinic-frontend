@@ -13,10 +13,7 @@ export default defineStore("messages", () => {
     const { data } = await _getConversationsList();
     if (data.value) {
       _conversations.value = data.value.data;
-      if (
-        _currentConversation.value &&
-        !_conversations.value.includes(_currentConversation.value)
-      ) {
+      if (_currentConversation.value && _currentConversation.value.message) {
         _conversations.value.push(_currentConversation.value);
       }
     }

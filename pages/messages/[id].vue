@@ -52,7 +52,10 @@
 </script>
 
 <template>
-  <main class="h-screen basis-3/4" v-if="currentConversation">
+  <main
+    class="h-screen basis-3/4 border-l-[0.5px] border-neutral-gallery"
+    v-if="currentConversation"
+  >
     <div class="p-8 bg-white">
       <div class="flex gap-3 items-center">
         <div class="max-w-[56px] max-h-[56px] aspect-1">
