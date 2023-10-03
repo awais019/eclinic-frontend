@@ -61,6 +61,7 @@ export interface Review {
 export interface Appointment {
   id: string;
   patient_name: string;
+  userId: string;
   date: string;
   time: string;
   type: string;
@@ -69,6 +70,7 @@ export interface Appointment {
   message?: string;
   completed: boolean;
   doctor?: {
+    userId: string;
     first_name: string;
     last_name: string;
     specialization: string;

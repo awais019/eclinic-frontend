@@ -39,7 +39,11 @@
       >
         <div class="max-w-[32px] max-h-[32px] aspect-1 rounded-md">
           <img
-            :src="image"
+            :src="
+              isRecieved(message.sender)
+                ? image
+                : currentConversation?.Participant.image
+            "
             alt="Your image"
             class="w-full h-full object-cover rounded-md"
           />

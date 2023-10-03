@@ -35,7 +35,7 @@
           v-if="appointment.type == 'PHYSICAL'"
         />
         <IconsCall v-else />
-        <nuxt-link to="/messages">
+        <nuxt-link :to="`/messages/${appointment.doctor?.userId}`">
           <IconsMessageBlue />
         </nuxt-link>
       </div>
