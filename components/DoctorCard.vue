@@ -9,9 +9,7 @@
 <template>
   <NuxtLink :to="`/doctors/${doctor.id}`" class="group">
     <div class="rounded-2xl shadow-variant9">
-      <div
-        class="max-w-[328px] max-h-[200px] aspect-w-8 aspect-h-5 tablet:max-w-[352px] tablet:aspect-w-10 tablet:aspect-h-6"
-      >
+      <div class="w-[328px] h-[200px] aspect-w-8 aspect-h-5 tablet:w-[352px]">
         <img
           class="rounded-t-2xl object-cover w-full h-full"
           :src="doctor.image"
