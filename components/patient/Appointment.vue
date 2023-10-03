@@ -1,9 +1,17 @@
 <script setup lang="ts">
   import { Appointment } from "~/types/APIResponse";
 
-  defineProps<{
+  const props = defineProps<{
     appointment: Appointment;
   }>();
+
+  const { createCallRoom } = useCall();
+
+  async function handleCreateCall() {
+    const { data } = await createCallRoom(
+      props.appointment.doctor?.userId || ""
+    );
+  }
 </script>
 
 <template>
@@ -32,9 +40,11 @@
       <div class="flex gap-3">
         <IconsPeople
           class="text-primary-blue-ribbon"
-          v-if="appointment.type == 'PHYSICAL'"
+          v-if="appointment.type == 'VIRTUAL'"
         />
-        <IconsCall v-else />
+        <button v-else @click="handleCreateCall">
+          <IconsCall />
+        </button>
         <nuxt-link :to="`/messages/${appointment.doctor?.userId}`">
           <IconsMessageBlue />
         </nuxt-link>
