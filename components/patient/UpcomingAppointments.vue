@@ -12,6 +12,7 @@
   if (data.value && data.value.data) {
     appointments.value = data.value.data;
   }
+
   async function handleCancelAppointment(id: string) {
     const { error } = await cancelAppointment(id);
     if (error.value) {
@@ -45,7 +46,7 @@
         </tr>
       </thead>
       <div class="absolute h-[1px] left-6 right-6 bg-neutral-gallery"></div>
-      <tbody v-if="data && data.data">
+      <tbody v-if="appointments">
         <tr v-for="appointment in appointments" :key="appointment.id">
           <td class="py-6 pl-6 pr-2 flex items-center gap-2 whitespace-nowrap">
             <!-- <div class="h-11 w-11 bg-gradient rounded-[4px] relative">
@@ -76,6 +77,13 @@
             >
               Cancel <IconsReject />
             </button>
+            <nuxt-link
+              :to="`/messages/${appointment.doctor?.userId}`"
+              class="bg-primary-blue-ribbon bg-opacity-5 px-4 py-2 rounded-full flex gap-1 items-center text-primary-blue-ribbon font-semibold cursor-pointer"
+            >
+              Message
+              <IconsMessageBlue class="w-6 h-6" />
+            </nuxt-link>
           </td>
         </tr>
       </tbody>
