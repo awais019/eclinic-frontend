@@ -5,7 +5,7 @@
 
   definePageMeta({
     layout: false,
-    middleware: ["message"],
+    middleware: "message",
   });
 
   const { $socket } = useNuxtApp();

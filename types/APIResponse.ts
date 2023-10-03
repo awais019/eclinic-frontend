@@ -122,6 +122,7 @@ export interface Conversation {
     image: string;
   };
   Message: Message | null;
+  unreadCount: number;
 }
 
 export default APIResponse;
