@@ -33,7 +33,7 @@ export const useSchedule = () => {
   }
 
   function setSchedule(schedule: Schedule[]) {
-    return useFetch("doctors/schedule/set", {
+    return useFetch("doctors/schedule", {
       method: "POST",
       baseURL,
       headers: {
@@ -44,7 +44,7 @@ export const useSchedule = () => {
   }
 
   function updateSchedule(schedule: Schedule[]) {
-    return useFetch("doctors/schedule/update", {
+    return useFetch("doctors/schedule", {
       method: "POST",
       baseURL,
       headers: {
