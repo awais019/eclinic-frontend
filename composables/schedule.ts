@@ -45,7 +45,7 @@ export const useSchedule = () => {
 
   function updateSchedule(schedule: Schedule[]) {
     return useFetch("doctors/schedule", {
-      method: "POST",
+      method: "PUT",
       baseURL,
       headers: {
         "X-Auth-Token": userStore.authToken as string,
