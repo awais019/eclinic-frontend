@@ -1,5 +1,5 @@
 import useUserStore from "~/stores/userStore";
-import { Conversation, Message } from "~/types/APIResponse";
+import type { Conversation, Message } from "~/types/APIResponse";
 
 export const useMessage = () => {
   const { baseURL } = useRuntimeConfig().public;

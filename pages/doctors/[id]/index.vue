@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Doctor } from "~/types/APIResponse";
+  import type { Doctor } from "~/types/APIResponse";
 
   definePageMeta({
     middleware: "auth",

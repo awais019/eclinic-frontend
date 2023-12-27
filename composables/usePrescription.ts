@@ -1,5 +1,5 @@
 import useUserStore from "~/stores/userStore";
-import { Prescription } from "~/types/APIResponse";
+import type { Prescription } from "~/types/APIResponse";
 
 export const usePrescription = () => {
   const { authToken } = useUserStore();

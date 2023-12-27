@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Transaction } from "~/types/APIResponse";
+  import type { Transaction } from "~/types/APIResponse";
 
   const breadCrumbs = ref([
     {

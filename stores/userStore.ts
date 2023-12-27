@@ -1,4 +1,4 @@
-import { Doctor, Patient } from "~/types/users";
+import type { Doctor, Patient } from "~/types/users";
 
 export default defineStore("userStore", store, { persist: true });
 

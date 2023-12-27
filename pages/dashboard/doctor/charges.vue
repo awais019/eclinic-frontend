@@ -2,7 +2,7 @@
   import { useToast } from "vue-toastification";
   import { Switch } from "@headlessui/vue";
   import { setErrors } from "@formkit/core";
-  import { Charge } from "~/types/users";
+  import type { Charge } from "~/types/users";
 
   interface ICharge extends Charge {
     is_active: boolean;

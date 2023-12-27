@@ -1,4 +1,4 @@
-import { Doctor } from "~/types/APIResponse";
+import type { Doctor } from "~/types/APIResponse";
 
 export default defineStore("doctors", () => {
   const doctors = ref<Doctor[]>([]);

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { Doctor } from "~/types/APIResponse";
+  import type { Doctor } from "~/types/APIResponse";
 
   defineProps<{
     doctor: Doctor;

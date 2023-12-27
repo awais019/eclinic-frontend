@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Prescription } from "~/types/APIResponse";
+  import type { Prescription } from "~/types/APIResponse";
 
   defineProps<{
     prescriptions: Prescription[];

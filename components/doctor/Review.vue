@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Review } from "~/types/APIResponse";
+  import type { Review } from "~/types/APIResponse";
 
   defineProps<{
     review: Review;

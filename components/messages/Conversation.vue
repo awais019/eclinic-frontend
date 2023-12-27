@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Conversation } from "~/types/APIResponse";
+  import type { Conversation } from "~/types/APIResponse";
   import useMessageStore from "~/stores/messages";
   import { storeToRefs } from "pinia";
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Appointment } from "~/types/APIResponse";
+  import type { Appointment } from "~/types/APIResponse";
 
   const { upcomingPatientAppointments } = useAppointment();
 

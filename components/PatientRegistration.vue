@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-  import { reset, setErrors } from "@formkit/core";
+  import { setErrors } from "@formkit/core";
   import { useToast } from "vue-toastification";
   import useUserStore from "~/stores/userStore";
-  import { Patient } from "~/types/users";
+  import type { Patient } from "~/types/users";
 
   const userStore = useUserStore();
   const toast = useToast();

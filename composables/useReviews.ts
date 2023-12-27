@@ -1,4 +1,4 @@
-import { Review } from "~/types/APIResponse";
+import type { Review } from "~/types/APIResponse";
 import useUserStore from "~/stores/userStore";
 
 export const useReviews = () => {

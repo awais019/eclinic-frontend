@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { storeToRefs } from "pinia";
-  import { Conversation } from "types/APIResponse";
+  import type { Conversation } from "~/types/APIResponse";
   import useMessagesStore from "~/stores/messages";
 
   const messageStore = useMessagesStore();

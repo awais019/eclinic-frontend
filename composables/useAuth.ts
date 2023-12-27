@@ -1,6 +1,6 @@
-import APIResponse from "~/types/APIResponse";
+import type APIResponse from "~/types/APIResponse";
 import useUserStore from "~/stores/userStore";
-import { Patient } from "~/types/users";
+import type { Patient } from "~/types/users";
 
 export const useAuth = () => {
   const { baseURL } = useRuntimeConfig().public;

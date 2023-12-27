@@ -1,4 +1,4 @@
-import { Appointment } from "~/types/APIResponse";
+import type { Appointment } from "~/types/APIResponse";
 import useUserStore from "~/stores/userStore";
 
 export const useAppointment = () => {

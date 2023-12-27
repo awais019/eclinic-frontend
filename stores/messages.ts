@@ -1,4 +1,4 @@
-import { Conversation, Message } from "~/types/APIResponse";
+import type { Conversation, Message } from "~/types/APIResponse";
 
 export default defineStore("messages", () => {
   const _conversations = ref<Conversation[]>([]);

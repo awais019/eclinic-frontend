@@ -1,4 +1,4 @@
-import { Patient } from "~/types/users";
+import type { Patient } from "~/types/users";
 
 export function usePatient() {
   async function registerPatient(newPatient: Patient) {

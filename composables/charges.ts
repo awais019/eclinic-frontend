@@ -1,4 +1,4 @@
-import { Charge } from "~/types/users";
+import type { Charge } from "~/types/users";
 import useUserStore from "~/stores/userStore";
 
 export const useCharges = () => {

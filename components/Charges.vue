@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import { Switch } from "@headlessui/vue";
   import { setErrors } from "@formkit/core";
-  import { Charge } from "~/types/users";
+  import type { Charge } from "~/types/users";
 
   const emits = defineEmits<{
     (e: "continue"): void;

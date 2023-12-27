@@ -1,5 +1,5 @@
 import useUserStore from "~/stores/userStore";
-import { Transaction } from "~/types/APIResponse";
+import type { Transaction } from "~/types/APIResponse";
 
 export const useTransactions = () => {
   const { authToken } = useUserStore();

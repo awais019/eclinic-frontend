@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { useToast } from "vue-toastification";
-  import { Appointment } from "~/types/APIResponse";
+  import type { Appointment } from "~/types/APIResponse";
 
   const { appointmentRequests, acceptAppointment, rejectAppointment } =
     useAppointment();

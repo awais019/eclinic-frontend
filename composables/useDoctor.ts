@@ -1,4 +1,4 @@
-import { DoctorsResponse, Doctor } from "~/types/APIResponse";
+import type { DoctorsResponse, Doctor } from "~/types/APIResponse";
 import useUserStore from "~/stores/userStore";
 
 export function useDoctor() {

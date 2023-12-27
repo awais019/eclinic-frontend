@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Conversation } from "types/APIResponse";
+  import type { Conversation } from "~/types/APIResponse";
   import useUserStore from "~/stores/userStore";
   import useMessagesStore from "~/stores/messages";
 

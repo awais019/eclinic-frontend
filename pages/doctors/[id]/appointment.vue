@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { setErrors } from "@formkit/core";
-  import { Doctor } from "~/types/APIResponse";
+  import type { Doctor } from "~/types/APIResponse";
 
   const { id } = useRoute().params;
 

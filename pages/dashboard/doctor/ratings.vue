@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Review } from "~/types/APIResponse";
+  import type { Review } from "~/types/APIResponse";
   import useUserStore from "~/stores/userStore";
 
   const userStore = useUserStore();

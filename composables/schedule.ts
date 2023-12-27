@@ -1,5 +1,5 @@
 import useUserStore from "~/stores/userStore";
-import { Schedule } from "~/types/users";
+import type { Schedule } from "~/types/users";
 
 export const useSchedule = () => {
   const { baseURL } = useRuntimeConfig().public;
