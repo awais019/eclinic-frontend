@@ -11,11 +11,13 @@
 </script>
 
 <template>
-  <Vue3Lottie
-    :animationData="animation"
-    :height="height"
-    :width="width"
-    :loop="loop"
-    :autoPlay="autoPlay"
-  ></Vue3Lottie>
+  <ClientOnly>
+    <Vue3Lottie
+      :animationData="animation"
+      :height="height"
+      :width="width"
+      :loop="loop"
+      :autoPlay="autoPlay"
+    ></Vue3Lottie>
+  </ClientOnly>
 </template>

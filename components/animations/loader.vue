@@ -4,13 +4,15 @@
 </script>
 
 <template>
-  <Vue3Lottie
-    :animation-data="animation"
-    :height="200"
-    :width="200"
-    :loop="true"
-    :auto-play="true"
-  />
+  <ClientOnly>
+    <Vue3Lottie
+      :animation-data="animation"
+      :height="200"
+      :width="200"
+      :loop="true"
+      :auto-play="true"
+    />
+  </ClientOnly>
 </template>
 
 <style scoped></style>
