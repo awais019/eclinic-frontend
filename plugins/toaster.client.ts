@@ -1,4 +1,4 @@
-import Toast, { PluginOptions, POSITION } from "vue-toastification";
+import Toast, { type PluginOptions, POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
 const options: PluginOptions = {
